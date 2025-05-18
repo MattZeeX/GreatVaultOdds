@@ -1,0 +1,10 @@
+## Interface: 110100
+## Title: Great Vault Odds
+## Notes: Lets you compare different items and slots from M+ to see if a particular loot specialisation is more likely to receive it in the vault.
+## Version: 0.1.0-alpha
+## Category: Loot
+## IconTexture: Interface\AddOns\GreatVaultOdds\test_Icon.blp
+## SavedVariables: GreatVaultOddsDB
+## Author: MattZeeX
+
+Core.lua
