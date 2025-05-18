@@ -6,6 +6,33 @@ local addonName, GreatVaultOddsNS = ...
 -- should be noted in the new table, and everything that did previously exist but was not found this time is noted as FALSE in new table. Can repeat muiltiple times with new tables to see how many times the bug occurs. Important to note
 -- that we should always make a new indexed table so that we know how many times we run, and if that index is only holds a blank table then we know that it was fully equal to the original table.
 
+-- ABOVE is good in the sense that every time I generate a new table it checks, but what I think should do is set up a devmode where I can compare any 2 tables and it'll tell me the diffs, so I think I do actually wanna store the entire table and not just
+-- the diffs, and then I can either print the diffs in human legible form or create a new table of diffs only and dump the table. First, make a new savedvariable for testing purposes, this is a table that stores other tables indexed (only reason it is indexed
+-- is because it keeps it sorted if I wanna look at it in the file manually, but maybe don't care about that and can just have the key be the table "name" and then the following table I talk about below can be sorted and output therefore), and each table has a \
+-- key that is the name of the table (which is their original index?? so if I delete it has the same name still), and then is ofc the table of loot eligiblity. Then on addonloaded, create a LOCAL table of subtables that has a key of name which is the name of the
+-- table, and then a key of index which has the updated index of the table. Idea is in game I can /list the tables and see all the names, and then when I delete or add new ones the names are preserved but ofc index changes so this rememebers their index.
+-- When table is created or deleted have to update this local table.
+-- So there will be a command to compare 2 tables, with it comparign the 2nd arg to the 1st arg ofc. Also add a command to compare ALL tables to the selected table, so takes 1 arg and then ofc don't comapre that same table with itself casue redundant
+
+-- add a command to set in debug mode, and don't allow you to use debug commands unless in debug mode? Set a debug flag up here. Also with debug flag enable devtool being added.
+
+--[[
+if cmd == help then
+    print("/help does this")
+    print("/defaults does that")
+    if debug then
+        print("/db compare does this")
+        print("/db delete does that")
+    end
+end
+]]
+
+--[[ if diff table is empty, then set it to "no differences" or something
+if next(myTable) == nil then
+   -- myTable is empty
+end
+--]]
+
 local cachedIDs = { -- cached specID, is there a way to get non localised version of spec name? will this be a problem? -- potentially worth separating into two tables like in dsune's addon with classes and specs as seperate tables indexed by numbers equal to classID
     WARRIOR = { -- classData table
         specData = {
