@@ -14,6 +14,9 @@ local addonName, GreatVaultOddsNS = ...
 -- When table is created or deleted have to update this local table.
 -- So there will be a command to compare 2 tables, with it comparign the 2nd arg to the 1st arg ofc. Also add a command to compare ALL tables to the selected table, so takes 1 arg and then ofc don't comapre that same table with itself casue redundant
 
+-- SO ideal outputs could be 1. outputs sorted table so that I can use diffchecker, or 2. can just shows diffs in each new table (need some way to indicate that only the specs are different, spell id exists if possible), or 3. could make a table that has
+-- the diffs in a human format, like a key of "all added item ids" and then value is the ids, and then "all missing item IDs" and then can have the keys of the item ids, with the true/false values of the missing/additional specs
+
 -- add a command to set in debug mode, and don't allow you to use debug commands unless in debug mode? Set a debug flag up here. Also with debug flag enable devtool being added.
 
 --[[
@@ -120,9 +123,12 @@ local seasonLootEligibility = { -- in our table will need to assign like a slot 
     },
 }
 
+-- GreatVaultOddsDB, GreatVaultOddsOutput, GreatVaultOddsDumpDB
 local function onEvent(self, event, loadedAddonName) -- what is best practice for naming this function if the event is caps
-    if event == "ADDON_LOADED" and loadedAddonName == addonName then
+    if event == "ADDON_LOADED" and loadedAddonName == addonName then -- can this file run before addon is loaded? can I laod into the game before this addon is loaded? Do I need to not do anything until addon is loaded?
         GreatVaultOddsDB = GreatVaultOddsDB or {}
+        GreatVaultOddsOutput = GreatVaultOddsOutput or {}
+        GreatVaultOddsDumpDB = GreatVaultOddsDumpDB or {}
     end
 end
 
