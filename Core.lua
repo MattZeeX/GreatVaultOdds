@@ -126,6 +126,7 @@ local seasonLootEligibility = { -- in our table will need to assign like a slot 
 -- GreatVaultOddsDB, GreatVaultOddsOutput, GreatVaultOddsDumpDB
 local function onEvent(self, event, loadedAddonName) -- what is best practice for naming this function if the event is caps
     if event == "ADDON_LOADED" and loadedAddonName == addonName then -- can this file run before addon is loaded? can I laod into the game before this addon is loaded? Do I need to not do anything until addon is loaded?
+        GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
         GreatVaultOddsDB = GreatVaultOddsDB or {}
         GreatVaultOddsOutput = GreatVaultOddsOutput or {}
         GreatVaultOddsDumpDB = GreatVaultOddsDumpDB or {}
@@ -136,11 +137,62 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", onEvent)
 
-local function debugHandler(msg, editBox) -- make lowercase
-    if msg == "debug" then
+--[[
+need table for name and corresponding indice to handle name not matching indice AHHHHHHHHHHHH how do I keep the table sorted but also make it so I don't have to loop through table to find pair
+local correspondingTable = {
+    {name = 17, indice = 2},
+}
+--]] -- This will be stored in the main DB anyway, under a metadata key, and it is just an array table of names (keys for the invidiual DB entries) in order of creation.
+
+local devMode = false
+SLASH_GREATVAULTODDS1 = "/gvodds" -- add great vault odds
+function SlashCmdList.GREATVAULTODDS(msg, editBox) -- make msg lowercase
+    msg = msg:lower()
+    local cmd, subCmd, arg1, arg2 = strsplit(' ', msg)
+
+    if cmd == "dev" then -- probably goes at the end of the elseif eventually
+        devMode = not devMode -- toggle on/off
+        print("Devmode active:", devMode) -- true or false
+
+    elseif cmd == "help" then
+        print("|cFFE6CC99Great Vault Odds:|r |cFF66BBFFhelp menu|r") -- Make a prefix print and colour function
+        print("options - displays configurable options")
+        print("|cFF66BBFFreset - resets all options to their defaults.|r") -- test colour
+        print("dev - toggles dev mode")
+        if devMode then
+            print("db list: Lists all stored databases")
+            print("db gen: Generates a new database")
+            print("db compare <list1> [<list2>] - Compares two databases to find errors") -- list 2 optional, compare against main if not there
+            print("db compare all - compares all databases to the main one") -- need to add an optional arg to choose which list to compare against
+            print("db delete <list>: Deletes the specified table")
+            print("debug: Enables DevTool notes to troubleshoot database creation")
+        end
+        print("----------------------------------------")
+    
+    elseif cmd == "db" then -- need to handle args now
+        if subCmd == "compare" then
+            if arg1 == "all" then
+                if GreatVaultOddsDB[arg2] then
+                    -- compare all tables to the specified table from arg2
+                else
+                    print(arg2, "is not a valid table. Comparing all tables to: ") -- get whatever table 1 is, or whatever is designated as the main table (flag maybe?)
+                end
+            elseif GreatVaultOddsDB[arg1] then -- first need to check if arg1 is not nil probably 
+                if GreatVaultOddsDB[arg2] then
+                    print("Comparing", arg1, "with", arg2) -- compare arg1 table with arg2 table with arg1 table acting as the original
+                else
+                    print("Table 2 not provided or", arg2, "is not a valid table. Comparing", arg1, "with: ") -- compare with main table. Maybe can merge this with above if because 2 ifs check for arg2. Also here maybe distinguish between
+                    -- arg2 not existing vs not being a valid table
+                end
+            else
+                print(arg1, "is not a valid table") -- can we also check if arg2 is a valid table or if it was supposed to be? Can check if arg2 is nil and if not nil then check if it's a valid table and if not say that it is ALSO not a valid table.
+            end
+        end
+
+    elseif cmd == "debug" then
         print("debugging now!")
-        -- local currentTime = GetTime()
         local currentTime = GetTimePreciseSec()
+        local currentTimeDebug = debugprofilestop()
 
         if EncounterJournal then -- put in a function --on first login ej isn't loaded so events aren't unregistered, if we unregister events we can browse EJ while the addon works and it doesn't overwrite what addon is doing???
             EJ_SelectTier(EJ_GetNumTiers()) -- test if this selects currently selected tier if given nil or if it always selects the last one/current season?
@@ -163,8 +215,11 @@ local function debugHandler(msg, editBox) -- make lowercase
                     if not isWorldBoss then
                         EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge)
                         EJ_SetLootFilter(classData.classID, specTable.specID) -- could define these as local vars lol -- in this code example, should probably call lootfilter and difficulty outside the loop, assuming they stick when I open a new instance in the encounter journal. I think difficulty resets because m+ doesn't exist tho?
+                        local myLootFilter = specTable.specID
                         C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- presumably 15 is better for performance than this enum? cause it's a global? may want a local value in the future anyway when want to search specific slots
                         for lootIndex = 1, EJ_GetNumLoot() do
+                            local _, EJLootFilterSpecID = EJ_GetLootFilter()
+                            print("EJ filter matches spec filter:", (myLootFilter == EJLootFilterSpecID))
                             local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                             if itemInfo and itemInfo.itemID then
                                 local itemID = itemInfo.itemID
@@ -213,20 +268,20 @@ local function debugHandler(msg, editBox) -- make lowercase
         end
 
         print((GetTimePreciseSec() - currentTime).." seconds elapsed")
+        print((debugprofilestop() - currentTimeDebug).." seconds elapsed (debug)")
         -- print("This took "..(SecondsToTime(GetTime()-currentTime)))
         -- print("This took "..(GetTime()-currentTime).." seconds")
         -- check if table dump exists, if not - create it
         -- display resulting dump to a frame (define frame outside so new one not created each time?)
         -- also save to saved variables in case
-    elseif msg == "reset" then
+    elseif cmd == "reset" then
         print("resetting table")
         -- delete the dumped table. Not sure if need to nil check first.
         -- just for recreating the table if idk the function got interrupted or fucked in some way?
+    else
+        print("unrecognized command", cmd)
     end
 end
-
-SLASH_GREATVAULTODDS1 = "/gvodds"
-SlashCmdList.GREATVAULTODDS = debugHandler
 
 -- TODO: might need checks for addonLoaded for saved variables and stuff
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
