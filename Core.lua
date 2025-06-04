@@ -1,5 +1,12 @@
 local addonName, GreatVaultOddsNS = ...
+local devMode = true -- temporary
+local debugLogging = false
 
+if devMode or debugLogging then
+    print("devMode:", devMode, "debugLogging:", debugLogging, "dingus!") -- print on login
+end
+
+--[[
 -- TODO: For debugging, check if table already exists in index 1, if not, create it normally. If it does exist, when an item is found for a spec, check first indexed table and see if it is found, if true do nothing, if it is not found
 -- make a new table equal to the highest index + 1 and store that item for class/spec as true. After all items have been collected, now loop through the original base table at index 1 and for each item/class/spec in that table
 -- check the new table and if it does *not* exist, add it to the new table but equal to FALSE so we know it was missing. This way everything that is the same shouldn't be in new table, everything that was found that did not previously exist
@@ -18,6 +25,8 @@ local addonName, GreatVaultOddsNS = ...
 -- the diffs in a human format, like a key of "all added item ids" and then value is the ids, and then "all missing item IDs" and then can have the keys of the item ids, with the true/false values of the missing/additional specs
 
 -- add a command to set in debug mode, and don't allow you to use debug commands unless in debug mode? Set a debug flag up here. Also with debug flag enable devtool being added.
+--]] -- after every item has been looped through, in debug mode if it existed already we did nothing and if it did not exist but we found it here we set it to true in new table, now we will now need to loop through the original table
+    -- and compare all those items to ones in our new table, and if any exist in the original table but not the new table we set them to false in the new table to find all diffs
 
 --[[
 if cmd == help then
@@ -109,6 +118,9 @@ local seasonLootEligibility = { -- in our table will need to assign like a slot 
         WARLOCK = {
             Affliction = true, Destruction = true, Demonology = true,
         },
+        WARRIOR = {
+            Protection = true, Arms = true, Fury = true,
+        },
     },
     [157734] = {
         DEATHKNIGHT = {
@@ -123,7 +135,6 @@ local seasonLootEligibility = { -- in our table will need to assign like a slot 
     },
 }
 
--- GreatVaultOddsDB, GreatVaultOddsOutput, GreatVaultOddsDumpDB
 local function onEvent(self, event, loadedAddonName) -- what is best practice for naming this function if the event is caps
     if event == "ADDON_LOADED" and loadedAddonName == addonName then -- can this file run before addon is loaded? can I laod into the game before this addon is loaded? Do I need to not do anything until addon is loaded?
         GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
@@ -137,14 +148,113 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", onEvent)
 
---[[
-need table for name and corresponding indice to handle name not matching indice AHHHHHHHHHHHH how do I keep the table sorted but also make it so I don't have to loop through table to find pair
-local correspondingTable = {
-    {name = 17, indice = 2},
-}
---]] -- This will be stored in the main DB anyway, under a metadata key, and it is just an array table of names (keys for the invidiual DB entries) in order of creation.
+local function addToDevTool(data, name)
+    if not DevTool then return end -- or (not devMode and not debugLogging), can make a separate loggingEnabled function if wanna handle both
 
-local devMode = false
+    if data ~= nil then -- I assume that there is no such thing as a meaningful nil here? Remember, false is meaningful (loook up terminolgoy)
+        DevTool:AddData(data, name)
+    else
+        DevTool:AddData(tostring(data), name) -- I assume there's no nil value that can't be coerced/cast as a string
+    end
+end
+
+local function instanceIterator()
+   local index = 0
+   return function()
+      local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
+      repeat
+         index = index + 1
+         instanceID = EJ_GetInstanceByIndex(index, false) -- dungeons only
+         if not instanceID then return end
+         EJ_SelectInstance(instanceID)  -- GET INSTANCE INFO RETURNS 0 FOR MAP ID UNTIL INSTANCE IS SELECTED!?@!?? AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+         instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
+         isWorldBoss = dungeonAreaMapID == 0
+      until not isWorldBoss
+      return instanceID, instanceName
+   end
+end
+
+--[[
+local function instanceIterator()
+   local index = 0
+   return function()
+      index = index + 1
+      local id = EJ_GetInstanceByIndex(index, false) -- dungeons only
+      local instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
+      local isWorldBoss = dungeonAreaMapID == 0
+      return id, instanceName, isWorldBoss
+   end
+end
+--]]
+
+local function disableEJ()
+    if EncounterJournal then -- might have to call C_Addons.LoadAddon("Blizzard_EncounterJournal")
+        EncounterJournal:UnregisterEvent("EJ_LOOT_DATA_RECIEVED")
+        EncounterJournal:UnregisterEvent("EJ_DIFFICULTY_UPDATE")
+        EncounterJournal:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
+        EncounterJournal:UnregisterEvent("PORTRAITS_UPDATED")
+        EncounterJournal:UnregisterEvent("SEARCH_DB_LOADED")
+        EncounterJournal:UnregisterEvent("UI_MODEL_SCENE_INFO_UPDATED")
+    end
+end
+
+local function enableEJ()
+    if EncounterJournal then
+        EncounterJournal:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
+        EncounterJournal:RegisterEvent("EJ_DIFFICULTY_UPDATE")
+        EncounterJournal:RegisterEvent("UNIT_PORTRAIT_UPDATE")
+        EncounterJournal:RegisterEvent("PORTRAITS_UPDATED")
+        EncounterJournal:RegisterEvent("SEARCH_DB_LOADED")
+        EncounterJournal:RegisterEvent("UI_MODEL_SCENE_INFO_UPDATED")
+    end
+end
+
+local function generateDBForAllSpecs(firstRun)
+    local currentTime = debugprofilestop()
+    GreatVaultOddsDB = {} -- wipe table for now, later will handle subtables for the DB
+    EJ_SelectTier(EJ_GetNumTiers()) -- need to localise all wow funcs
+    --disableEJ() -- if we unregister events we can browse EJ while the addon works and it doesn't overwrite what addon is doing???
+
+    for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
+        for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
+            for instanceID, instanceName in instanceIterator() do -- make this the outer loop to reduce functions calls once I am certain selectinstance won't get overriden, or difficulty filter (or loot filters?)
+                EJ_SelectInstance(instanceID) -- why risk it... I should probably just call this and difficulty on every iteration of loop to ensure nobody fucks with it :(
+                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 I think difficulty resets because m+ doesn't exist tho?
+                EJ_SetLootFilter(classData.classID, specTable.specID)
+                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- presumably 15 is better for performance than this enum? cause it's a global? may want a local value in the future anyway when want to search specific slots
+                for lootIndex = 1, EJ_GetNumLoot() do
+                    local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
+                    local itemID = itemInfo and itemInfo.itemID
+                    local lootDataCached = itemID and (itemInfo.name ~= nil)
+                    if lootDataCached then
+                        if not GreatVaultOddsDB then -- consider a function named ensureItemToSpecPath
+                            GreatVaultOddsDB = {}
+                        end
+                        if not GreatVaultOddsDB[itemID] then
+                            GreatVaultOddsDB[itemID] = {}
+                        end
+                        if not GreatVaultOddsDB[itemID][className] then
+                            GreatVaultOddsDB[itemID][className] = {}
+                        end
+                        if GreatVaultOddsDB[itemID][className][specName] then -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                            -- for table comparison, if doesn't exist in our original table then set it to true in comparison table otherwise don't set it to true
+                            addToDevTool(itemID, "Item "..itemInfo.name.." already cached for: "..className.." - "..specName)
+                        end
+                        GreatVaultOddsDB[itemID][className][specName] = true
+                    end
+                end
+            end
+        end
+    end
+    --enableEJ()
+    print((debugprofilestop() - currentTime).." milliseconds elapsed")
+    -- check if table dump exists, if not - create it
+    -- display resulting dump to a frame (define frame outside so new one not created each time?)
+    if not firstRun then
+        C_Timer.After(0.2, function() generateDBForAllSpecs(true) end)
+    end
+end
+
 SLASH_GREATVAULTODDS1 = "/gvodds" -- add great vault odds
 function SlashCmdList.GREATVAULTODDS(msg, editBox) -- make msg lowercase
     msg = msg:lower()
@@ -168,7 +278,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox) -- make msg lowercase
             print("debug: Enables DevTool notes to troubleshoot database creation")
         end
         print("----------------------------------------")
-    
+
     elseif cmd == "db" then -- need to handle args now
         if subCmd == "compare" then
             if arg1 == "all" then
@@ -189,93 +299,11 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox) -- make msg lowercase
             end
         end
 
-    elseif cmd == "debug" then
-        print("debugging now!")
-        local currentTime = GetTimePreciseSec()
-        local currentTimeDebug = debugprofilestop()
-
-        if EncounterJournal then -- put in a function --on first login ej isn't loaded so events aren't unregistered, if we unregister events we can browse EJ while the addon works and it doesn't overwrite what addon is doing???
-            EJ_SelectTier(EJ_GetNumTiers()) -- test if this selects currently selected tier if given nil or if it always selects the last one/current season?
-            EncounterJournal:UnregisterEvent("EJ_LOOT_DATA_RECIEVED")
-            EncounterJournal:UnregisterEvent("EJ_DIFFICULTY_UPDATE")
-            EncounterJournal:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
-            EncounterJournal:UnregisterEvent("PORTRAITS_UPDATED")
-            EncounterJournal:UnregisterEvent("SEARCH_DB_LOADED")
-            EncounterJournal:UnregisterEvent("UI_MODEL_SCENE_INFO_UPDATED") -- ?
-        end
-
-        for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
-            for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
-                local instanceIndex = 1
-                local instanceID = EJ_GetInstanceByIndex(instanceIndex, false) -- dungeons only, not raids
-                while instanceID do -- maybe better to have while loop be the outer loop and for loop the inner loop cause currentl we change the EJ for each spec, but with loop outside we change it only 8 times (num dungeons) and get all the loot for each spec in the loop
-                    EJ_SelectInstance(instanceID)
-                    local instance_name, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
-                    local isWorldBoss = dungeonAreaMapID == 0
-                    if not isWorldBoss then
-                        EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge)
-                        EJ_SetLootFilter(classData.classID, specTable.specID) -- could define these as local vars lol -- in this code example, should probably call lootfilter and difficulty outside the loop, assuming they stick when I open a new instance in the encounter journal. I think difficulty resets because m+ doesn't exist tho?
-                        local myLootFilter = specTable.specID
-                        C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- presumably 15 is better for performance than this enum? cause it's a global? may want a local value in the future anyway when want to search specific slots
-                        for lootIndex = 1, EJ_GetNumLoot() do
-                            local _, EJLootFilterSpecID = EJ_GetLootFilter()
-                            print("EJ filter matches spec filter:", (myLootFilter == EJLootFilterSpecID))
-                            local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
-                            if itemInfo and itemInfo.itemID then
-                                local itemID = itemInfo.itemID
-
-                                if not GreatVaultOddsDB then GreatVaultOddsDB = {} end -- take out all these if nots and make a function maybe for clarify, called nilCheckTable or initialiseTables or initialiseEmptyTables initialiseNilTables
-                                -- if table doesn't exist and we are in debug mode then cancel debug mode and generate table normally DOUBLE CHECK WHAT HAPPENS IF SAVED VARIABLES IS EMPTY, DOES IT SAVE A BLANK TABLE??
-                                --[[ Is this sillier?
-                                    GreatVaultOddsDB = GreatVaultOddsDB or {}
-                                --]]
-
-                                if not GreatVaultOddsDB[itemID] then
-                                    -- if debug mode then add to our new table
-                                    -- else do as normal below
-                                    GreatVaultOddsDB[itemID] = {} -- technically don't wanna create a table for an itemid unless it is lootable by any spec, but at this point I am assuming it is on the loot table of some spec
-                                end
-                    
-                                if not GreatVaultOddsDB[itemID][className] then
-                                    -- if debug mode then add to our new table
-                                    -- else do as normal below
-                                    GreatVaultOddsDB[itemID][className] = {}
-                                end
-
-                                -- if debug mode then check if specName = true in original true, if yes then do nothing, if it doesn't exist then set it to true in our current table
-                                -- else do as normal below (might check if it exists in original table anyway, and if true then do nothing cause why overwrite, and this can help handle our debug logic from above)
-                    
-                                -- check if this is not true and then do it otherwise do nothing? Does that optimise performance in any way xD?
-                                GreatVaultOddsDB[itemID][className][specName] = true -- probably don't need to nil check here because the above code ensures this will never be nil?
-                                -- also get corresponding item slot and increment that item slot if the item did not previously exist for this spec and increment the total slots too
-                            end
-                        end
-                    end
-                    instanceIndex = instanceIndex + 1
-                    instanceID = EJ_GetInstanceByIndex(instanceIndex, false) -- can I find num of instance indexes so I can make this a for loop? Even not, surely can use a statelses iterator instead of a manual one??
-                end
-            end
-        end -- after every item has been looped through, in debug mode if it existed already we did nothing and if it did not exist but we found it here we set it to true in new table, now we will now need to loop through the original table
-        -- and compare all those items to ones in our new table, and if any exist in the original table but not the new table we set them to false in the new table to find all diffs
-
-        if EncounterJournal then
-            EncounterJournal:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
-            EncounterJournal:RegisterEvent("EJ_DIFFICULTY_UPDATE")
-            EncounterJournal:RegisterEvent("UNIT_PORTRAIT_UPDATE")
-            EncounterJournal:RegisterEvent("PORTRAITS_UPDATED")
-            EncounterJournal:RegisterEvent("SEARCH_DB_LOADED")
-            EncounterJournal:RegisterEvent("UI_MODEL_SCENE_INFO_UPDATED")
-        end
-
-        print((GetTimePreciseSec() - currentTime).." seconds elapsed")
-        print((debugprofilestop() - currentTimeDebug).." seconds elapsed (debug)")
-        -- print("This took "..(SecondsToTime(GetTime()-currentTime)))
-        -- print("This took "..(GetTime()-currentTime).." seconds")
-        -- check if table dump exists, if not - create it
-        -- display resulting dump to a frame (define frame outside so new one not created each time?)
-        -- also save to saved variables in case
+    elseif cmd == "gen" then -- should be subcmd ofc
+        generateDBForAllSpecs()
     elseif cmd == "reset" then
         print("resetting table")
+        GreatVaultOddsDB = {}
         -- delete the dumped table. Not sure if need to nil check first.
         -- just for recreating the table if idk the function got interrupted or fucked in some way?
     else
@@ -299,9 +327,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
 
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
-        if DevTool then DevTool:AddData(CopyTable(data), "GreatVaultOdds - plain data for "..tooltip:GetName()) end -- might get a nil error here if tooltip also doesn't exist?
+        addToDevTool(CopyTable(data), "GreatVaultOdds - plain data for "..tooltip:GetName()) -- might get a nil error here if tooltip also doesn't exist?
     else
-        local itemID = data.id
+        local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootEligibility[itemID] then -- itemID exists in current season dungeons
             local tooltipText = "GreatVaultOdds: "
             -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
@@ -323,7 +351,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
                     if seasonLootEligibility[itemID][className][spec] then -- item is loot eligble for the spec
-                    tooltipText = tooltipText..spec..": 1/"..seasonLootEligibility.numValidItems[className][spec].allSlots.." " -- want to sort this to go in order of index or table, rn is random
+                    tooltipText = tooltipText..spec..": 1/"..seasonLootEligibility.numValidItems[className][spec].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end
