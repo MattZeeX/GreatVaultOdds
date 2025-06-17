@@ -162,7 +162,8 @@ local function enableEJ()
     end
 end
 
-local function generateDBForAllSpecs(alreadyRan)
+-- Option 2, loop from 0 to 13 inside each spec and only add the item if it's not personal loot
+local function generateDBForAllSpecsFilter(alreadyRan)
     local firstDebug = true
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
     addToDevTool(GetTimePreciseSec(), "func start")
@@ -175,22 +176,25 @@ local function generateDBForAllSpecs(alreadyRan)
                 EJ_SelectInstance(instanceID) 
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
                 EJ_SetLootFilter(classData.classID, specTable.specID)
-                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
-                for lootIndex = 1, EJ_GetNumLoot() do
-                    local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
-                    local itemID = itemInfo and itemInfo.itemID
-                    local lootDataCached = itemID and (itemInfo.name ~= nil)
-                    if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
-                        if not GreatVaultOddsDB then
-                            GreatVaultOddsDB = {}
+                for slotFilter = 0, 13 do
+                    C_EncounterJournal.SetSlotFilter(slotFilter)
+                    for lootIndex = 1, EJ_GetNumLoot() do
+                        local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
+                        local itemID = itemInfo and itemInfo.itemID
+                        local lootDataCached = itemID and (itemInfo.name ~= nil)
+                        local notPersonalLoot = lootDataCached and not itemInfo.displayAsPerPlayerLoot
+                        if notPersonalLoot then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
+                            if not GreatVaultOddsDB then
+                                GreatVaultOddsDB = {}
+                            end
+                            if not GreatVaultOddsDB[itemID] then
+                                GreatVaultOddsDB[itemID] = {}
+                            end
+                            if not GreatVaultOddsDB[itemID][className] then
+                                GreatVaultOddsDB[itemID][className] = {}
+                            end
+                            GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                         end
-                        if not GreatVaultOddsDB[itemID] then
-                            GreatVaultOddsDB[itemID] = {}
-                        end
-                        if not GreatVaultOddsDB[itemID][className] then
-                            GreatVaultOddsDB[itemID][className] = {}
-                        end
-                        GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                     end
                 end
             end
@@ -200,7 +204,7 @@ local function generateDBForAllSpecs(alreadyRan)
     print((debugprofilestop() - currentTime).." milliseconds elapsed")
     if not alreadyRan then
         addToDevTool(GetTimePreciseSec(), "0.5 before func")
-        C_Timer.After(0.5, function() generateDBForAllSpecs(true) end)
+        C_Timer.After(0.5, function() generateDBForAllSpecsFilter(true) end)
     end
 end
 
@@ -229,7 +233,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         print("----------------------------------------")
 
     elseif cmd == "gen" then
-        generateDBForAllSpecs()
+        generateDBForAllSpecsFilter()
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
