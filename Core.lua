@@ -162,7 +162,9 @@ local function enableEJ()
     end
 end
 
-local function generateDBForAllSpecs(alreadyRan)
+-- Option 1, call the function once for each item and cache if it is equippable and check if item belongs to that table
+local equippableCache = {}
+local function generateDBForAllSpecsFunc(alreadyRan)
     local firstDebug = true
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
     addToDevTool(GetTimePreciseSec(), "func start")
@@ -181,16 +183,24 @@ local function generateDBForAllSpecs(alreadyRan)
                     local itemID = itemInfo and itemInfo.itemID
                     local lootDataCached = itemID and (itemInfo.name ~= nil)
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
-                        if not GreatVaultOddsDB then
-                            GreatVaultOddsDB = {}
+                        local known = equippableCache[itemID]
+                        if known == nil then -- itemID equip status not yet cached
+                        known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
+                        equippableCache[itemID] = known
                         end
-                        if not GreatVaultOddsDB[itemID] then
-                            GreatVaultOddsDB[itemID] = {}
+
+                        if known then -- item equippable
+                            if not GreatVaultOddsDB then
+                                GreatVaultOddsDB = {}
+                            end
+                            if not GreatVaultOddsDB[itemID] then
+                                GreatVaultOddsDB[itemID] = {}
+                            end
+                            if not GreatVaultOddsDB[itemID][className] then
+                                GreatVaultOddsDB[itemID][className] = {}
+                            end
+                            GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                         end
-                        if not GreatVaultOddsDB[itemID][className] then
-                            GreatVaultOddsDB[itemID][className] = {}
-                        end
-                        GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                     end
                 end
             end
@@ -200,7 +210,7 @@ local function generateDBForAllSpecs(alreadyRan)
     print((debugprofilestop() - currentTime).." milliseconds elapsed")
     if not alreadyRan then
         addToDevTool(GetTimePreciseSec(), "0.5 before func")
-        C_Timer.After(0.5, function() generateDBForAllSpecs(true) end)
+        C_Timer.After(0.5, function() generateDBForAllSpecsFunc(true) end) -- Run again after a delay to capture any loot that became cached after initial query
     end
 end
 
@@ -229,7 +239,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         print("----------------------------------------")
 
     elseif cmd == "gen" then
-        generateDBForAllSpecs()
+        generateDBForAllSpecsFunc()
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
