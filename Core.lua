@@ -162,6 +162,7 @@ local function enableEJ()
     end
 end
 
+local initTracker = {}
 local function generateDBForAllSpecs(alreadyRan)
     local firstDebug = true
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
@@ -176,21 +177,26 @@ local function generateDBForAllSpecs(alreadyRan)
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
                 EJ_SetLootFilter(classData.classID, specTable.specID)
                 C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
+                local key = className..":"..specName
+                if not initTracker[key] then
+                    initTracker[key] = true
+                    GreatVaultOddsDB.numValidItems = GreatVaultOddsDB.numValidItems or {}
+                    GreatVaultOddsDB.numValidItems[className] = GreatVaultOddsDB.numValidItems[className] or {}
+                    GreatVaultOddsDB.numValidItems[className][specName] = GreatVaultOddsDB.numValidItems[className][specName] or {}
+                    GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots or 0
+                end
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
                     local lootDataCached = itemID and (itemInfo.name ~= nil)
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
-                        if not GreatVaultOddsDB then
-                            GreatVaultOddsDB = {}
+                        GreatVaultOddsDB[itemID] = GreatVaultOddsDB[itemID] or {}
+                        GreatVaultOddsDB[itemID][className] = GreatVaultOddsDB[itemID][className] or {}
+
+                        if not GreatVaultOddsDB[itemID][className][specName] then
+                            GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                            GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
                         end
-                        if not GreatVaultOddsDB[itemID] then
-                            GreatVaultOddsDB[itemID] = {}
-                        end
-                        if not GreatVaultOddsDB[itemID][className] then
-                            GreatVaultOddsDB[itemID][className] = {}
-                        end
-                        GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                     end
                 end
             end
