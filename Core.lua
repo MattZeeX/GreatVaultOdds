@@ -162,11 +162,11 @@ local function enableEJ()
     end
 end
 
--- Option 1, call the function once for each item and cache if it is equippable and check if item belongs to that table
 local equippableCache = {}
 local profileTable = {}
 local runCount
-local function generateDBForAllSpecsFunc(alreadyRan, profiling, doneCallback)
+local initTracker = {}
+local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
     local firstDebug = true
     if profiling then
@@ -187,6 +187,14 @@ local function generateDBForAllSpecsFunc(alreadyRan, profiling, doneCallback)
                 EJ_SelectInstance(instanceID)
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
                 C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
+                local key = className..":"..specName
+                if not initTracker[key] then
+                    initTracker[key] = true
+                    GreatVaultOddsDB.numValidItems = GreatVaultOddsDB.numValidItems or {}
+                    GreatVaultOddsDB.numValidItems[className] = GreatVaultOddsDB.numValidItems[className] or {}
+                    GreatVaultOddsDB.numValidItems[className][specName] = GreatVaultOddsDB.numValidItems[className][specName] or {}
+                    GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots or 0
+                end
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
@@ -207,16 +215,13 @@ local function generateDBForAllSpecsFunc(alreadyRan, profiling, doneCallback)
                         end
 
                         if known then -- item equippable
-                            if not GreatVaultOddsDB then
-                                GreatVaultOddsDB = {}
-                            end
-                            if not GreatVaultOddsDB[itemID] then
-                                GreatVaultOddsDB[itemID] = {}
-                            end
-                            if not GreatVaultOddsDB[itemID][className] then
-                                GreatVaultOddsDB[itemID][className] = {}
-                            end
-                            GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                            -- DB already init in ADDON_LOADED
+                            GreatVaultOddsDB[itemID] = GreatVaultOddsDB[itemID] or {}
+                            GreatVaultOddsDB[itemID][className] = GreatVaultOddsDB[itemID][className] or {}
+
+                            if not GreatVaultOddsDB[itemID][className][specName] then
+                                GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                                GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
                         end
                     end
                 end
@@ -317,6 +322,9 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
     end
 end
 
+local playerSpec = {}
+local playerClass
+local firstTooltipRun = true
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
@@ -325,21 +333,31 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootEligibility[itemID] then -- itemID exists in current season dungeons
             local tooltipText = "GreatVaultOdds: "
-            -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
-            local className, classID = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
-            local specID = GetLootSpecialization() -- rename variable to current loot spec
-            -- local specID = GetLootSpecialization() > 0 and GetLootSpecialization() or GetSpecializationInfo(GetSpecialization()) -- probably too convoluted
 
-            if specID == 0 then -- loot spec is set to current specialisation
-                local specIndex = GetSpecialization()
-                specID = GetSpecializationInfo(specIndex)
+            if firstTooltipRun then
+                -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
+                local playerClass, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
+                for specName, _ in pairs(cachedIDs[playerClass].specData) do -- specName, specTable
+                    table.insert(playerSpec, specName)
+                end
+                table.sort(playerSpec) -- double check sorted the same way we have in our table
+                -- local specID = GetLootSpecialization() -- rename variable to current loot spec
+                -- local specID = GetLootSpecialization() > 0 and GetLootSpecialization() or GetSpecializationInfo(GetSpecialization()) -- probably too convoluted
+                -- specID should be leftText, others be rightText MAYBE??? Code doesn't reflect this right now but that is why I saved specID
+                --[[
+                if specID == 0 then -- loot spec is set to current specialisation
+                    local specIndex = GetSpecialization()
+                    specID = GetSpecializationInfo(specIndex)
+                end
+                --]]
+                firstTooltipRun = false
             end
-
-            -- specID should be leftText, others be rightText MAYBE??? Code doesn't reflect this right now but that is why I saved specID
-            for spec, specTable in pairs(cachedIDs[className].specData) do -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order,
+            -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order, 
             -- specid in wow is done by alphabetical spec name, so can put the keys that are the specs in an array, table.sort them, and then loop through that array with ipairs to call the corresponding key in the normal table
             -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
-                if not seasonLootEligibility[itemID][className] then -- why is this in loop?
+
+            for _, specName in ipairs(playerSpec) do
+                if not seasonLootEligibility[itemID][playerClass] then -- why is this in loop?
                     tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
@@ -350,8 +368,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     else
                         right text = right text .. some value
                     --]]
-                    if seasonLootEligibility[itemID][className][spec] then -- item is loot eligible for the spec
-                    tooltipText = tooltipText..spec..": 1/"..seasonLootEligibility.numValidItems[className][spec].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                    if seasonLootEligibility[itemID][playerClass][specName] then -- item is loot eligible for the spec
+                    local iconID = cachedIDs[playerClass].specData[specName].iconID
+                    tooltipText = tooltipText..specName..": 1/"..seasonLootEligibility.numValidItems[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end
