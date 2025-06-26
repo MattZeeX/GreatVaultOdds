@@ -182,10 +182,10 @@ local function generateDBForAllSpecsFunc(alreadyRan, profiling, doneCallback)
 
     for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
         for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
+            EJ_SetLootFilter(classData.classID, specTable.specID)
             for instanceID, instanceName in instanceIterator() do
                 EJ_SelectInstance(instanceID)
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
-                EJ_SetLootFilter(classData.classID, specTable.specID)
                 C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
@@ -336,7 +336,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
             end
 
             -- specID should be leftText, others be rightText MAYBE??? Code doesn't reflect this right now but that is why I saved specID
-            for spec, specTable in pairs(cachedIDs[className].specData) do -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order, 
+            for spec, specTable in pairs(cachedIDs[className].specData) do -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order,
             -- specid in wow is done by alphabetical spec name, so can put the keys that are the specs in an array, table.sort them, and then loop through that array with ipairs to call the corresponding key in the normal table
             -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
                 if not seasonLootEligibility[itemID][className] then -- why is this in loop?
@@ -358,7 +358,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
             end
             tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)            
+            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)
             -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
         end
     end
