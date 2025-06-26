@@ -163,27 +163,40 @@ local function enableEJ()
 end
 
 -- Option 2, loop from 0 to 13 inside each spec and only add the item if it's not personal loot
-local function generateDBForAllSpecsFilter(alreadyRan)
-    local firstDebug = true
+local profileTable = {}
+local runCount
+local function generateDBForAllSpecsFilter(alreadyRan, profiling, doneCallback)
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
-    addToDevTool(GetTimePreciseSec(), "func start")
+    local firstDebug = true
+    if profiling then
+        GreatVaultOddsDB = {}
+        runCount = runCount + 1
+    end
+    local cachedStatus = true
+    local totalItemsSeen = 0
+    local seenItems = {}
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
     for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
         for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
+            EJ_SetLootFilter(classData.classID, specTable.specID)
             for instanceID, instanceName in instanceIterator() do
-                EJ_SelectInstance(instanceID) 
+                EJ_SelectInstance(instanceID)
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
-                EJ_SetLootFilter(classData.classID, specTable.specID)
                 for slotFilter = 0, 13 do
                     C_EncounterJournal.SetSlotFilter(slotFilter)
                     for lootIndex = 1, EJ_GetNumLoot() do
                         local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                         local itemID = itemInfo and itemInfo.itemID
-                        local lootDataCached = itemID and (itemInfo.name ~= nil)
+                        local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- (itemInfo.name ~= nil)
                         local notPersonalLoot = lootDataCached and not itemInfo.displayAsPerPlayerLoot
+
                         if notPersonalLoot then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
+                            if not seenItems[itemID] then
+                                totalItemsSeen = totalItemsSeen + 1
+                                seenItems[itemID] = true
+                            end
                             if not GreatVaultOddsDB then
                                 GreatVaultOddsDB = {}
                             end
@@ -201,10 +214,23 @@ local function generateDBForAllSpecsFilter(alreadyRan)
         end
     end
     enableEJ()
-    print((debugprofilestop() - currentTime).." milliseconds elapsed")
+    local finalTime = debugprofilestop() - currentTime
+    if totalItemsSeen < 215 then
+        cachedStatus = false
+    end
+    if profiling then
+        if cachedStatus == true then
+            profileTable.cached[runCount] = finalTime
+        elseif cachedStatus == false then
+            profileTable.notCached[runCount] = finalTime
+        end
+    end
     if not alreadyRan then
-        addToDevTool(GetTimePreciseSec(), "0.5 before func")
-        C_Timer.After(0.5, function() generateDBForAllSpecsFilter(true) end)
+        C_Timer.After(0.5, function() generateDBForAllSpecsFilter(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
+    else
+        if doneCallback then
+            doneCallback()
+        end
     end
 end
 
@@ -234,6 +260,42 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
 
     elseif cmd == "gen" then
         generateDBForAllSpecsFilter()
+    elseif cmd == "profile" then
+        print("Profiling started!")
+        local startTotalProfileTime = debugprofilestop()
+        local totalRunsToDo = 100
+        local completedRuns = 0
+        runCount = 0
+        profileTable.cached = {}
+        profileTable.notCached = {}
+
+        local function onOneRunComplete()
+            completedRuns = completedRuns + 1
+            if completedRuns == totalRunsToDo then
+                local endTotalProfileTime = debugprofilestop() - startTotalProfileTime
+                local cachedTableTotal, notCachedTableTotal = 0, 0
+
+                for _, v in pairs(profileTable.cached) do
+                    cachedTableTotal = cachedTableTotal + v
+                end
+                for _, v in pairs(profileTable.notCached) do
+                    notCachedTableTotal = notCachedTableTotal + v
+                end
+
+                profileTable.cached.total = cachedTableTotal
+                profileTable.notCached.total = notCachedTableTotal
+
+                addToDevTool(CopyTable(profileTable.cached), "cached profiles")
+                addToDevTool(CopyTable(profileTable.notCached), "uncached profiles")
+
+                print("Total profiling time expected to be near:", endTotalProfileTime)
+                print("Total run count:", runCount)
+            end
+        end
+
+        for i = 1, totalRunsToDo do
+            generateDBForAllSpecsFilter(false, true, onOneRunComplete)
+        end
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
@@ -257,11 +319,11 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
 
             if specID == 0 then -- loot spec is set to current specialisation
                 local specIndex = GetSpecialization()
-                specID = GetSpecializationInfo(specIndex)             
+                specID = GetSpecializationInfo(specIndex)
             end
-             
+
             -- specID should be leftText, others be rightText MAYBE??? Code doesn't reflect this right now but that is why I saved specID
-            for spec, specTable in pairs(cachedIDs[className].specData) do -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order, 
+            for spec, specTable in pairs(cachedIDs[className].specData) do -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order,
             -- specid in wow is done by alphabetical spec name, so can put the keys that are the specs in an array, table.sort them, and then loop through that array with ipairs to call the corresponding key in the normal table
             -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
                 if not seasonLootEligibility[itemID][className] then -- why is this in loop?
@@ -283,7 +345,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
             end
             tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)            
+            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)
             -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
         end
     end
