@@ -162,20 +162,30 @@ local function enableEJ()
     end
 end
 
+local equippableCache = {}
+local profileTable = {}
+local runCount
 local initTracker = {}
-local function generateDBForAllSpecs(alreadyRan)
-    local firstDebug = true
+local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
-    addToDevTool(GetTimePreciseSec(), "func start")
+    local firstDebug = true
+    if profiling then
+        GreatVaultOddsDB = {}
+        runCount = runCount + 1
+    end
+    local funcCount = 0 -- should be declared outside of function cause normally at least one item is pre-cached
+    local cachedStatus = true
+    local totalUncachedItems = 0
+    local seenItems = {}
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
     for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
         for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
+            EJ_SetLootFilter(classData.classID, specTable.specID)
             for instanceID, instanceName in instanceIterator() do
                 EJ_SelectInstance(instanceID)
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
-                EJ_SetLootFilter(classData.classID, specTable.specID)
                 C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
                 local key = className..":"..specName
                 if not initTracker[key] then
@@ -188,25 +198,57 @@ local function generateDBForAllSpecs(alreadyRan)
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
-                    local lootDataCached = itemID and (itemInfo.name ~= nil)
+                    local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- (itemInfo.name ~= nil)
+                    if not lootDataCached then
+                        cachedStatus = false
+                        if not seenItems[itemID] then
+                            totalUncachedItems = totalUncachedItems + 1
+                            seenItems[itemID] = true
+                        end
+                    end
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
-                        GreatVaultOddsDB[itemID] = GreatVaultOddsDB[itemID] or {}
-                        GreatVaultOddsDB[itemID][className] = GreatVaultOddsDB[itemID][className] or {}
+                        local known = equippableCache[itemID]
+                        if known == nil then -- itemID equip status not yet cached
+                        known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
+                        funcCount = funcCount + 1
+                        equippableCache[itemID] = known
+                        end
 
-                        if not GreatVaultOddsDB[itemID][className][specName] then
-                            GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
-                            GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
+                        if known then -- item equippable
+                            -- DB already init in ADDON_LOADED
+                            GreatVaultOddsDB[itemID] = GreatVaultOddsDB[itemID] or {}
+                            GreatVaultOddsDB[itemID][className] = GreatVaultOddsDB[itemID][className] or {}
+
+                            if not GreatVaultOddsDB[itemID][className][specName] then
+                                GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                                GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
                         end
                     end
                 end
             end
         end
     end
+    local finalTime = debugprofilestop() - currentTime
+    if totalUncachedItems > 0 then
+        cachedStatus = false
+    end
+    if funcCount > 219 then
+        print("total funcs exceed 219", funcCount)
+    end
+    if profiling then
+        if cachedStatus == true then
+            profileTable.cached[runCount] = finalTime
+        elseif cachedStatus == false then
+            profileTable.notCached[runCount] = finalTime
+        end
+    end
     enableEJ()
-    print((debugprofilestop() - currentTime).." milliseconds elapsed")
     if not alreadyRan then
-        addToDevTool(GetTimePreciseSec(), "0.5 before func")
-        C_Timer.After(0.5, function() generateDBForAllSpecs(true) end)
+        C_Timer.After(0.5, function() generateDBForAllSpecsFunc(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
+    else
+        if doneCallback then
+            doneCallback()
+        end
     end
 end
 
@@ -235,7 +277,43 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         print("----------------------------------------")
 
     elseif cmd == "gen" then
-        generateDBForAllSpecs()
+        generateDBForAllSpecsFunc()
+    elseif cmd == "profile" then
+        print("Profiling started!")
+        local startTotalProfileTime = debugprofilestop()
+        local totalRunsToDo = 100
+        local completedRuns = 0
+        runCount = 0
+        profileTable.cached = {}
+        profileTable.notCached = {}
+
+        local function onOneRunComplete()
+            completedRuns = completedRuns + 1
+            if completedRuns == totalRunsToDo then
+                local endTotalProfileTime = debugprofilestop() - startTotalProfileTime
+                local cachedTableTotal, notCachedTableTotal = 0, 0
+
+                for _, v in pairs(profileTable.cached) do
+                    cachedTableTotal = cachedTableTotal + v
+                end
+                for _, v in pairs(profileTable.notCached) do
+                    notCachedTableTotal = notCachedTableTotal + v
+                end
+
+                profileTable.cached.total = cachedTableTotal
+                profileTable.notCached.total = notCachedTableTotal
+
+                addToDevTool(CopyTable(profileTable.cached), "cached profiles")
+                addToDevTool(CopyTable(profileTable.notCached), "uncached profiles")
+
+                print("Total profiling time expected to be near:", endTotalProfileTime)
+                print("Total run count:", runCount)
+            end
+        end
+
+        for i = 1, totalRunsToDo do
+            generateDBForAllSpecsFunc(false, true, onOneRunComplete)
+        end
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
@@ -299,7 +377,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
             end
             tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)            
+            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)
             -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
         end
     end
