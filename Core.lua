@@ -222,6 +222,7 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
                             if not GreatVaultOddsDB[itemID][className][specName] then
                                 GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
                                 GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
+                            end
                         end
                     end
                 end
@@ -244,7 +245,7 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
     end
     enableEJ()
     if not alreadyRan then
-        C_Timer.After(0.5, function() generateDBForAllSpecsFunc(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
+        C_Timer.After(0.5, function() generateDBForAllSpecs(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
     else
         if doneCallback then
             doneCallback()
@@ -277,7 +278,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         print("----------------------------------------")
 
     elseif cmd == "gen" then
-        generateDBForAllSpecsFunc()
+        generateDBForAllSpecs()
     elseif cmd == "profile" then
         print("Profiling started!")
         local startTotalProfileTime = debugprofilestop()
@@ -312,7 +313,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         end
 
         for i = 1, totalRunsToDo do
-            generateDBForAllSpecsFunc(false, true, onOneRunComplete)
+            generateDBForAllSpecs(false, true, onOneRunComplete)
         end
     elseif cmd == "reset" then
         print("resetting table")
@@ -352,7 +353,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 --]]
                 firstTooltipRun = false
             end
-            -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order, 
+            -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order,
             -- specid in wow is done by alphabetical spec name, so can put the keys that are the specs in an array, table.sort them, and then loop through that array with ipairs to call the corresponding key in the normal table
             -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
 
