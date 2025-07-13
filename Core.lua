@@ -85,7 +85,6 @@ end
 
 local function disableEJ()
     if EncounterJournal then
-        print("EJ enabled, events disabled")
         EncounterJournal:UnregisterEvent("EJ_LOOT_DATA_RECIEVED")
         EncounterJournal:UnregisterEvent("EJ_DIFFICULTY_UPDATE")
         EncounterJournal:UnregisterEvent("UNIT_PORTRAIT_UPDATE")
@@ -97,7 +96,6 @@ end
 
 local function enableEJ()
     if EncounterJournal then
-        print("EJ enabled, events enabled")
         EncounterJournal:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
         EncounterJournal:RegisterEvent("EJ_DIFFICULTY_UPDATE")
         EncounterJournal:RegisterEvent("UNIT_PORTRAIT_UPDATE")
@@ -315,7 +313,8 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     --]]
                     if seasonLootEligibility.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
                     local iconID = cachedIDs[playerClass].specData[specName].iconID
-                    tooltipText = tooltipText.." "..specName..": 1/"..seasonLootEligibility.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                    local iconText = "|T"..iconID..":0|t"
+                    tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootEligibility.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end
