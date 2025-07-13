@@ -1,6 +1,7 @@
 local addonName, GreatVaultOddsNS = ...
 local devMode = true -- temporary
 local debugLogging = false
+local seasonLootEligibility = GreatVaultOddsNS.DB
 
 if devMode or debugLogging then
     print("devMode:", devMode, "debugLogging:", debugLogging, "dingus!") -- print on login
@@ -36,64 +37,6 @@ local cachedIDs = { -- cached specID, is there a way to get non localised versio
     DRUID = {specData = {Balance = {specID = 102, iconID = 136096}, Feral = {specID = 103, iconID = 132115}, Guardian = {specID = 104, iconID = 132276}, Restoration = {specID = 105, iconID = 136041}}, classID = 11},
     DEMONHUNTER = {specData = {Havoc = {specID = 577, iconID = 1247264}, Vengeance = {specID = 581, iconID = 1247265}}, classID = 12},
     EVOKER = {specData = {Devastation = {specID = 1467, iconID = 4511811}, Preservation = {specID = 1468, iconID = 4511812}, Augmentation = {specID = 1473, iconID = 5198700}}, classID = 13},
-}
-
-local seasonLootEligibility = { -- in our table will need to assign like a slot id to the item so we know what to count as
-    numValidItems = {
-        DEATHKNIGHT = {
-            Blood = {
-                allSlots = 29, Head = 10, Weapon = 12, Body = 7,
-            },
-            Frost = {
-                allSlots = 29,
-                Head = 10,
-                Weapon = 12,
-                Body = 7,
-            },
-            Unholy = {
-                allSlots = 29,
-                Head = 10,
-                Weapon = 12,
-                Body = 7,
-            },
-        },
-        WARLOCK = {
-            Affliction = {
-                allSlots = 69,
-            },
-            Destruction = {
-                allSlots = 70,
-            },
-            Demonology = {
-                allSlots = 71,
-            },
-        }
-    },
-    [234507] = {
-        DEATHKNIGHT = {
-            Blood = true, Frost = true, Unholy = true,
-        },
-        MAGE = {
-            Fire = true, Frost = true, Arcane = true,
-        },
-        WARLOCK = {
-            Affliction = true, Destruction = true, Demonology = true,
-        },
-        WARRIOR = {
-            Protection = true, Arms = true, Fury = true,
-        },
-    },
-    [157734] = {
-        DEATHKNIGHT = {
-            Blood = true, Frost = true, Unholy = true,
-        },
-        MAGE = {
-            Fire = true, Frost = true, Arcane = true,
-        },
-        WARLOCK = {
-            Affliction = true, Destruction = true, Demonology = true,
-        },
-    },
 }
 
 local function addToDevTool(data, name)
@@ -332,12 +275,13 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         addToDevTool(CopyTable(data), "GreatVaultOdds - plain data for "..tooltip:GetName()) -- might get a nil error here if tooltip also doesn't exist?
     else
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
-        if seasonLootEligibility[itemID] then -- itemID exists in current season dungeons
+        if seasonLootEligibility.eligibleItems[itemID] then -- itemID exists in current season dungeons
+        -- Do we need to nilCheck seasonLootEligibility and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
             local tooltipText = "GreatVaultOdds: "
 
             if firstTooltipRun then
                 -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
-                local playerClass, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
+                playerClass, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
                 for specName, _ in pairs(cachedIDs[playerClass].specData) do -- specName, specTable
                     table.insert(playerSpec, specName)
                 end
@@ -358,7 +302,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
             -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
 
             for _, specName in ipairs(playerSpec) do
-                if not seasonLootEligibility[itemID][playerClass] then -- why is this in loop?
+                if not seasonLootEligibility.eligibleItems[itemID][playerClass] then -- why is this in loop?
                     tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
@@ -369,9 +313,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     else
                         right text = right text .. some value
                     --]]
-                    if seasonLootEligibility[itemID][playerClass][specName] then -- item is loot eligible for the spec
+                    if seasonLootEligibility.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
                     local iconID = cachedIDs[playerClass].specData[specName].iconID
-                    tooltipText = tooltipText..specName..": 1/"..seasonLootEligibility.numValidItems[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                    tooltipText = tooltipText.." "..specName..": 1/"..seasonLootEligibility.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end

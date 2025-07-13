@@ -7,4 +7,5 @@
 ## SavedVariables: GreatVaultOddsAddonOptions, GreatVaultOddsDB, GreatVaultOddsOutput, GreatVaultOddsDumpDB
 ## Author: MattZeeX
 
+myDB.lua
 Core.lua
