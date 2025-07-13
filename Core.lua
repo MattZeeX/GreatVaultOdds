@@ -53,6 +53,8 @@ local function OnEvent(self, event, loadedAddonName)
     if event == "ADDON_LOADED" and loadedAddonName == addonName then
         GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
         GreatVaultOddsDB = GreatVaultOddsDB or {} -- do I need to add a flag here and ensure my addon is loaded before I use this saved variable later? could add a helper function that is run any time we want to access an SV, or xpcall?
+        GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
+        GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
         GreatVaultOddsOutput = GreatVaultOddsOutput or {}
         GreatVaultOddsDumpDB = GreatVaultOddsDumpDB or {}
         GetTimePreciseSec()
@@ -108,7 +110,6 @@ end
 local equippableCache = {}
 local profileTable = {}
 local runCount
-local initTracker = {}
 local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
     local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
     local firstDebug = true
@@ -126,18 +127,16 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
     for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
         for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
             EJ_SetLootFilter(classData.classID, specTable.specID)
+            -- DB already init in ADDON_LOADED -- GreatVaultOddsDB = GreatVaultOddsDB or {}
+            -- Eligible Items init in ADDON_LOADED -- GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
+            -- Num Eligible Items init in ADDON_LOADED -- GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
+            GreatVaultOddsDB.eligibleItemCount[className] = GreatVaultOddsDB.eligibleItemCount[className] or {}
+            GreatVaultOddsDB.eligibleItemCount[className][specName] = GreatVaultOddsDB.eligibleItemCount[className][specName] or {}
+            GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots or 0
             for instanceID, instanceName in instanceIterator() do
                 EJ_SelectInstance(instanceID)
-                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1
-                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
-                local key = className..":"..specName
-                if not initTracker[key] then
-                    initTracker[key] = true
-                    GreatVaultOddsDB.numValidItems = GreatVaultOddsDB.numValidItems or {}
-                    GreatVaultOddsDB.numValidItems[className] = GreatVaultOddsDB.numValidItems[className] or {}
-                    GreatVaultOddsDB.numValidItems[className][specName] = GreatVaultOddsDB.numValidItems[className][specName] or {}
-                    GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots or 0
-                end
+                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Maybe only need to call once at the start of func
+                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
@@ -158,13 +157,12 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
                         end
 
                         if known then -- item equippable
-                            -- DB already init in ADDON_LOADED
-                            GreatVaultOddsDB[itemID] = GreatVaultOddsDB[itemID] or {}
-                            GreatVaultOddsDB[itemID][className] = GreatVaultOddsDB[itemID][className] or {}
+                            GreatVaultOddsDB.eligibleItems[itemID] = GreatVaultOddsDB.eligibleItems[itemID] or {}
+                            GreatVaultOddsDB.eligibleItems[itemID][className] = GreatVaultOddsDB.eligibleItems[itemID][className] or {}
 
-                            if not GreatVaultOddsDB[itemID][className][specName] then
-                                GreatVaultOddsDB[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
-                                GreatVaultOddsDB.numValidItems[className][specName].allSlots = GreatVaultOddsDB.numValidItems[className][specName].allSlots + 1
+                            if not GreatVaultOddsDB.eligibleItems[itemID][className][specName] then
+                                GreatVaultOddsDB.eligibleItems[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                                GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots + 1
                             end
                         end
                     end
@@ -261,6 +259,8 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
+        GreatVaultOddsDB.eligibleItems = {}
+        GreatVaultOddsDB.eligibleItemCount = {}
     else
         print("unrecognized command", cmd)
     end
