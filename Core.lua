@@ -106,19 +106,7 @@ local function enableEJ()
 end
 
 local equippableCache = {}
-local profileTable = {}
-local runCount
-local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
-    local currentTime = debugprofilestop() -- do this at start of command because wanna only return the number once after both function calls happen
-    local firstDebug = true
-    if profiling then
-        GreatVaultOddsDB = {}
-        runCount = runCount + 1
-    end
-    local funcCount = 0 -- should be declared outside of function cause normally at least one item is pre-cached
-    local cachedStatus = true
-    local totalUncachedItems = 0
-    local seenItems = {}
+local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- profiling and doneCallback are remnants from DB profiling
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
@@ -139,18 +127,10 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
                     local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- (itemInfo.name ~= nil)
-                    if not lootDataCached then
-                        cachedStatus = false
-                        if not seenItems[itemID] then
-                            totalUncachedItems = totalUncachedItems + 1
-                            seenItems[itemID] = true
-                        end
-                    end
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
                         local known = equippableCache[itemID]
                         if known == nil then -- itemID equip status not yet cached
                         known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
-                        funcCount = funcCount + 1
                         equippableCache[itemID] = known
                         end
 
@@ -168,27 +148,9 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback)
             end
         end
     end
-    local finalTime = debugprofilestop() - currentTime
-    if totalUncachedItems > 0 then
-        cachedStatus = false
-    end
-    if funcCount > 219 then
-        print("total funcs exceed 219", funcCount)
-    end
-    if profiling then
-        if cachedStatus == true then
-            profileTable.cached[runCount] = finalTime
-        elseif cachedStatus == false then
-            profileTable.notCached[runCount] = finalTime
-        end
-    end
     enableEJ()
     if not alreadyRan then
         C_Timer.After(0.5, function() generateDBForAllSpecs(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
-    else
-        if doneCallback then
-            doneCallback()
-        end
     end
 end
 
@@ -203,57 +165,14 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
 
     elseif cmd == "help" then
         print("|cFFE6CC99Great Vault Odds:|r |cFF66BBFFhelp menu|r") -- Make a prefix print and colour function
-        print("options - displays configurable options")
         print("|cFF66BBFFreset - resets all options to their defaults.|r") -- test colour
         print("dev - toggles dev mode")
         if devMode then
-            print("db list: Lists all stored databases")
-            print("db gen: Generates a new database")
-            print("db compare <list1> [<list2>] - Compares two databases to find errors") -- list 2 optional, compare against main if not there
-            print("db compare all - compares all databases to the main one") -- need to add an optional arg to choose which list to compare against
-            print("db delete <list>: Deletes the specified table")
-            print("debug: Enables DevTool notes to troubleshoot database creation")
         end
         print("----------------------------------------")
 
     elseif cmd == "gen" then
         generateDBForAllSpecs()
-    elseif cmd == "profile" then
-        print("Profiling started!")
-        local startTotalProfileTime = debugprofilestop()
-        local totalRunsToDo = 100
-        local completedRuns = 0
-        runCount = 0
-        profileTable.cached = {}
-        profileTable.notCached = {}
-
-        local function onOneRunComplete()
-            completedRuns = completedRuns + 1
-            if completedRuns == totalRunsToDo then
-                local endTotalProfileTime = debugprofilestop() - startTotalProfileTime
-                local cachedTableTotal, notCachedTableTotal = 0, 0
-
-                for _, v in pairs(profileTable.cached) do
-                    cachedTableTotal = cachedTableTotal + v
-                end
-                for _, v in pairs(profileTable.notCached) do
-                    notCachedTableTotal = notCachedTableTotal + v
-                end
-
-                profileTable.cached.total = cachedTableTotal
-                profileTable.notCached.total = notCachedTableTotal
-
-                addToDevTool(CopyTable(profileTable.cached), "cached profiles")
-                addToDevTool(CopyTable(profileTable.notCached), "uncached profiles")
-
-                print("Total profiling time expected to be near:", endTotalProfileTime)
-                print("Total run count:", runCount)
-            end
-        end
-
-        for i = 1, totalRunsToDo do
-            generateDBForAllSpecs(false, true, onOneRunComplete)
-        end
     elseif cmd == "reset" then
         print("resetting table")
         GreatVaultOddsDB = {}
@@ -283,34 +202,15 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 for specName, _ in pairs(cachedIDs[playerClass].specData) do -- specName, specTable
                     table.insert(playerSpec, specName)
                 end
-                table.sort(playerSpec) -- double check sorted the same way we have in our table
-                -- local specID = GetLootSpecialization() -- rename variable to current loot spec
-                -- local specID = GetLootSpecialization() > 0 and GetLootSpecialization() or GetSpecializationInfo(GetSpecialization()) -- probably too convoluted
-                -- specID should be leftText, others be rightText MAYBE??? Code doesn't reflect this right now but that is why I saved specID
-                --[[
-                if specID == 0 then -- loot spec is set to current specialisation
-                    local specIndex = GetSpecialization()
-                    specID = GetSpecializationInfo(specIndex)
-                end
-                --]]
+                table.sort(playerSpec) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
                 firstTooltipRun = false
             end
-            -- gets all specs for a class, add .specID or whatever if I combine specid and icon id. right now I don't use the specid but maybe I will? -- in order to preserve the order,
-            -- specid in wow is done by alphabetical spec name, so can put the keys that are the specs in an array, table.sort them, and then loop through that array with ipairs to call the corresponding key in the normal table
-            -- would this be bad performance wise to sort a table every time I hover over item tooltip? How would I cache this? Do it this way first, then optimise later.
 
             for _, specName in ipairs(playerSpec) do
                 if not seasonLootEligibility.eligibleItems[itemID][playerClass] then -- why is this in loop?
                     tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
-                    --[[
-                    for the table etc etc
-                    if specFromTable == current spec then
-                        left text = current spec
-                    else
-                        right text = right text .. some value
-                    --]]
                     if seasonLootEligibility.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
                     local iconID = cachedIDs[playerClass].specData[specName].iconID
                     local iconText = "|T"..iconID..":0|t"
@@ -321,7 +221,6 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
             end
             tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-            -- tooltip:AddDoubleLine(leftText, rightText, leftR, leftG, leftB, rightR, rightG, rightB)
             -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
         end
     end
