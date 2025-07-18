@@ -1,6 +1,5 @@
 ---@diagnostic disable: undefined-global
--- Profiles the different DB generation methods, commented code should be for function method.
--- Will replace this shortly with current function profile method, should include filter as archive.
+-- Profiling DB gen filter method, with some func implementation commented out
 
 local profileTable = {}
 local runCount
