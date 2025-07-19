@@ -55,9 +55,6 @@ local function OnEvent(self, event, loadedAddonName)
         GreatVaultOddsDB = GreatVaultOddsDB or {} -- do I need to add a flag here and ensure my addon is loaded before I use this saved variable later? could add a helper function that is run any time we want to access an SV, or xpcall?
         GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
         GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
-        GreatVaultOddsOutput = GreatVaultOddsOutput or {}
-        GreatVaultOddsDumpDB = GreatVaultOddsDumpDB or {}
-        GetTimePreciseSec()
         self:UnregisterEvent("ADDON_LOADED")
     end
 end

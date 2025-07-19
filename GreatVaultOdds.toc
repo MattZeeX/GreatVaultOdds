@@ -4,7 +4,7 @@
 ## Version: 0.1.0-alpha
 ## Category: Loot
 ## IconTexture: Interface\AddOns\GreatVaultOdds\test_Icon.blp
-## SavedVariables: GreatVaultOddsAddonOptions, GreatVaultOddsDB, GreatVaultOddsOutput, GreatVaultOddsDumpDB
+## SavedVariables: GreatVaultOddsAddonOptions, GreatVaultOddsDB
 ## Author: MattZeeX
 
 myDB.lua
