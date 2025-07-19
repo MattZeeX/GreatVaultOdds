@@ -1,11 +1,13 @@
 local addonName, GreatVaultOddsNS = ...
-local devMode = true -- temporary
-local debugLogging = false
-local seasonLootEligibility = GreatVaultOddsNS.DB
+local seasonLootEligibility = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var
 
-if devMode or debugLogging then
-    print("devMode:", devMode, "debugLogging:", debugLogging, "dingus!") -- print on login
-end
+local debugLogging = false
+
+local defaultAddonOptions = {
+    devMode = false,
+}
+
+
 
 local cachedIDs = { -- cached specID, is there a way to get non localised version of spec name? will this be a problem? -- potentially worth separating into two tables like in dsune's addon with classes and specs as separate tables indexed by numbers equal to classID
     WARRIOR = { -- classData table
@@ -49,18 +51,43 @@ local function addToDevTool(data, name)
     end
 end
 
+local function addMissingDefaults(userOptions, defaultOptions) -- Validates that all empty user options are populated with default values
+	for option, defaultValue in pairs(defaultOptions) do
+		local userValue = userOptions[option]
+
+		if type(defaultValue) == "table" then
+			if type(userValue) ~= "table" then
+				userOptions[option] = CopyTable(defaultValue) -- Prevents accidental editing of the default addon options table, unlikely to matter
+			else
+				addMissingDefaults(userValue, defaultValue)
+			end
+		elseif userValue == nil then
+			userOptions[option] = defaultValue
+		end
+	end
+end
+
 local function OnEvent(self, event, loadedAddonName)
     if event == "ADDON_LOADED" and loadedAddonName == addonName then
         GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
         GreatVaultOddsDB = GreatVaultOddsDB or {} -- do I need to add a flag here and ensure my addon is loaded before I use this saved variable later? could add a helper function that is run any time we want to access an SV, or xpcall?
         GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
         GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
+        addMissingDefaults(GreatVaultOddsAddonOptions, defaultAddonOptions)
         self:UnregisterEvent("ADDON_LOADED")
+    elseif event == "PLAYER_LOGIN" then
+        if GreatVaultOddsAddonOptions.devMode or debugLogging then
+            C_Timer.After(5, function()
+                print("devMode:", GreatVaultOddsAddonOptions.devMode, "debugLogging:", debugLogging, "dingus!")
+            end)
+        end
+        self:UnregisterEvent("PLAYER_LOGIN")
     end
 end
 
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
+frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
 frame:SetScript("OnEvent", OnEvent)
 
@@ -157,14 +184,15 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
     local cmd, subCmd, arg1, arg2 = strsplit(' ', msg)
 
     if cmd == "dev" then -- probably goes at the end of the elseif eventually
-        devMode = not devMode -- toggle
-        print("Devmode active:", devMode)
+        GreatVaultOddsAddonOptions.devMode = not GreatVaultOddsAddonOptions.devMode -- toggle
+        print("Devmode active:", GreatVaultOddsAddonOptions.devMode)
 
     elseif cmd == "help" then
         print("|cFFE6CC99Great Vault Odds:|r |cFF66BBFFhelp menu|r") -- Make a prefix print and colour function
         print("|cFF66BBFFreset - resets all options to their defaults.|r") -- test colour
         print("dev - toggles dev mode")
-        if devMode then
+        if GreatVaultOddsAddonOptions.devMode then
+
         end
         print("----------------------------------------")
 
