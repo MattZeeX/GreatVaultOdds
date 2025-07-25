@@ -178,33 +178,91 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
     end
 end
 
-SLASH_GREATVAULTODDS1 = "/gvodds" -- add great vault odds
-function SlashCmdList.GREATVAULTODDS(msg, editBox)
-    msg = msg:lower()
-    local cmd, subCmd, arg1, arg2 = strsplit(' ', msg)
+local function showHelp() -- make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically, maybe more detail?
+    print("|cFFE6CC99Great Vault Odds|r will display the chance of each spec receiving an item in the Great Vault on the corresponding item's tooltip.")
+    print("|cFFE6CC99Great Vault Odds|r |cFF66BBFFHelp Menu:|r") -- Make a prefix print and colour function
+    print("|cFFE6CC99/gvodds|r", "|cFF66BBFFreset|r", "- Resets all options to their defaults") -- test colour
+    print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdev|r", "- Toggles dev mode")
+    print("|cFFE6CC99/gvodds|r", "|cFF66BBFFhelp|r", "- Displays this menu")
+    if GreatVaultOddsAddonOptions.devMode then
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFgen|r", "- Generates a DB in your saved variables")
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFreset|r", "- Deletes the DB in your saved variables")
+    end
+    print("----------------------------------------")
+end
 
-    if cmd == "dev" then -- probably goes at the end of the elseif eventually
+local validCommands = {
+    help = {},
+    dev = {},
+    reset = {},
+    db = {
+        devModeRequired = true,
+        hasSubCommand = {
+            gen = {},
+            reset = {}
+        },
+    },
+}
+
+SLASH_GREATVAULTODDS1 = "/gvodds" -- add /greatvaultodds
+function SlashCmdList.GREATVAULTODDS(msg, editBox)
+    msg = msg and msg:lower():gsub("^%s*(.-)%s*$", "%1") or "" -- Trims leading and trailing whitespace, unnecessary
+
+    local args = {}
+    for word in msg:gmatch("%S+") do -- non whitespace ("args")
+        table.insert(args, word)
+    end
+
+    local cmd, subCmd, arg1 = args[1], args[2], args[3]
+
+    if cmd == "dev" then
         GreatVaultOddsAddonOptions.devMode = not GreatVaultOddsAddonOptions.devMode -- toggle
         print("Devmode active:", GreatVaultOddsAddonOptions.devMode)
+        if not subCmd then return end -- Quit handler if no further command is chained
+        cmd, subCmd = subCmd, arg1 -- Shift args for chained command
+    end
 
-    elseif cmd == "help" then
-        print("|cFFE6CC99Great Vault Odds:|r |cFF66BBFFhelp menu|r") -- Make a prefix print and colour function
-        print("|cFF66BBFFreset - resets all options to their defaults.|r") -- test colour
-        print("dev - toggles dev mode")
-        if GreatVaultOddsAddonOptions.devMode then
+    local validCommand = validCommands[cmd]
+    local hasSubCmd = validCommand and validCommand.hasSubCommand
+    local validSubCmd = hasSubCmd and validCommand.hasSubCommand[subCmd]
 
+    local devModeActive = GreatVaultOddsAddonOptions.devMode
+    local devModeRequired = validCommand and validCommand.devModeRequired
+    local missingSubCmd = hasSubCmd and not subCmd
+    local invalidSubCmd = hasSubCmd and subCmd and not validSubCmd
+
+    if not cmd then
+        print("No command provided - displaying /gvodds help")
+        showHelp()
+    elseif not validCommand then
+        print("Unrecognised command \""..cmd.."\" - displaying /gvodds help")
+        showHelp()
+    elseif devModeRequired and not devModeActive then -- Command entered requires devMode but user is not in devMode, irregardless of subcommand validity
+        print("The command \""..cmd.."\" requires dev mode to use. Use /gvodds dev to toggle")
+    elseif missingSubCmd and not validCommand.hasSubCommand.default then -- subcommand required but not provided
+        print("Missing args for command \""..cmd.."\" - displaying /gvodds help")
+        showHelp()
+    elseif invalidSubCmd then -- Subcommand provided is not valid for given command
+        print("Invalid arg \""..subCmd.."\" for command \""..cmd.."\" - displaying /gvodds help")
+        showHelp()
+    else -- Command is valid and can proceed to act on it
+        if cmd == "help" then
+            showHelp()
+        elseif cmd == "reset" then
+            print("Resetting |cFFE6CC99Great Vault Odds|r options to defaults!")
+            GreatVaultOddsAddonOptions = CopyTable(defaultAddonOptions)
+        elseif devModeActive then -- dev mode required for these commands, unnecessary line though because of prior verification/guarding
+            if cmd == "db" then
+                if subCmd == "gen" then
+                    generateDBForAllSpecs()
+                elseif subCmd == "reset" then
+                    print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
+                    GreatVaultOddsDB = {}
+                    GreatVaultOddsDB.eligibleItems = {}
+                    GreatVaultOddsDB.eligibleItemCount = {}
+                end
+            end
         end
-        print("----------------------------------------")
-
-    elseif cmd == "gen" then
-        generateDBForAllSpecs()
-    elseif cmd == "reset" then
-        print("resetting table")
-        GreatVaultOddsDB = {}
-        GreatVaultOddsDB.eligibleItems = {}
-        GreatVaultOddsDB.eligibleItemCount = {}
-    else
-        print("unrecognized command", cmd)
     end
 end
 
