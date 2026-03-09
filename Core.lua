@@ -154,8 +154,8 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
                         local known = equippableCache[itemID]
                         if known == nil then -- itemID equip status not yet cached
-                        known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
-                        equippableCache[itemID] = known
+                            known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
+                            equippableCache[itemID] = known
                         end
 
                         if known then -- item equippable
