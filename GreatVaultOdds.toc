@@ -7,5 +7,6 @@
 ## SavedVariables: GreatVaultOddsAddonOptions, GreatVaultOddsDB
 ## Author: MattZeeX
 
-myDB.lua
+Data/SeasonLootDB.lua
+Data/ClassSpecIDs.lua
 Core.lua

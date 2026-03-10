@@ -1,44 +1,11 @@
 local addonName, GreatVaultOddsNS = ...
-local seasonLootEligibility = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var
+local seasonLootDB = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var (no)
+local classSpecIDs = GreatVaultOddsNS.classSpecIDs
 
 local debugLogging = false
 
 local defaultAddonOptions = {
     devMode = false,
-}
-
-
-
-local cachedIDs = { -- cached specID, is there a way to get non localised version of spec name? will this be a problem? -- potentially worth separating into two tables like in dsune's addon with classes and specs as separate tables indexed by numbers equal to classID
-    WARRIOR = { -- classData table
-        specData = {
-            Arms = { -- specTable
-                specID = 71,
-                iconID = 132355
-            },
-            Fury = {
-                specID = 72,
-                iconID = 132347
-            },
-            Protection = {
-                specID = 73,
-                iconID = 132341
-            }
-        },
-        classID = 1
-    },
-    PALADIN = {specData = {Holy = {specID = 65, iconID = 135920}, Protection = {specID = 66, iconID = 236264}, Retribution = {specID = 70, iconID = 135873}}, classID = 2},
-    HUNTER = {specData = {["Beast Mastery"] = {specID = 253, iconID = 461112}, Marksmanship = {specID = 254, iconID = 236179}, Survival = {specID = 255, iconID = 461113}}, classID = 3},
-    ROGUE = {specData = {Assassination = {specID = 259, iconID = 132292}, Outlaw = {specID = 260, iconID = 135340}, Subtlety = {specID = 261, iconID = 132320}}, classID = 4},
-    PRIEST = {specData = {Discipline = {specID = 256, iconID = 135940}, Holy = {specID = 257, iconID = 237542}, Shadow = {specID = 258, iconID = 136207}}, classID = 5},
-    DEATHKNIGHT = {specData = {Blood = {specID = 250, iconID = 135770}, Frost = {specID = 251, iconID = 135773}, Unholy = {specID = 252, iconID = 135775}}, classID = 6},
-    SHAMAN = {specData = {Elemental = {specID = 262, iconID = 136048}, Enhancement = {specID = 263, iconID = 237581}, Restoration = {specID = 264, iconID = 136052}}, classID = 7},
-    MAGE = {specData = {Arcane = {specID = 62, iconID = 135932}, Fire = {specID = 63, iconID = 135810}, Frost = {specID = 64, iconID = 135846}}, classID = 8},
-    WARLOCK = {specData = {Affliction = {specID = 265, iconID = 136145}, Demonology = {specID = 266, iconID = 136172}, Destruction = {specID = 267, iconID = 136186}}, classID = 9},
-    MONK = {specData = {Brewmaster = {specID = 268, iconID = 608951}, Mistweaver = {specID = 270, iconID = 608952}, Windwalker = {specID = 269, iconID = 608953}}, classID = 10},
-    DRUID = {specData = {Balance = {specID = 102, iconID = 136096}, Feral = {specID = 103, iconID = 132115}, Guardian = {specID = 104, iconID = 132276}, Restoration = {specID = 105, iconID = 136041}}, classID = 11},
-    DEMONHUNTER = {specData = {Havoc = {specID = 577, iconID = 1247264}, Vengeance = {specID = 581, iconID = 1247265}}, classID = 12},
-    EVOKER = {specData = {Devastation = {specID = 1467, iconID = 4511811}, Preservation = {specID = 1468, iconID = 4511812}, Augmentation = {specID = 1473, iconID = 5198700}}, classID = 13},
 }
 
 local function addToDevTool(data, name)
@@ -67,7 +34,7 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
 	end
 end
 
-local function OnEvent(self, event, loadedAddonName)
+local function OnEvent(self, event, loadedAddonName) --EventHandler? camelCase?
     if event == "ADDON_LOADED" and loadedAddonName == addonName then
         GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
         GreatVaultOddsDB = GreatVaultOddsDB or {} -- do I need to add a flag here and ensure my addon is loaded before I use this saved variable later? could add a helper function that is run any time we want to access an SV, or xpcall?
@@ -134,7 +101,7 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
-    for className, classData in pairs(cachedIDs) do -- className = className, classData = table of specTable and classID 13
+    for className, classData in pairs(classSpecIDs) do -- className = className, classData = table of specTable and classID 13
         for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
             EJ_SetLootFilter(classData.classID, specTable.specID)
             -- DB already init in ADDON_LOADED -- GreatVaultOddsDB = GreatVaultOddsDB or {}
@@ -191,7 +158,7 @@ local function showHelp() -- make show help have option to display help for spec
     print("----------------------------------------")
 end
 
-local validCommands = {
+local validCommands = { -- slashCommandMap or commandConfig?
     help = {},
     dev = {},
     reset = {},
@@ -275,14 +242,14 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         addToDevTool(CopyTable(data), "GreatVaultOdds - plain data for "..tooltip:GetName()) -- might get a nil error here if tooltip also doesn't exist?
     else
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
-        if seasonLootEligibility.eligibleItems[itemID] then -- itemID exists in current season dungeons
-        -- Do we need to nilCheck seasonLootEligibility and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
+        if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
+        -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
             local tooltipText = "GreatVaultOdds: "
 
             if firstTooltipRun then
                 -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
                 playerClass, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
-                for specName, _ in pairs(cachedIDs[playerClass].specData) do -- specName, specTable
+                for specName, _ in pairs(classSpecIDs[playerClass].specData) do -- specName, specTable
                     table.insert(playerSpec, specName)
                 end
                 table.sort(playerSpec) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
@@ -290,14 +257,14 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
             end
 
             for _, specName in ipairs(playerSpec) do
-                if not seasonLootEligibility.eligibleItems[itemID][playerClass] then -- why is this in loop?
+                if not seasonLootDB.eligibleItems[itemID][playerClass] then -- why is this in loop?
                     tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
-                    if seasonLootEligibility.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
-                    local iconID = cachedIDs[playerClass].specData[specName].iconID
+                    if seasonLootDB.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
+                    local iconID = classSpecIDs[playerClass].specData[specName].iconID
                     local iconText = "|T"..iconID..":0|t"
-                    tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootEligibility.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                    tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end
