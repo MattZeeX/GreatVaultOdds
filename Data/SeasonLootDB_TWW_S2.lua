@@ -36,13 +36,13 @@ GreatVaultOddsNS.DB = {
   eligibleItemCount = {
     DEATHKNIGHT = {
       Blood = {
-        allSlots = 58,
+        allSlots = 65,
       },
       Frost = {
-        allSlots = 60,
+        allSlots = 68,
       },
       Unholy = {
-        allSlots = 56,
+        allSlots = 63,
       },
     },
     DEMONHUNTER = {
@@ -50,40 +50,40 @@ GreatVaultOddsNS.DB = {
         allSlots = 61,
       },
       Vengeance = {
-        allSlots = 62,
+        allSlots = 61,
       },
     },
     DRUID = {
       Balance = {
-        allSlots = 62,
+        allSlots = 67,
       },
       Feral = {
-        allSlots = 58,
+        allSlots = 63,
       },
       Guardian = {
-        allSlots = 59,
+        allSlots = 63,
       },
       Restoration = {
-        allSlots = 65,
+        allSlots = 71,
       },
     },
     EVOKER = {
       Augmentation = {
-        allSlots = 60,
+        allSlots = 68,
       },
       Devastation = {
-        allSlots = 60,
+        allSlots = 68,
       },
       Preservation = {
-        allSlots = 64,
+        allSlots = 72,
       },
     },
     HUNTER = {
       ["Beast Mastery"] = {
-        allSlots = 54,
+        allSlots = 61,
       },
       Marksmanship = {
-        allSlots = 54,
+        allSlots = 61,
       },
       Survival = {
         allSlots = 63,
@@ -91,105 +91,112 @@ GreatVaultOddsNS.DB = {
     },
     MAGE = {
       Arcane = {
-        allSlots = 58,
+        allSlots = 65,
       },
       Fire = {
-        allSlots = 58,
+        allSlots = 64,
       },
       Frost = {
-        allSlots = 58,
+        allSlots = 64,
       },
     },
     MONK = {
       Brewmaster = {
-        allSlots = 65,
+        allSlots = 67,
       },
       Mistweaver = {
-        allSlots = 62,
+        allSlots = 70,
       },
       Windwalker = {
-        allSlots = 64,
+        allSlots = 67,
       },
     },
     PALADIN = {
       Holy = {
-        allSlots = 58,
+        allSlots = 67,
       },
       Protection = {
-        allSlots = 60,
+        allSlots = 67,
       },
       Retribution = {
-        allSlots = 56,
+        allSlots = 63,
       },
     },
     PRIEST = {
       Discipline = {
-        allSlots = 62,
+        allSlots = 71,
       },
       Holy = {
-        allSlots = 62,
+        allSlots = 71,
       },
       Shadow = {
-        allSlots = 59,
+        allSlots = 67,
       },
     },
     ROGUE = {
       Assassination = {
-        allSlots = 57,
+        allSlots = 63,
       },
       Outlaw = {
-        allSlots = 60,
+        allSlots = 63,
       },
       Subtlety = {
-        allSlots = 57,
+        allSlots = 63,
       },
     },
     SHAMAN = {
       Elemental = {
-        allSlots = 63,
+        allSlots = 69,
       },
       Enhancement = {
-        allSlots = 58,
+        allSlots = 63,
       },
       Restoration = {
-        allSlots = 66,
+        allSlots = 73,
       },
     },
     WARLOCK = {
       Affliction = {
-        allSlots = 58,
+        allSlots = 64,
       },
       Demonology = {
-        allSlots = 58,
+        allSlots = 64,
       },
       Destruction = {
-        allSlots = 58,
+        allSlots = 64,
       },
     },
     WARRIOR = {
       Arms = {
-        allSlots = 56,
+        allSlots = 63,
       },
       Fury = {
-        allSlots = 56,
+        allSlots = 68,
       },
       Protection = {
-        allSlots = 60,
+        allSlots = 67,
       },
     },
   },
   eligibleItems = {
-    [250144] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
+    [155864] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
       },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
       },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [158341] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -200,33 +207,22 @@ GreatVaultOddsNS.DB = {
         Marksmanship = true,
         Survival = true,
       },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [158350] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -234,7 +230,7 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [250214] = {
+    [158353] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -245,6 +241,18 @@ GreatVaultOddsNS.DB = {
         Guardian = true,
         Restoration = true,
       },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [158357] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -255,33 +263,39 @@ GreatVaultOddsNS.DB = {
         Marksmanship = true,
         Survival = true,
       },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [158359] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [159226] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -289,54 +303,16 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [250215] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
+    [159231] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -344,20 +320,16 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [250223] = {
-      DRUID = {
-        Balance = true,
-      },
+    [159235] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
       PRIEST = {
+        Discipline = true,
+        Holy = true,
         Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -365,35 +337,16 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [250224] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
+    [159240] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -401,374 +354,7 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [250225] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Feral = true,
-        Guardian = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-    },
-    [250226] = {
-      DEATHKNIGHT = {
-        Frost = true,
-        Unholy = true,
-      },
-      DEMONHUNTER = {
-        Havoc = true,
-      },
-      DRUID = {
-        Feral = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Windwalker = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [250227] = {
-      DEATHKNIGHT = {
-        Frost = true,
-        Unholy = true,
-      },
-      DEMONHUNTER = {
-        Havoc = true,
-      },
-      DRUID = {
-        Feral = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Windwalker = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [250228] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Feral = true,
-        Guardian = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      PALADIN = {
-        Protection = true,
-        Retribution = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [250229] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [250238] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [250241] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [250242] = {
-      DEATHKNIGHT = {
-        Blood = true,
-      },
-      DEMONHUNTER = {
-        Vengeance = true,
-      },
-      DRUID = {
-        Guardian = true,
-      },
-      MONK = {
-        Brewmaster = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [250243] = {
-      DEATHKNIGHT = {
-        Blood = true,
-      },
-      DEMONHUNTER = {
-        Vengeance = true,
-      },
-      DRUID = {
-        Guardian = true,
-      },
-      MONK = {
-        Brewmaster = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [250244] = {
-      DEATHKNIGHT = {
-        Blood = true,
-      },
-      DEMONHUNTER = {
-        Vengeance = true,
-      },
-      DRUID = {
-        Guardian = true,
-      },
-      MONK = {
-        Brewmaster = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [250245] = {
-      DEATHKNIGHT = {
-        Blood = true,
-      },
-      DEMONHUNTER = {
-        Vengeance = true,
-      },
-      DRUID = {
-        Guardian = true,
-      },
-      MONK = {
-        Brewmaster = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [250246] = {
-      DRUID = {
-        Restoration = true,
-      },
-      EVOKER = {
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-      },
-      SHAMAN = {
-        Restoration = true,
-      },
-    },
-    [250248] = {
-      DRUID = {
-        Restoration = true,
-      },
-      EVOKER = {
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-      },
-      SHAMAN = {
-        Restoration = true,
-      },
-    },
-    [250253] = {
-      DRUID = {
-        Restoration = true,
-      },
-      EVOKER = {
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-      },
-      SHAMAN = {
-        Restoration = true,
-      },
-    },
-    [250254] = {
-      DRUID = {
-        Restoration = true,
-      },
-      EVOKER = {
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-      },
-      SHAMAN = {
-        Restoration = true,
-      },
-    },
-    [250255] = {
-      DRUID = {
-        Restoration = true,
-      },
-      EVOKER = {
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-      },
-      SHAMAN = {
-        Restoration = true,
-      },
-    },
-    [250256] = {
+    [159287] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -835,55 +421,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [250257] = {
-      DEMONHUNTER = {
-        Havoc = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Windwalker = true,
-      },
-      PRIEST = {
-        Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [250258] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
+    [159305] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -894,6 +432,40 @@ GreatVaultOddsNS.DB = {
         Guardian = true,
         Restoration = true,
       },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [159336] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [159357] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -904,40 +476,39 @@ GreatVaultOddsNS.DB = {
         Marksmanship = true,
         Survival = true,
       },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
       },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
+    },
+    [159361] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
       },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
       },
       SHAMAN = {
         Elemental = true,
         Enhancement = true,
         Restoration = true,
       },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
+    },
+    [159451] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
       },
       WARRIOR = {
         Arms = true,
@@ -945,7 +516,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [250259] = {
+    [159462] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -1012,20 +583,50 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251077] = {
+    [159611] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [159612] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
       DRUID = {
         Feral = true,
         Guardian = true,
       },
       HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
         Survival = true,
       },
       MONK = {
         Brewmaster = true,
         Windwalker = true,
       },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
     },
-    [251078] = {
+    [159638] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -1039,7 +640,216 @@ GreatVaultOddsNS.DB = {
         Fury = true,
       },
     },
-    [251079] = {
+    [159639] = {
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+      },
+    },
+    [159641] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+    },
+    [159663] = {
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [159679] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [159725] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [168955] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+    },
+    [168957] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [168958] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [168962] = {
+      ROGUE = {
+        Assassination = true,
+        Subtlety = true,
+      },
+    },
+    [168964] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [168965] = {
+      DEATHKNIGHT = {
+        Blood = true,
+      },
+      DEMONHUNTER = {
+        Vengeance = true,
+      },
+      DRUID = {
+        Guardian = true,
+      },
+      MONK = {
+        Brewmaster = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [168966] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [168967] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1056,41 +866,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251080] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251081] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251082] = {
+    [168968] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -1112,33 +888,24 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251083] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PALADIN = {
-        Holy = true,
+    [168969] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
       },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
       },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
       },
     },
-    [251084] = {
+    [168971] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1155,24 +922,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251085] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251086] = {
+    [168972] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -1189,40 +939,40 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251087] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
+    [168973] = {
       DRUID = {
         Balance = true,
-        Feral = true,
-        Guardian = true,
         Restoration = true,
       },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
       },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251088] = {
-      DEATHKNIGHT = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
         Frost = true,
       },
-      PALADIN = {
-        Protection = true,
+      MONK = {
+        Mistweaver = true,
       },
-      WARRIOR = {
-        Protection = true,
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
       },
     },
-    [251089] = {
+    [168974] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1239,41 +989,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251090] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251091] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251092] = {
+    [168975] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -1295,66 +1011,16 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251093] = {
+    [168976] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
         Unholy = true,
       },
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
       PALADIN = {
         Holy = true,
         Protection = true,
         Retribution = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
       },
       WARRIOR = {
         Arms = true,
@@ -1362,101 +1028,16 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251094] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251095] = {
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-      },
-    },
-    [251096] = {
+    [168978] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
         Unholy = true,
       },
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
       PALADIN = {
         Holy = true,
         Protection = true,
         Retribution = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
       },
       WARRIOR = {
         Arms = true,
@@ -1464,7 +1045,24 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251097] = {
+    [168980] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [168982] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1481,113 +1079,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251098] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251099] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251100] = {
-      DEATHKNIGHT = {
-        Frost = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251101] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251102] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251103] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251104] = {
+    [168983] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1604,60 +1096,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251105] = {
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251106] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-    },
-    [251107] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251108] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251109] = {
+    [168985] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -1679,7 +1118,163 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251110] = {
+    [168986] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [168988] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [168989] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [169344] = {
+      DRUID = {
+        Restoration = true,
+      },
+      EVOKER = {
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+      },
+      SHAMAN = {
+        Restoration = true,
+      },
+    },
+    [169608] = {
+      DEATHKNIGHT = {
+        Frost = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178789] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178792] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178793] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178794] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1696,54 +1291,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251111] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251112] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251113] = {
+    [178795] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -1765,7 +1313,7 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251114] = {
+    [178796] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1782,12 +1330,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251115] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
+    [178797] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -1798,89 +1341,18 @@ GreatVaultOddsNS.DB = {
         Guardian = true,
         Restoration = true,
       },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
       MONK = {
         Brewmaster = true,
         Mistweaver = true,
         Windwalker = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
       },
       ROGUE = {
         Assassination = true,
         Outlaw = true,
         Subtlety = true,
       },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
     },
-    [251117] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [251118] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251119] = {
+    [178798] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -1897,117 +1369,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251120] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251121] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251122] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Outlaw = true,
-      },
-    },
-    [251123] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251124] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251125] = {
+    [178799] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -2024,7 +1386,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251126] = {
+    [178800] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -2041,50 +1403,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251127] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251128] = {
-      HUNTER = {
-        Survival = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Subtlety = true,
-      },
-    },
-    [251129] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251130] = {
+    [178801] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -2106,77 +1425,157 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251131] = {
+    [178802] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178803] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178804] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178805] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [178806] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178807] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178808] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178809] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
       EVOKER = {
         Augmentation = true,
         Devastation = true,
         Preservation = true,
       },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251132] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
       },
       MONK = {
-        Brewmaster = true,
         Mistweaver = true,
-        Windwalker = true,
       },
       PALADIN = {
         Holy = true,
-        Protection = true,
-        Retribution = true,
       },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
       },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
       SHAMAN = {
         Elemental = true,
-        Enhancement = true,
         Restoration = true,
       },
       WARLOCK = {
@@ -2184,66 +1583,155 @@ GreatVaultOddsNS.DB = {
         Demonology = true,
         Destruction = true,
       },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
     },
-    [251133] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
+    [178810] = {
+      DRUID = {
+        Restoration = true,
+      },
+      EVOKER = {
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
       },
       PALADIN = {
         Holy = true,
-        Protection = true,
-        Retribution = true,
       },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+      },
+      SHAMAN = {
+        Restoration = true,
       },
     },
-    [251134] = {
+    [178811] = {
       DEATHKNIGHT = {
-        Blood = true,
         Frost = true,
         Unholy = true,
       },
-      PALADIN = {
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [251135] = {
       DEMONHUNTER = {
         Havoc = true,
-        Vengeance = true,
       },
       DRUID = {
-        Balance = true,
         Feral = true,
-        Guardian = true,
-        Restoration = true,
+      },
+      HUNTER = {
+        Survival = true,
       },
       MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
         Windwalker = true,
+      },
+      PALADIN = {
+        Retribution = true,
       },
       ROGUE = {
         Assassination = true,
         Outlaw = true,
         Subtlety = true,
       },
+      SHAMAN = {
+        Enhancement = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
     },
-    [251136] = {
+    [178863] = {
+      DEATHKNIGHT = {
+        Frost = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [178864] = {
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Outlaw = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
+    },
+    [178865] = {
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+    },
+    [178866] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [178867] = {
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [178868] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [178869] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -2310,97 +1798,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251137] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251138] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251139] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251140] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251141] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251142] = {
+    [178870] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -2467,96 +1865,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251143] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Outlaw = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-    },
-    [251144] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251145] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251146] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251147] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251148] = {
+    [178871] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -2623,229 +1932,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251149] = {
-      DRUID = {
-        Feral = true,
-        Guardian = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-    },
-    [251150] = {
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251151] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251152] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251153] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251154] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251155] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251156] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251157] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251158] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251159] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251160] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251161] = {
+    [178872] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -2912,198 +1999,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251162] = {
-      DRUID = {
-        Feral = true,
-        Guardian = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-    },
-    [251163] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-    },
-    [251164] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251165] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251166] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251167] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251168] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [251169] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251170] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251171] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251172] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251173] = {
+    [199921] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -3170,171 +2066,19 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251174] = {
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-      },
-    },
-    [251175] = {
+    [219294] = {
       DEMONHUNTER = {
         Havoc = true,
-        Vengeance = true,
-      },
-      HUNTER = {
-        Survival = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Outlaw = true,
-      },
-      SHAMAN = {
-        Enhancement = true,
-      },
-    },
-    [251176] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251177] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
       },
       DRUID = {
-        Balance = true,
         Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251178] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251179] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
       },
       HUNTER = {
         ["Beast Mastery"] = true,
         Marksmanship = true,
         Survival = true,
       },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251180] = {
-      HUNTER = {
-        Survival = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Subtlety = true,
-      },
-    },
-    [251181] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [251182] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251183] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
       MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
         Windwalker = true,
       },
       ROGUE = {
@@ -3342,103 +2086,11 @@ GreatVaultOddsNS.DB = {
         Outlaw = true,
         Subtlety = true,
       },
-    },
-    [251184] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251185] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251186] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Outlaw = true,
-      },
       SHAMAN = {
         Enhancement = true,
       },
     },
-    [251187] = {
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-      },
-    },
-    [251188] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251189] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251190] = {
+    [219295] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -3505,7 +2157,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251191] = {
+    [219296] = {
       DRUID = {
         Balance = true,
         Restoration = true,
@@ -3523,10 +2175,17 @@ GreatVaultOddsNS.DB = {
       MONK = {
         Mistweaver = true,
       },
+      PALADIN = {
+        Holy = true,
+      },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
       },
       WARLOCK = {
         Affliction = true,
@@ -3534,37 +2193,179 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [251192] = {
-      DRUID = {
-        Feral = true,
-        Guardian = true,
+    [219297] = {
+      DEATHKNIGHT = {
+        Blood = true,
       },
-      HUNTER = {
-        Survival = true,
+      DEMONHUNTER = {
+        Vengeance = true,
+      },
+      DRUID = {
+        Guardian = true,
       },
       MONK = {
         Brewmaster = true,
-        Windwalker = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Protection = true,
       },
     },
-    [251193] = {
+    [219298] = {
       DEATHKNIGHT = {
-        Blood = true,
         Frost = true,
         Unholy = true,
       },
+      DEMONHUNTER = {
+        Havoc = true,
+      },
+      DRUID = {
+        Feral = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MONK = {
+        Windwalker = true,
+      },
       PALADIN = {
-        Holy = true,
-        Protection = true,
         Retribution = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
       },
       WARRIOR = {
         Arms = true,
         Fury = true,
-        Protection = true,
       },
     },
-    [251194] = {
+    [219299] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [219304] = {
+      DEMONHUNTER = {
+        Havoc = true,
+      },
+      DRUID = {
+        Feral = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MONK = {
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
+    },
+    [219305] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [219306] = {
+      DRUID = {
+        Restoration = true,
+      },
+      EVOKER = {
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+      },
+      SHAMAN = {
+        Restoration = true,
+      },
+    },
+    [219307] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -3631,206 +2432,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251195] = {
-      DEATHKNIGHT = {
-        Frost = true,
-      },
-      PALADIN = {
-        Protection = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251196] = {
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251197] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251198] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251199] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251200] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251201] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      MONK = {
-        Mistweaver = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251202] = {
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARRIOR = {
-        Protection = true,
-      },
-    },
-    [251203] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251204] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Outlaw = true,
-        Subtlety = true,
-      },
-    },
-    [251205] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251206] = {
+    [219308] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -3897,7 +2499,85 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251207] = {
+    [219309] = {
+      DEATHKNIGHT = {
+        Blood = true,
+      },
+      DEMONHUNTER = {
+        Vengeance = true,
+      },
+      DRUID = {
+        Guardian = true,
+      },
+      MONK = {
+        Brewmaster = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [219310] = {
+      DRUID = {
+        Restoration = true,
+      },
+      EVOKER = {
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+      },
+      SHAMAN = {
+        Restoration = true,
+      },
+    },
+    [221032] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221033] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
       MONK = {
         Brewmaster = true,
         Windwalker = true,
@@ -3909,7 +2589,7 @@ GreatVaultOddsNS.DB = {
         Enhancement = true,
       },
     },
-    [251208] = {
+    [221034] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -3926,7 +2606,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251209] = {
+    [221035] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -3943,7 +2623,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251210] = {
+    [221036] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -3965,7 +2645,7 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251211] = {
+    [221037] = {
       MAGE = {
         Arcane = true,
         Fire = true,
@@ -3982,33 +2662,27 @@ GreatVaultOddsNS.DB = {
         Destruction = true,
       },
     },
-    [251212] = {
+    [221038] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [221039] = {
       HUNTER = {
-        Survival = true,
-      },
-      ROGUE = {
-        Assassination = true,
-        Subtlety = true,
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
       },
     },
-    [251213] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251214] = {
+    [221040] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4025,7 +2699,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251215] = {
+    [221041] = {
       EVOKER = {
         Augmentation = true,
         Devastation = true,
@@ -4042,7 +2716,7 @@ GreatVaultOddsNS.DB = {
         Restoration = true,
       },
     },
-    [251216] = {
+    [221042] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -4064,74 +2738,43 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251217] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-      DRUID = {
-        Balance = true,
-        Feral = true,
-        Guardian = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
+    [221043] = {
       MAGE = {
         Arcane = true,
         Fire = true,
         Frost = true,
-      },
-      MONK = {
-        Brewmaster = true,
-        Mistweaver = true,
-        Windwalker = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
       },
       PRIEST = {
         Discipline = true,
         Holy = true,
         Shadow = true,
       },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221044] = {
       ROGUE = {
         Assassination = true,
-        Outlaw = true,
         Subtlety = true,
+      },
+    },
+    [221045] = {
+      PALADIN = {
+        Holy = true,
+        Protection = true,
       },
       SHAMAN = {
         Elemental = true,
-        Enhancement = true,
         Restoration = true,
       },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
       WARRIOR = {
-        Arms = true,
-        Fury = true,
         Protection = true,
       },
     },
-    [251218] = {
+    [221046] = {
       DEATHKNIGHT = {
         Frost = true,
       },
@@ -4139,44 +2782,11 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
       WARRIOR = {
+        Fury = true,
         Protection = true,
       },
     },
-    [251219] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251220] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251221] = {
+    [221047] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4193,24 +2803,24 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251222] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
+    [221048] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
       },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
       },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
       },
     },
-    [251223] = {
+    [221049] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -4232,14 +2842,24 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251224] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
+    [221050] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
       },
-      HUNTER = {
-        Survival = true,
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
       },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221051] = {
       MONK = {
         Brewmaster = true,
         Windwalker = true,
@@ -4251,37 +2871,24 @@ GreatVaultOddsNS.DB = {
         Enhancement = true,
       },
     },
-    [251225] = {
-      DRUID = {
-        Balance = true,
-        Restoration = true,
-      },
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      MAGE = {
-        Arcane = true,
-        Fire = true,
+    [221052] = {
+      DEATHKNIGHT = {
+        Blood = true,
         Frost = true,
+        Unholy = true,
       },
-      PRIEST = {
-        Discipline = true,
+      PALADIN = {
         Holy = true,
-        Shadow = true,
+        Protection = true,
+        Retribution = true,
       },
-      SHAMAN = {
-        Elemental = true,
-        Restoration = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
       },
     },
-    [251226] = {
+    [221053] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -4303,112 +2910,7 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [251227] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251228] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251229] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Holy = true,
-        Protection = true,
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-        Protection = true,
-      },
-    },
-    [251230] = {
-      DEATHKNIGHT = {
-        Blood = true,
-        Frost = true,
-        Unholy = true,
-      },
-      PALADIN = {
-        Retribution = true,
-      },
-      WARRIOR = {
-        Arms = true,
-        Fury = true,
-      },
-    },
-    [251231] = {
-      DEMONHUNTER = {
-        Havoc = true,
-        Vengeance = true,
-      },
-    },
-    [251232] = {
-      MAGE = {
-        Arcane = true,
-        Fire = true,
-        Frost = true,
-      },
-      PRIEST = {
-        Discipline = true,
-        Holy = true,
-        Shadow = true,
-      },
-      WARLOCK = {
-        Affliction = true,
-        Demonology = true,
-        Destruction = true,
-      },
-    },
-    [251233] = {
-      EVOKER = {
-        Augmentation = true,
-        Devastation = true,
-        Preservation = true,
-      },
-      HUNTER = {
-        ["Beast Mastery"] = true,
-        Marksmanship = true,
-        Survival = true,
-      },
-      SHAMAN = {
-        Elemental = true,
-        Enhancement = true,
-        Restoration = true,
-      },
-    },
-    [251234] = {
+    [221054] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4475,7 +2977,66 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [251235] = {
+    [221055] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221056] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221057] = {
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+    },
+    [221058] = {
       DEMONHUNTER = {
         Havoc = true,
         Vengeance = true,
@@ -4497,7 +3058,24 @@ GreatVaultOddsNS.DB = {
         Subtlety = true,
       },
     },
-    [252258] = {
+    [221059] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221060] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4564,7 +3142,262 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [260312] = {
+    [221061] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221062] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221063] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [221064] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221065] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221067] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221068] = {
+      DEATHKNIGHT = {
+        Frost = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221069] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221070] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221071] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221072] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221096] = {
+      DEATHKNIGHT = {
+        Frost = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221097] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221098] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221099] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4631,7 +3464,7 @@ GreatVaultOddsNS.DB = {
         Protection = true,
       },
     },
-    [263193] = {
+    [221100] = {
       DEATHKNIGHT = {
         Blood = true,
         Frost = true,
@@ -4646,6 +3479,1636 @@ GreatVaultOddsNS.DB = {
         Arms = true,
         Fury = true,
         Protection = true,
+      },
+    },
+    [221101] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221102] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221103] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221104] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221105] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+    },
+    [221106] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221107] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221108] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221109] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221110] = {
+      ROGUE = {
+        Assassination = true,
+        Subtlety = true,
+      },
+    },
+    [221111] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [221112] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221113] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221114] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221115] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221116] = {
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+    },
+    [221117] = {
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [221118] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221119] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221120] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221121] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221122] = {
+      DRUID = {
+        Balance = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Restoration = true,
+      },
+    },
+    [221123] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221124] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221125] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221126] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221127] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [221128] = {
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Outlaw = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
+    },
+    [221129] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [221130] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221131] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [221197] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221198] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221200] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [221201] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [221203] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [232541] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Protection = true,
+        Retribution = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [232542] = {
+      DRUID = {
+        Restoration = true,
+      },
+      EVOKER = {
+        Preservation = true,
+      },
+      MONK = {
+        Mistweaver = true,
+      },
+      PALADIN = {
+        Holy = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+      },
+      SHAMAN = {
+        Restoration = true,
+      },
+    },
+    [232543] = {
+      DEATHKNIGHT = {
+        Blood = true,
+      },
+      DEMONHUNTER = {
+        Vengeance = true,
+      },
+      DRUID = {
+        Guardian = true,
+      },
+      MONK = {
+        Brewmaster = true,
+      },
+      PALADIN = {
+        Protection = true,
+      },
+      WARRIOR = {
+        Protection = true,
+      },
+    },
+    [232545] = {
+      DRUID = {
+        Balance = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Shadow = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [232546] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Protection = true,
+        Retribution = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Enhancement = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [234490] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+      },
+    },
+    [234491] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+    },
+    [234492] = {
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+      },
+    },
+    [234493] = {
+      ROGUE = {
+        Assassination = true,
+        Subtlety = true,
+      },
+    },
+    [234494] = {
+      DRUID = {
+        Feral = true,
+        Guardian = true,
+      },
+      HUNTER = {
+        Survival = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Windwalker = true,
+      },
+    },
+    [234495] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [234496] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [234497] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [234498] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [234499] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [234500] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [234501] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [234502] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [234503] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [234504] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [234505] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [234506] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [234507] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [235222] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [235223] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [235224] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [235226] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [235415] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [235416] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [235417] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [235418] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [235419] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [235420] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
+      },
+    },
+    [235460] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [235809] = {
+      DEATHKNIGHT = {
+        Blood = true,
+        Frost = true,
+        Unholy = true,
+      },
+      PALADIN = {
+        Holy = true,
+        Protection = true,
+        Retribution = true,
+      },
+      WARRIOR = {
+        Arms = true,
+        Fury = true,
+        Protection = true,
+      },
+    },
+    [235810] = {
+      EVOKER = {
+        Augmentation = true,
+        Devastation = true,
+        Preservation = true,
+      },
+      HUNTER = {
+        ["Beast Mastery"] = true,
+        Marksmanship = true,
+        Survival = true,
+      },
+      SHAMAN = {
+        Elemental = true,
+        Enhancement = true,
+        Restoration = true,
+      },
+    },
+    [235811] = {
+      DEMONHUNTER = {
+        Havoc = true,
+        Vengeance = true,
+      },
+      DRUID = {
+        Balance = true,
+        Feral = true,
+        Guardian = true,
+        Restoration = true,
+      },
+      MONK = {
+        Brewmaster = true,
+        Mistweaver = true,
+        Windwalker = true,
+      },
+      ROGUE = {
+        Assassination = true,
+        Outlaw = true,
+        Subtlety = true,
+      },
+    },
+    [235812] = {
+      MAGE = {
+        Arcane = true,
+        Fire = true,
+        Frost = true,
+      },
+      PRIEST = {
+        Discipline = true,
+        Holy = true,
+        Shadow = true,
+      },
+      WARLOCK = {
+        Affliction = true,
+        Demonology = true,
+        Destruction = true,
       },
     },
   },
