@@ -233,9 +233,9 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
     end
 end
 
-local playerSpec = {}
-local playerClass
-local firstTooltipRun = true
+local playerSpecNames
+local playerClassName
+local hasSortedPlayerSpecs = false
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
@@ -245,33 +245,68 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
             -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
             local tooltipText = "GreatVaultOdds: "
+            local devModeActive = GreatVaultOddsAddonOptions.devMode
 
-            if firstTooltipRun then
-                -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
-                playerClass, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
-                for specName, _ in pairs(classSpecIDs[playerClass].specData) do -- specName, specTable
-                    table.insert(playerSpec, specName)
-                end
-                table.sort(playerSpec) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
-                firstTooltipRun = false
-            end
-
-            for _, specName in ipairs(playerSpec) do
-                if not seasonLootDB.eligibleItems[itemID][playerClass] then -- why is this in loop?
-                    tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
-                    break
-                else -- item is loot eligible for the class, can combine this with the next line
-                    if seasonLootDB.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
-                        local iconID = classSpecIDs[playerClass].specData[specName].iconID
-                        local iconText = "|T"..iconID..":0|t"
-                        tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
-                    else
-                        -- not loot eligible, do nothing for now
+            if devModeActive then -- Dirty hack to see all specs in devMode
+                local classTooltipsByID = {}
+                for className, classData in pairs(classSpecIDs) do
+                    if seasonLootDB.eligibleItems[itemID][className] then
+                        local eligibleSpecs = {}
+                        for specName in pairs(classData.specData) do
+                            if seasonLootDB.eligibleItems[itemID][className][specName] then
+                                table.insert(eligibleSpecs, specName)
+                            end
+                        end
+                        table.sort(eligibleSpecs)
+                        local finalTooltip = ""
+                        for _, sortedSpecName in ipairs(eligibleSpecs) do
+                            local iconID = classData.specData[sortedSpecName].iconID
+                            local iconText = "|T"..iconID..":0|t"
+                            finalTooltip = finalTooltip..iconText.." "..sortedSpecName..": 1/"..seasonLootDB.eligibleItemCount[className][sortedSpecName].allSlots.." "
+                        end
+                        classTooltipsByID[classData.classID] = finalTooltip
                     end
                 end
+                local eligibleClasses = {}
+                for classID in pairs(classTooltipsByID) do
+                    table.insert(eligibleClasses, classID)
+                end
+                table.sort(eligibleClasses)
+                tooltip:AddLine(tooltipText) -- Prefixes the header/title, technically can run if loot is eligible in DB but not for any classes or specs. Consider if index == 1. Good to show if db is corrupted though.
+                for _, classID in ipairs(eligibleClasses) do
+                    tooltip:AddLine(classTooltipsByID[classID])
+                end
+            else
+                if not hasSortedPlayerSpecs then
+                    playerSpecNames = {}
+                    -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
+                    playerClassName, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
+                    for specName in pairs(classSpecIDs[playerClassName].specData) do -- specName, specTable
+                        table.insert(playerSpecNames, specName)
+                    end
+                    table.sort(playerSpecNames) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
+                    hasSortedPlayerSpecs = true
+                end
+
+                for _, specName in ipairs(playerSpecNames) do -- Probably can first check if the item has a tooltip cached for this *class* first before recomputing the tooltip
+                    if not seasonLootDB.eligibleItems[itemID][playerClassName] then -- why is this in loop?
+                    -- TODO: Move out of loop
+                        tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
+                        break
+                    else -- item is loot eligible for the class, can combine this with the next line.
+                        if seasonLootDB.eligibleItems[itemID][playerClassName][specName] then -- item is loot eligible for the spec
+                            local iconID = classSpecIDs[playerClassName].specData[specName].iconID
+                            local iconText = "|T"..iconID..":0|t"
+                            tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClassName][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                        else
+                            -- not loot eligible, do nothing for now
+                        end
+                    end
+                end
+                -- consider caching the tooltip for the item/class combo
+                tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
+                -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
             end
-            tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-            -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
         end
     end
 end
