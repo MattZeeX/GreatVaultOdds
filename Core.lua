@@ -1,6 +1,6 @@
 local addonName, GreatVaultOddsNS = ...
 local seasonLootDB = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var (no)
-local classSpecIDs = GreatVaultOddsNS.classSpecIDs
+local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 
 local debugLogging = false
 
@@ -19,19 +19,19 @@ local function addToDevTool(data, name)
 end
 
 local function addMissingDefaults(userOptions, defaultOptions) -- Validates that all empty user options are populated with default values
-	for option, defaultValue in pairs(defaultOptions) do
-		local userValue = userOptions[option]
+    for option, defaultValue in pairs(defaultOptions) do
+        local userValue = userOptions[option]
 
-		if type(defaultValue) == "table" then
-			if type(userValue) ~= "table" then
-				userOptions[option] = CopyTable(defaultValue) -- Prevents accidental editing of the default addon options table, unlikely to matter
-			else
-				addMissingDefaults(userValue, defaultValue)
-			end
-		elseif userValue == nil then
-			userOptions[option] = defaultValue
-		end
-	end
+        if type(defaultValue) == "table" then
+            if type(userValue) ~= "table" then
+                userOptions[option] = CopyTable(defaultValue) -- Prevents accidental editing of the default addon options table, unlikely to matter
+            else
+                addMissingDefaults(userValue, defaultValue)
+            end
+        elseif userValue == nil then
+            userOptions[option] = defaultValue
+        end
+    end
 end
 
 local function OnEvent(self, event, loadedAddonName) --EventHandler? camelCase?
@@ -59,19 +59,19 @@ frame:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
 frame:SetScript("OnEvent", OnEvent)
 
 local function instanceIterator()
-   local index = 0
-   return function()
-      local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
-      repeat
-         index = index + 1
-         instanceID = EJ_GetInstanceByIndex(index, false) -- dungeons only
-         if not instanceID then return end
-         EJ_SelectInstance(instanceID)  -- GET INSTANCE INFO RETURNS 0 FOR MAP ID UNTIL INSTANCE IS SELECTED!?@!?? AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-         instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
-         isWorldBoss = dungeonAreaMapID == 0
-      until not isWorldBoss
-      return instanceID, instanceName
-   end
+    local index = 0
+    return function()
+        local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
+        repeat
+            index = index + 1
+            instanceID = EJ_GetInstanceByIndex(index, false) -- dungeons only
+            if not instanceID then return end
+            EJ_SelectInstance(instanceID)  -- GET INSTANCE INFO RETURNS 0 FOR MAP ID UNTIL INSTANCE IS SELECTED!?@!?? AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
+            isWorldBoss = dungeonAreaMapID == 0
+        until not isWorldBoss
+        return instanceID, instanceName
+    end
 end
 
 local function disableEJ()
@@ -225,7 +225,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
                 elseif subCmd == "reset" then
                     print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
                     GreatVaultOddsDB = {}
-                    GreatVaultOddsDB.eligibleItems = {}
+                    GreatVaultOddsDB.eligibleItems = {} -- have to reinit the subtables
                     GreatVaultOddsDB.eligibleItemCount = {}
                 end
             end
@@ -243,7 +243,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
     else
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
-        -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
+            -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
             local tooltipText = "GreatVaultOdds: "
 
             if firstTooltipRun then
@@ -262,9 +262,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     break
                 else -- item is loot eligible for the class, can combine this with the next line
                     if seasonLootDB.eligibleItems[itemID][playerClass][specName] then -- item is loot eligible for the spec
-                    local iconID = classSpecIDs[playerClass].specData[specName].iconID
-                    local iconText = "|T"..iconID..":0|t"
-                    tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                        local iconID = classSpecIDs[playerClass].specData[specName].iconID
+                        local iconText = "|T"..iconID..":0|t"
+                        tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClass][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
                     else
                         -- not loot eligible, do nothing for now
                     end
