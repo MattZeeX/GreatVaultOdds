@@ -46,6 +46,9 @@ GreatVaultOddsNS.DB = {
       },
     },
     DEMONHUNTER = {
+      Devourer = {
+        allSlots = 55,
+      },
       Havoc = {
         allSlots = 61,
       },
@@ -181,6 +184,7 @@ GreatVaultOddsNS.DB = {
   eligibleItems = {
     [250144] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -236,6 +240,7 @@ GreatVaultOddsNS.DB = {
     },
     [250214] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -291,6 +296,7 @@ GreatVaultOddsNS.DB = {
     },
     [250215] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -345,6 +351,9 @@ GreatVaultOddsNS.DB = {
       },
     },
     [250223] = {
+      DEMONHUNTER = {
+        Devourer = true,
+      },
       DRUID = {
         Balance = true,
       },
@@ -366,6 +375,9 @@ GreatVaultOddsNS.DB = {
       },
     },
     [250224] = {
+      DEMONHUNTER = {
+        Devourer = true,
+      },
       DRUID = {
         Balance = true,
         Restoration = true,
@@ -775,6 +787,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -837,6 +850,7 @@ GreatVaultOddsNS.DB = {
     },
     [250257] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
       },
       DRUID = {
@@ -885,6 +899,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -952,6 +967,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1092,6 +1108,7 @@ GreatVaultOddsNS.DB = {
     },
     [251082] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1191,6 +1208,7 @@ GreatVaultOddsNS.DB = {
     },
     [251087] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1275,6 +1293,7 @@ GreatVaultOddsNS.DB = {
     },
     [251092] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1302,6 +1321,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1404,6 +1424,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1500,6 +1521,7 @@ GreatVaultOddsNS.DB = {
     },
     [251099] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1567,6 +1589,7 @@ GreatVaultOddsNS.DB = {
     },
     [251103] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1619,6 +1642,7 @@ GreatVaultOddsNS.DB = {
     },
     [251106] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1659,6 +1683,7 @@ GreatVaultOddsNS.DB = {
     },
     [251109] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1745,6 +1770,7 @@ GreatVaultOddsNS.DB = {
     },
     [251113] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1789,6 +1815,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1916,6 +1943,7 @@ GreatVaultOddsNS.DB = {
     },
     [251121] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -1987,6 +2015,7 @@ GreatVaultOddsNS.DB = {
     },
     [251124] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2086,6 +2115,7 @@ GreatVaultOddsNS.DB = {
     },
     [251130] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2130,6 +2160,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2223,6 +2254,7 @@ GreatVaultOddsNS.DB = {
     },
     [251135] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2250,6 +2282,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2363,6 +2396,7 @@ GreatVaultOddsNS.DB = {
     },
     [251140] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2407,6 +2441,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2519,6 +2554,7 @@ GreatVaultOddsNS.DB = {
     },
     [251146] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2563,6 +2599,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2685,6 +2722,7 @@ GreatVaultOddsNS.DB = {
     },
     [251153] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2808,6 +2846,7 @@ GreatVaultOddsNS.DB = {
     },
     [251159] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2852,6 +2891,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -2926,6 +2966,9 @@ GreatVaultOddsNS.DB = {
       },
     },
     [251163] = {
+      DEMONHUNTER = {
+        Devourer = true,
+      },
       DRUID = {
         Balance = true,
         Restoration = true,
@@ -2979,6 +3022,7 @@ GreatVaultOddsNS.DB = {
     },
     [251166] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3066,6 +3110,7 @@ GreatVaultOddsNS.DB = {
     },
     [251171] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3110,6 +3155,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3214,6 +3260,7 @@ GreatVaultOddsNS.DB = {
     },
     [251177] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3323,6 +3370,7 @@ GreatVaultOddsNS.DB = {
     },
     [251183] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3418,6 +3466,7 @@ GreatVaultOddsNS.DB = {
     },
     [251189] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3445,6 +3494,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3571,6 +3621,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3674,6 +3725,7 @@ GreatVaultOddsNS.DB = {
     },
     [251198] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3793,6 +3845,7 @@ GreatVaultOddsNS.DB = {
     },
     [251204] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3837,6 +3890,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -3945,6 +3999,7 @@ GreatVaultOddsNS.DB = {
     },
     [251210] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4044,6 +4099,7 @@ GreatVaultOddsNS.DB = {
     },
     [251216] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4071,6 +4127,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4212,6 +4269,7 @@ GreatVaultOddsNS.DB = {
     },
     [251223] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4283,6 +4341,7 @@ GreatVaultOddsNS.DB = {
     },
     [251226] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4370,6 +4429,7 @@ GreatVaultOddsNS.DB = {
     },
     [251231] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4415,6 +4475,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4477,6 +4538,7 @@ GreatVaultOddsNS.DB = {
     },
     [251235] = {
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4504,6 +4566,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
@@ -4571,6 +4634,7 @@ GreatVaultOddsNS.DB = {
         Unholy = true,
       },
       DEMONHUNTER = {
+        Devourer = true,
         Havoc = true,
         Vengeance = true,
       },
