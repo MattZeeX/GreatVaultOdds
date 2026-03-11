@@ -246,6 +246,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
             -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
             local tooltipText = "GreatVaultOdds: "
             local devModeActive = GreatVaultOddsAddonOptions.devMode
+            tooltip:AddLine(tooltipText)
 
             if devModeActive then -- Dirty hack to see all specs in devMode
                 local classTooltipsByID = {}
@@ -272,11 +273,11 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     table.insert(eligibleClasses, classID)
                 end
                 table.sort(eligibleClasses)
-                tooltip:AddLine(tooltipText) -- Prefixes the header/title, technically can run if loot is eligible in DB but not for any classes or specs. Consider if index == 1. Good to show if db is corrupted though.
                 for _, classID in ipairs(eligibleClasses) do
-                    tooltip:AddLine(classTooltipsByID[classID])
+                    tooltip:AddLine(classTooltipsByID[classID]) -- will add text wrapping as a config option
                 end
             else
+                tooltipText = "" -- temporary
                 if not hasSortedPlayerSpecs then
                     playerSpecNames = {}
                     -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
