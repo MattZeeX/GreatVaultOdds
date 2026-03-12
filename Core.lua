@@ -64,11 +64,13 @@ local function instanceIterator()
         local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
         repeat
             index = index + 1
-            instanceID = EJ_GetInstanceByIndex(index, false) -- dungeons only
+            instanceID = EJ_GetInstanceByIndex(index, false) -- Dungeons only
             if not instanceID then return end
-            EJ_SelectInstance(instanceID)  -- GET INSTANCE INFO RETURNS 0 FOR MAP ID UNTIL INSTANCE IS SELECTED!?@!?? AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
-            isWorldBoss = dungeonAreaMapID == 0
+
+            EJ_SelectInstance(instanceID)
+            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID) -- Will return 0 for dungeonAreaMapID if SelectInstance() is not called for an arbitrary instanceID, see: https://warcraft.wiki.gg/wiki/API_EJ_GetEncounterInfo#Example
+            -- Despite what https://warcraft.wiki.gg/wiki/API_EJ_GetInstanceInfo says, dungeons **do** return a dungeonAreaMapID.
+            isWorldBoss = dungeonAreaMapID == 0 -- Not used when iterating through only dungeons. Will prevent iterator returning a World Boss ID when iterating through raids, it will continue running until a Raid ID is provided or there are no more valid instance IDs.
         until not isWorldBoss
         return instanceID, instanceName
     end
