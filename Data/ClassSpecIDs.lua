@@ -4,6 +4,22 @@ local addonName, GreatVaultOddsNS = ...
 -- Spec IDs: https://warcraft.wiki.gg/wiki/SpecializationID
 -- Spec icon IDs: https://wago.tools/db2/ChrSpecialization
 
+GreatVaultOddsNS.ClassNameByID = {
+    [1] = "WARRIOR",
+    [2] = "PALADIN",
+    [3] = "HUNTER",
+    [4] = "ROGUE",
+    [5] = "PRIEST",
+    [6] = "DEATHKNIGHT",
+    [7] = "SHAMAN",
+    [8] = "MAGE",
+    [9] = "WARLOCK",
+    [10] = "MONK",
+    [11] = "DRUID",
+    [12] = "DEMONHUNTER",
+    [13] = "EVOKER"
+}
+
 -- This is getting messy, I've gotta refactor it into a table with class keys and classID/classColour values, and then another table with class keys and specData values
 GreatVaultOddsNS.ClassSpecIDs = { -- cached specID, is there a way to get non localised version of spec name? will this be a problem? -- potentially worth separating into two tables like in dsune's addon with classes and specs as separate tables indexed by numbers equal to classID
     WARRIOR = { -- classData table

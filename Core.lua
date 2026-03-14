@@ -1,6 +1,11 @@
 local addonName, GreatVaultOddsNS = ...
 local seasonLootDB = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var (no)
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
+local classNameByID = GreatVaultOddsNS.ClassNameByID
+
+local classColors = RAID_CLASS_COLORS
+local fallbackColor = CreateColor(1.000, 0.824, 0.000) or {r = 1, g = 0.824, b = 0}
+local normalFontColor = NORMAL_FONT_COLOR or fallbackColor
 
 local debugLogging = false
 
@@ -32,6 +37,18 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
             userOptions[option] = defaultValue
         end
     end
+end
+
+local function getClassColorTable(className) -- Accepts classID or classFile and returns respective Class Color object
+    if type(className) == "number" then -- className is ID, not classFile
+        className = classNameByID[className]
+    end
+
+    return classColors[className]
+end
+
+local function getTooltipColorForClass(className) -- Accepts classID or classFile and returns respective Class Color or fallbackColor if missing
+    return getClassColorTable(className) or normalFontColor
 end
 
 local function OnEvent(self, event, loadedAddonName) --EventHandler? camelCase?
@@ -113,9 +130,9 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
             GreatVaultOddsDB.eligibleItemCount[className][specName] = GreatVaultOddsDB.eligibleItemCount[className][specName] or {}
             GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots or 0
             for instanceID, instanceName in instanceIterator() do
-                EJ_SelectInstance(instanceID)
+                EJ_SelectInstance(instanceID) -- Do I need this since I already SelectInstance inside the instanceIterator? Should generate a DB without it and compare to known good DB.
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Maybe only need to call once at the start of func
-                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func
+                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func. Do the same test as above with SelectInstance, I surely do not need this.
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
@@ -276,7 +293,8 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
                 table.sort(eligibleClasses)
                 for _, classID in ipairs(eligibleClasses) do
-                    tooltip:AddLine(classTooltipsByID[classID]) -- will add text wrapping as a config option
+                    local tooltipColor = getTooltipColorForClass(classID)
+                    tooltip:AddLine(classTooltipsByID[classID], tooltipColor.r, tooltipColor.g, tooltipColor.b) -- will add custom text wrapping as a config option
                 end
             else
                 tooltipText = "" -- temporary

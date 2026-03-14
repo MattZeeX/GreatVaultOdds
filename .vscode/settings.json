@@ -22,7 +22,9 @@
         "DevTool",
         "EncounterJournal",
         "class",
-        "CopyTable"
+        "CopyTable",
+        "RAID_CLASS_COLORS",
+        "NORMAL_FONT_COLOR"
     ],
     "cSpell.words": [
         "Boomie",
