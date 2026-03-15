@@ -275,7 +275,13 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
             -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
-            local tooltipText = "GreatVaultOdds: "
+            local itemEntry = seasonLootDB.eligibleItems[itemID]
+            local sourceInfo = itemEntry.sources
+            if not sourceInfo then return end
+            local instanceID = sourceInfo.instanceID
+            local encounterID = sourceInfo.encounterID
+            if not instanceID  or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals?
+            local tooltipText = "GreatVaultOdds: " -- Call this prefix or something, tooltipText used elsewhere.
             local devModeActive = GreatVaultOddsAddonOptions.devMode
             tooltip:AddLine(tooltipText)
 
@@ -292,11 +298,18 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                         table.sort(eligibleSpecs)
                         local finalTooltip = ""
                         for _, sortedSpecName in ipairs(eligibleSpecs) do
-                            local iconID = classData.specData[sortedSpecName].iconID
-                            local iconText = "|T"..iconID..":0|t"
-                            finalTooltip = finalTooltip..iconText.." "..sortedSpecName..": 1/"..seasonLootDB.eligibleItemCount[className][sortedSpecName].allSlots.." "
+                            local classCounts = seasonLootDB.eligibleItemCount[className]
+                            local specCounts = classCounts and classCounts[sortedSpecName]
+                            local dungeonEntry = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
+                            local bossTotal = dungeonEntry and dungeonEntry.bossTotals and dungeonEntry.bossTotals[encounterID]
+
+                            if specCounts and specCounts.seasonTotalItems and dungeonEntry and dungeonEntry.totalItems and bossTotal then
+                                local iconID = classData.specData[sortedSpecName].iconID
+                                local iconText = "|T"..iconID..":0|t"
+                                finalTooltip = finalTooltip..iconText.." "..sortedSpecName..": Vault: 1/"..specCounts.seasonTotalItems.." M+: 1/"..dungeonEntry.totalItems.." Boss: 1/"..bossTotal.." "
+                            end
                         end
-                        classTooltipsByID[classData.classID] = finalTooltip
+                        classTooltipsByID[classData.classID] = finalTooltip -- Could check if ~="", can store an empty tooltip if finalTooltip is still the empty string, though this should never occur unless a class isn't valid. But if it isn't valid it won't be here, and if it is valid then it will have a corresponding spec and tooltip unless db is malformed/corrupted, but I notice that before shipping.
                     end
                 end
                 local eligibleClasses = {}
@@ -328,9 +341,14 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                         break -- classTooltipText instead of tooltipText?
                     else -- item is loot eligible for the class, can combine this with the next line.
                         if seasonLootDB.eligibleItems[itemID][playerClassName][specName] then -- item is loot eligible for the spec
-                            local iconID = classSpecIDs[playerClassName].specData[specName].iconID
-                            local iconText = "|T"..iconID..":0|t"
-                            tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClassName][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                            local specCounts = seasonLootDB.eligibleItemCount[playerClassName] and seasonLootDB.eligibleItemCount[playerClassName][specName]
+                            local dungeonEntry = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
+                            local bossTotal = dungeonEntry and dungeonEntry.bossTotals and dungeonEntry.bossTotals[encounterID]
+                            if dungeonEntry and dungeonEntry.totalItems and bossTotal then
+                                local iconID = classSpecIDs[playerClassName].specData[specName].iconID
+                                local iconText = "|T"..iconID..":0|t"
+                                tooltipText = tooltipText..iconText.." "..specName..": Vault: 1/"..specCounts.seasonTotalItems.." M+: 1/"..dungeonEntry.totalItems.." Boss: 1/"..bossTotal.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
+                            end
                         else
                             -- not loot eligible, do nothing for now
                         end
