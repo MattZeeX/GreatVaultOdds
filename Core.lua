@@ -128,18 +128,24 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
             -- Num Eligible Items init in ADDON_LOADED -- GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
             GreatVaultOddsDB.eligibleItemCount[className] = GreatVaultOddsDB.eligibleItemCount[className] or {}
             GreatVaultOddsDB.eligibleItemCount[className][specName] = GreatVaultOddsDB.eligibleItemCount[className][specName] or {}
-            GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots or 0
+            GreatVaultOddsDB.eligibleItemCount[className][specName].seasonTotalItems = GreatVaultOddsDB.eligibleItemCount[className][specName].seasonTotalItems or 0
             for instanceID, instanceName in instanceIterator() do
                 EJ_SelectInstance(instanceID) -- Do I need this since I already SelectInstance inside the instanceIterator? Should generate a DB without it and compare to known good DB.
                 EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Maybe only need to call once at the start of func
+                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals or {}
+                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID] = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID] or {}
+                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].totalItems = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].totalItems or 0
+                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals or {}
+
                 C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func. Do the same test as above with SelectInstance, I surely do not need this.
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
+                    local sourceEncounterID = itemInfo and itemInfo.encounterID or "Unknown Source" -- EncounterID for which the item drops. We'll need to add the itemID to dev tool if unknown source because table just tracks count.
                     local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- (itemInfo.name ~= nil)
                     if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
                         local known = equippableCache[itemID]
-                        if known == nil then -- itemID equip status not yet cached
+                        if known == nil then -- itemID equip status not yet cached. If it's false, we know the item is not equippable so don't need to cache it, but also won't use it.
                             known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
                             equippableCache[itemID] = known
                         end
@@ -150,7 +156,13 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
 
                             if not GreatVaultOddsDB.eligibleItems[itemID][className][specName] then
                                 GreatVaultOddsDB.eligibleItems[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
-                                GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots + 1
+                                GreatVaultOddsDB.eligibleItems[itemID].sources = GreatVaultOddsDB.eligibleItems[itemID].sources or {}
+                                GreatVaultOddsDB.eligibleItems[itemID].sources.instanceID = instanceID
+                                GreatVaultOddsDB.eligibleItems[itemID].sources.encounterID = sourceEncounterID
+                                GreatVaultOddsDB.eligibleItemCount[className][specName].seasonTotalItems = GreatVaultOddsDB.eligibleItemCount[className][specName].seasonTotalItems + 1
+                                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].totalItems = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].totalItems + 1
+                                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals[sourceEncounterID] = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals[sourceEncounterID] or 0
+                                GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals[sourceEncounterID] = GreatVaultOddsDB.eligibleItemCount[className][specName].dungeonTotals[instanceID].bossTotals[sourceEncounterID] + 1
                             end
                         end
                     end
@@ -244,7 +256,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
                 elseif subCmd == "reset" then
                     print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
                     GreatVaultOddsDB = {}
-                    GreatVaultOddsDB.eligibleItems = {} -- have to reinit the subtables
+                    GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
                 end
             end
