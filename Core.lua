@@ -312,8 +312,8 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 for _, specName in ipairs(playerSpecNames) do -- Probably can first check if the item has a tooltip cached for this *class* first before recomputing the tooltip
                     if not seasonLootDB.eligibleItems[itemID][playerClassName] then -- why is this in loop?
                     -- TODO: Move out of loop
-                        tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
-                        break
+                        tooltipText = tooltipText.."Item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
+                        break -- classTooltipText instead of tooltipText?
                     else -- item is loot eligible for the class, can combine this with the next line.
                         if seasonLootDB.eligibleItems[itemID][playerClassName][specName] then -- item is loot eligible for the spec
                             local iconID = classSpecIDs[playerClassName].specData[specName].iconID
@@ -325,7 +325,8 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     end
                 end
                 -- consider caching the tooltip for the item/class combo
-                tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
+                local tooltipColor = getTooltipColorForClass(playerClassName) -- Probably can define this at the top of the else
+                tooltip:AddLine(tooltipText, tooltipColor.r, tooltipColor.g, tooltipColor.b) -- Will class-colour even if item is not loot eligible, could have separate AddLine funcs inside the if statements
                 -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
             end
         end
