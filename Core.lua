@@ -267,6 +267,65 @@ end
 local playerSpecNames
 local playerClassName
 local hasSortedPlayerSpecs = false
+
+local tooltipStyle = {
+    dropRateSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
+    lootSourceSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
+    specLabel = ": "
+}
+local ADDON_TOOLTIP_HEADER = "GreatVaultOdds"
+local LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..tooltipStyle.lootSourceSeparator[2].."M+"..tooltipStyle.lootSourceSeparator[2].."Boss"
+
+local function ensurePlayerSpecsSorted()
+    if hasSortedPlayerSpecs then return end
+
+    playerSpecNames = {}
+    playerClassName, _ = UnitClassBase("player")
+    for specName in pairs(classSpecIDs[playerClassName].specData) do
+        table.insert(playerSpecNames, specName)
+    end
+    table.sort(playerSpecNames)
+    hasSortedPlayerSpecs = true
+end
+
+local function buildSpecOddsLine(className, specName, instanceID, encounterID)
+    local specCounts = seasonLootDB.eligibleItemCount[className] and seasonLootDB.eligibleItemCount[className][specName]
+    local seasonTotal = specCounts and specCounts.seasonTotalItems
+
+    local dungeonCounts = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
+    local dungeonTotal = dungeonCounts and dungeonCounts.totalItems
+
+    local bossTotalsByEncounter = dungeonCounts and dungeonCounts.bossTotals
+    local bossTotal = bossTotalsByEncounter and bossTotalsByEncounter[encounterID]
+
+    local missingLootData = not (seasonTotal and dungeonTotal and bossTotal)
+    if missingLootData then return end
+
+    local iconID = classSpecIDs[className].specData[specName].iconID
+    local iconText = "|T"..iconID..":0|t"
+    return iconText.." "..specName..tooltipStyle.specLabel.."1/"..seasonTotal..tooltipStyle.dropRateSeparator[2].."1/"..dungeonTotal..tooltipStyle.dropRateSeparator[2].."1/"..bossTotal
+end
+
+local function appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
+    ensurePlayerSpecsSorted()
+
+    local tooltipColor = getTooltipColorForClass(playerClassName)
+    local playerEligibleSpecs = seasonLootDB.eligibleItems[itemID][playerClassName]
+    if not playerEligibleSpecs then
+        tooltip:AddLine("Item is not loot eligible for your class!", tooltipColor.r, tooltipColor.g, tooltipColor.b)
+        return
+    end
+
+    for _, specName in ipairs(playerSpecNames) do
+        if playerEligibleSpecs[specName] then
+            local specTooltipLine = buildSpecOddsLine(playerClassName, specName, instanceID, encounterID)
+            if specTooltipLine then
+                tooltip:AddLine(specTooltipLine, tooltipColor.r, tooltipColor.g, tooltipColor.b)
+            end
+        end
+    end
+end
+
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
@@ -281,9 +340,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
             local instanceID = sourceInfo.instanceID
             local encounterID = sourceInfo.encounterID
             if not instanceID  or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals?
-            local tooltipText = "GreatVaultOdds: " -- Call this prefix or something, tooltipText used elsewhere.
             local devModeActive = GreatVaultOddsAddonOptions.devMode
-            tooltip:AddLine(tooltipText)
+            tooltip:AddLine(" ")
+            tooltip:AddLine(ADDON_TOOLTIP_HEADER..": "..LOOT_SOURCE_TOOLTIP_HEADER)
 
             if devModeActive then -- Dirty hack to see all specs in devMode
                 local classTooltipsByID = {}
@@ -298,15 +357,9 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                         table.sort(eligibleSpecs)
                         local finalTooltip = ""
                         for _, sortedSpecName in ipairs(eligibleSpecs) do
-                            local classCounts = seasonLootDB.eligibleItemCount[className]
-                            local specCounts = classCounts and classCounts[sortedSpecName]
-                            local dungeonEntry = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
-                            local bossTotal = dungeonEntry and dungeonEntry.bossTotals and dungeonEntry.bossTotals[encounterID]
-
-                            if specCounts and specCounts.seasonTotalItems and dungeonEntry and dungeonEntry.totalItems and bossTotal then
-                                local iconID = classData.specData[sortedSpecName].iconID
-                                local iconText = "|T"..iconID..":0|t"
-                                finalTooltip = finalTooltip..iconText.." "..sortedSpecName..": Vault: 1/"..specCounts.seasonTotalItems.." M+: 1/"..dungeonEntry.totalItems.." Boss: 1/"..bossTotal.." "
+                            local specTooltipLine = buildSpecOddsLine(className, sortedSpecName, instanceID, encounterID)
+                            if specTooltipLine then
+                                finalTooltip = finalTooltip..specTooltipLine.." "
                             end
                         end
                         classTooltipsByID[classData.classID] = finalTooltip -- Could check if ~="", can store an empty tooltip if finalTooltip is still the empty string, though this should never occur unless a class isn't valid. But if it isn't valid it won't be here, and if it is valid then it will have a corresponding spec and tooltip unless db is malformed/corrupted, but I notice that before shipping.
@@ -322,42 +375,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                     tooltip:AddLine(classTooltipsByID[classID], tooltipColor.r, tooltipColor.g, tooltipColor.b) -- will add custom text wrapping as a config option
                 end
             else
-                tooltipText = "" -- temporary
-                if not hasSortedPlayerSpecs then
-                    playerSpecNames = {}
-                    -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
-                    playerClassName, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
-                    for specName in pairs(classSpecIDs[playerClassName].specData) do -- specName, specTable
-                        table.insert(playerSpecNames, specName)
-                    end
-                    table.sort(playerSpecNames) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
-                    hasSortedPlayerSpecs = true
-                end
-
-                for _, specName in ipairs(playerSpecNames) do -- Probably can first check if the item has a tooltip cached for this *class* first before recomputing the tooltip
-                    if not seasonLootDB.eligibleItems[itemID][playerClassName] then -- why is this in loop?
-                    -- TODO: Move out of loop
-                        tooltipText = tooltipText.."Item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
-                        break -- classTooltipText instead of tooltipText?
-                    else -- item is loot eligible for the class, can combine this with the next line.
-                        if seasonLootDB.eligibleItems[itemID][playerClassName][specName] then -- item is loot eligible for the spec
-                            local specCounts = seasonLootDB.eligibleItemCount[playerClassName] and seasonLootDB.eligibleItemCount[playerClassName][specName]
-                            local dungeonEntry = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
-                            local bossTotal = dungeonEntry and dungeonEntry.bossTotals and dungeonEntry.bossTotals[encounterID]
-                            if dungeonEntry and dungeonEntry.totalItems and bossTotal then
-                                local iconID = classSpecIDs[playerClassName].specData[specName].iconID
-                                local iconText = "|T"..iconID..":0|t"
-                                tooltipText = tooltipText..iconText.." "..specName..": Vault: 1/"..specCounts.seasonTotalItems.." M+: 1/"..dungeonEntry.totalItems.." Boss: 1/"..bossTotal.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
-                            end
-                        else
-                            -- not loot eligible, do nothing for now
-                        end
-                    end
-                end
-                -- consider caching the tooltip for the item/class combo
-                local tooltipColor = getTooltipColorForClass(playerClassName) -- Probably can define this at the top of the else
-                tooltip:AddLine(tooltipText, tooltipColor.r, tooltipColor.g, tooltipColor.b) -- Will class-colour even if item is not loot eligible, could have separate AddLine funcs inside the if statements
-                -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
+                appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
             end
         end
     end
