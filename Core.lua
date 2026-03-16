@@ -1,6 +1,11 @@
 local addonName, GreatVaultOddsNS = ...
-local seasonLootDB = GreatVaultOddsNS.DB -- consider using the namespace table instead of a local var (no)
+local seasonLootDB = GreatVaultOddsNS.DB
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
+local classNameByID = GreatVaultOddsNS.ClassNameByID
+
+local classColors = RAID_CLASS_COLORS
+local fallbackColor = CreateColor(1.000, 0.824, 0.000) or {r = 1, g = 0.824, b = 0}
+local normalFontColor = NORMAL_FONT_COLOR or fallbackColor
 
 local debugLogging = false
 
@@ -11,10 +16,10 @@ local defaultAddonOptions = {
 local function addToDevTool(data, name)
     if not DevTool then return end -- or (not devMode and not debugLogging), can make a separate loggingEnabled function if wanna handle both
 
-    if data ~= nil then -- I assume that there is no such thing as a meaningful nil here? Remember, false is meaningful (look up terminology)
+    if data ~= nil then -- Data could potentially be a meaningful false, I assume that there is no such thing as a meaningful nil here?
         DevTool:AddData(data, name)
     else
-        DevTool:AddData(tostring(data), name) -- I assume there's no nil value that can't be coerced/cast as a string
+        DevTool:AddData(tostring(data), name)
     end
 end
 
@@ -24,7 +29,7 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
 
         if type(defaultValue) == "table" then
             if type(userValue) ~= "table" then
-                userOptions[option] = CopyTable(defaultValue) -- Prevents accidental editing of the default addon options table, unlikely to matter
+                userOptions[option] = CopyTable(defaultValue) -- Prevents accidental editing of the default addon options table
             else
                 addMissingDefaults(userValue, defaultValue)
             end
@@ -34,18 +39,42 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
     end
 end
 
-local function OnEvent(self, event, loadedAddonName) --EventHandler? camelCase?
+local function getClassColorTable(className) -- Accepts classID or classFile and returns respective Class Color object
+    if type(className) == "number" then -- className is ID, not classFile
+        className = classNameByID[className]
+    end
+
+    return classColors[className]
+end
+
+local function getTooltipColorForClass(className) -- Accepts classID or classFile and returns respective Class Color object or fallbackColor object/table if missing
+    return getClassColorTable(className) or normalFontColor
+end
+
+local hasValidLootDB = false
+local function isLootDBValid()
+    return seasonLootDB and seasonLootDB.eligibleItems and seasonLootDB.eligibleItemCount
+end
+
+local function OnEvent(self, event, loadedAddonName)
     if event == "ADDON_LOADED" and loadedAddonName == addonName then
         GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
-        GreatVaultOddsDB = GreatVaultOddsDB or {} -- do I need to add a flag here and ensure my addon is loaded before I use this saved variable later? could add a helper function that is run any time we want to access an SV, or xpcall?
+        GreatVaultOddsDB = GreatVaultOddsDB or {}
         GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
         GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
         addMissingDefaults(GreatVaultOddsAddonOptions, defaultAddonOptions)
         self:UnregisterEvent("ADDON_LOADED")
+
+        hasValidLootDB = isLootDBValid()
+        if not hasValidLootDB then
+            C_Timer.After(5, function()
+                print("GreatVaultOdds loot database in Interface/AddOns/GreatVaultOdds/Data/SeasonLootDB.lua is missing or corrupted")
+            end)
+        end
     elseif event == "PLAYER_LOGIN" then
         if GreatVaultOddsAddonOptions.devMode or debugLogging then
             C_Timer.After(5, function()
-                print("devMode:", GreatVaultOddsAddonOptions.devMode, "debugLogging:", debugLogging, "dingus!")
+                print("GreatVaultOdds devMode:", GreatVaultOddsAddonOptions.devMode, "debugLogging:", debugLogging)
             end)
         end
         self:UnregisterEvent("PLAYER_LOGIN")
@@ -55,7 +84,6 @@ end
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_LOGIN")
-frame:RegisterEvent("EJ_LOOT_DATA_RECIEVED")
 frame:SetScript("OnEvent", OnEvent)
 
 local function instanceIterator()
@@ -64,11 +92,13 @@ local function instanceIterator()
         local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
         repeat
             index = index + 1
-            instanceID = EJ_GetInstanceByIndex(index, false) -- dungeons only
+            instanceID = EJ_GetInstanceByIndex(index, false) -- Dungeons only
             if not instanceID then return end
-            EJ_SelectInstance(instanceID)  -- GET INSTANCE INFO RETURNS 0 FOR MAP ID UNTIL INSTANCE IS SELECTED!?@!?? AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID)
-            isWorldBoss = dungeonAreaMapID == 0
+
+            EJ_SelectInstance(instanceID)
+            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(instanceID) -- Will return 0 for dungeonAreaMapID if SelectInstance() is not called for an arbitrary instanceID, see: https://warcraft.wiki.gg/wiki/API_EJ_GetEncounterInfo#Example
+            -- Despite what https://warcraft.wiki.gg/wiki/API_EJ_GetInstanceInfo says, dungeons **do** return a dungeonAreaMapID.
+            isWorldBoss = dungeonAreaMapID == 0 -- Not used when iterating through only dungeons. Will prevent iterator returning a World Boss ID when iterating through raids, it will continue running until a Raid ID is provided or there are no more valid instance IDs.
         until not isWorldBoss
         return instanceID, instanceName
     end
@@ -97,41 +127,70 @@ local function enableEJ()
 end
 
 local equippableCache = {}
-local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- profiling and doneCallback are remnants from DB profiling
+local function generateDBForAllSpecs(alreadyRan)
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
-    for className, classData in pairs(classSpecIDs) do -- className = className, classData = table of specTable and classID 13
-        for specName, specTable in pairs(classData.specData) do -- specName = specName, specTable = table of specID and iconID 3
+    local eligibleItemsByID = GreatVaultOddsDB.eligibleItems
+    local eligibleItemCountsByClass = GreatVaultOddsDB.eligibleItemCount
+
+    for className, classData in pairs(classSpecIDs) do -- classData = table of specTable and classID
+        eligibleItemCountsByClass[className] = eligibleItemCountsByClass[className] or {}
+        local classCounts = eligibleItemCountsByClass[className]
+
+        for specName, specTable in pairs(classData.specData) do -- specTable = table of specID and iconID
             EJ_SetLootFilter(classData.classID, specTable.specID)
-            -- DB already init in ADDON_LOADED -- GreatVaultOddsDB = GreatVaultOddsDB or {}
-            -- Eligible Items init in ADDON_LOADED -- GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
-            -- Num Eligible Items init in ADDON_LOADED -- GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
-            GreatVaultOddsDB.eligibleItemCount[className] = GreatVaultOddsDB.eligibleItemCount[className] or {}
-            GreatVaultOddsDB.eligibleItemCount[className][specName] = GreatVaultOddsDB.eligibleItemCount[className][specName] or {}
-            GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots or 0
+
+            classCounts[specName] = classCounts[specName] or {}
+            local specCounts = classCounts[specName]
+            specCounts.seasonTotalItems = specCounts.seasonTotalItems or 0
+
+            specCounts.dungeonTotals = specCounts.dungeonTotals or {}
+            local dungeonTotalsByInstance = specCounts.dungeonTotals
+
             for instanceID, instanceName in instanceIterator() do
-                EJ_SelectInstance(instanceID)
-                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Maybe only need to call once at the start of func
-                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func
+                EJ_SelectInstance(instanceID) -- Probably don't need this since I already SelectInstance inside the instanceIterator,should generate a DB without it and compare to known good DB.
+                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Probably only need to call once at the start of func, do the same as above and compare to known good DB.
+
+                dungeonTotalsByInstance[instanceID] = dungeonTotalsByInstance[instanceID] or {}
+                local dungeonCounts = dungeonTotalsByInstance[instanceID]
+                dungeonCounts.totalItems = dungeonCounts.totalItems or 0
+
+                dungeonCounts.bossTotals = dungeonCounts.bossTotals or {}
+                local bossTotalsByEncounter = dungeonCounts.bossTotals
+
+                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter) -- Maybe only need to call once at the start of func. Do the same test as above with SelectInstance, I surely do not need this.
                 for lootIndex = 1, EJ_GetNumLoot() do
                     local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
                     local itemID = itemInfo and itemInfo.itemID
-                    local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- (itemInfo.name ~= nil)
-                    if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available
+                    local sourceEncounterID = itemInfo and itemInfo.encounterID or "Unknown Source" -- EncounterID for which the item drops. We'll need to add the itemID to dev tool if unknown source because table just tracks count.
+                    local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- itemInfo.name ~= nil produces similar results, the name field is nil when the item is not cached.
+                    if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available. Cached by us as equippable vs data cached by the game.
+                        -- TODO: distinguish between "cache" types
                         local known = equippableCache[itemID]
-                        if known == nil then -- itemID equip status not yet cached
-                            known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached, use ContinueOnItemLoad if not cached
+                        if known == nil then -- itemID equip status not yet cached. If it's false, we know the item is not equippable so don't need to cache it, but also won't use it.
+                            known = C_Item.IsEquippableItem(itemID) -- This only works because loot data is cached. Use a ContinueOnItemLoad implementation if not cached is what we care about.
                             equippableCache[itemID] = known
                         end
 
                         if known then -- item equippable
-                            GreatVaultOddsDB.eligibleItems[itemID] = GreatVaultOddsDB.eligibleItems[itemID] or {}
-                            GreatVaultOddsDB.eligibleItems[itemID][className] = GreatVaultOddsDB.eligibleItems[itemID][className] or {}
+                            eligibleItemsByID[itemID] = eligibleItemsByID[itemID] or {}
+                            local itemEntry = eligibleItemsByID[itemID]
 
-                            if not GreatVaultOddsDB.eligibleItems[itemID][className][specName] then
-                                GreatVaultOddsDB.eligibleItems[itemID][className][specName] = true  -- Get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
-                                GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots = GreatVaultOddsDB.eligibleItemCount[className][specName].allSlots + 1
+                            itemEntry[className] = itemEntry[className] or {}
+                            local eligibleSpecs = itemEntry[className]
+
+                            if not eligibleSpecs[specName] then
+                                eligibleSpecs[specName] = true  -- TODO: For item slot implementation, get corresponding item slot and increment that item slot if the item did not previously exist for this spec, and increment the total slots too
+                                itemEntry.sources = itemEntry.sources or {}
+                                itemEntry.sources.instanceID = instanceID
+                                itemEntry.sources.encounterID = sourceEncounterID
+
+                                specCounts.seasonTotalItems = specCounts.seasonTotalItems + 1
+                                dungeonCounts.totalItems = dungeonCounts.totalItems + 1
+
+                                bossTotalsByEncounter[sourceEncounterID] = bossTotalsByEncounter[sourceEncounterID] or 0
+                                bossTotalsByEncounter[sourceEncounterID] = bossTotalsByEncounter[sourceEncounterID] + 1
                             end
                         end
                     end
@@ -141,14 +200,14 @@ local function generateDBForAllSpecs(alreadyRan, profiling, doneCallback) -- pro
     end
     enableEJ()
     if not alreadyRan then
-        C_Timer.After(0.5, function() generateDBForAllSpecs(true, profiling, doneCallback) end) -- Run again after a delay to capture any loot that became cached after initial query
+        C_Timer.After(0.5, function() generateDBForAllSpecs(true) end) -- Run again after a delay to capture any loot that became cached after initial query
     end
 end
 
-local function showHelp() -- make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically, maybe more detail?
+local function showHelp() -- TODO: Make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically with more detail
     print("|cFFE6CC99Great Vault Odds|r will display the chance of each spec receiving an item in the Great Vault on the corresponding item's tooltip.")
-    print("|cFFE6CC99Great Vault Odds|r |cFF66BBFFHelp Menu:|r") -- Make a prefix print and colour function
-    print("|cFFE6CC99/gvodds|r", "|cFF66BBFFreset|r", "- Resets all options to their defaults") -- test colour
+    print("|cFFE6CC99Great Vault Odds|r |cFF66BBFFHelp Menu:|r") -- TODO: Make a prefix print and colour function
+    print("|cFFE6CC99/gvodds|r", "|cFF66BBFFreset|r", "- Resets all options to their defaults")
     print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdev|r", "- Toggles dev mode")
     print("|cFFE6CC99/gvodds|r", "|cFF66BBFFhelp|r", "- Displays this menu")
     if GreatVaultOddsAddonOptions.devMode then
@@ -171,7 +230,7 @@ local validCommands = { -- slashCommandMap or commandConfig?
     },
 }
 
-SLASH_GREATVAULTODDS1 = "/gvodds" -- add /greatvaultodds
+SLASH_GREATVAULTODDS1 = "/gvodds" -- add /greatvaultodds alias
 function SlashCmdList.GREATVAULTODDS(msg, editBox)
     msg = msg and msg:lower():gsub("^%s*(.-)%s*$", "%1") or "" -- Trims leading and trailing whitespace, unnecessary
 
@@ -182,7 +241,7 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
 
     local cmd, subCmd, arg1 = args[1], args[2], args[3]
 
-    if cmd == "dev" then
+    if cmd == "dev" then -- Allows "dev" commands to be chained in one command as opposed to requiring devMode toggled on and then the intended command to be inputted again.
         GreatVaultOddsAddonOptions.devMode = not GreatVaultOddsAddonOptions.devMode -- toggle
         print("Devmode active:", GreatVaultOddsAddonOptions.devMode)
         if not subCmd then return end -- Quit handler if no further command is chained
@@ -206,26 +265,26 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         showHelp()
     elseif devModeRequired and not devModeActive then -- Command entered requires devMode but user is not in devMode, irregardless of subcommand validity
         print("The command \""..cmd.."\" requires dev mode to use. Use /gvodds dev to toggle")
-    elseif missingSubCmd and not validCommand.hasSubCommand.default then -- subcommand required but not provided
+    elseif missingSubCmd and not validCommand.hasSubCommand.default then -- Subcommand required but not provided
         print("Missing args for command \""..cmd.."\" - displaying /gvodds help")
         showHelp()
     elseif invalidSubCmd then -- Subcommand provided is not valid for given command
         print("Invalid arg \""..subCmd.."\" for command \""..cmd.."\" - displaying /gvodds help")
         showHelp()
-    else -- Command is valid and can proceed to act on it
+    else -- Command is valid and can proceed
         if cmd == "help" then
             showHelp()
         elseif cmd == "reset" then
             print("Resetting |cFFE6CC99Great Vault Odds|r options to defaults!")
             GreatVaultOddsAddonOptions = CopyTable(defaultAddonOptions)
-        elseif devModeActive then -- dev mode required for these commands, unnecessary line though because of prior verification/guarding
+        elseif devModeActive then -- Dev mode required for these commands, unnecessary line though because of prior verification/guarding
             if cmd == "db" then
                 if subCmd == "gen" then
                     generateDBForAllSpecs()
                 elseif subCmd == "reset" then
                     print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
                     GreatVaultOddsDB = {}
-                    GreatVaultOddsDB.eligibleItems = {} -- have to reinit the subtables
+                    GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
                 end
             end
@@ -236,17 +295,82 @@ end
 local playerSpecNames
 local playerClassName
 local hasSortedPlayerSpecs = false
+
+local tooltipStyle = { -- Includes future tooltip format styles
+    dropRateSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
+    lootSourceSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
+    specLabel = ": "
+}
+local ADDON_TOOLTIP_HEADER = "GreatVaultOdds"
+local LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..tooltipStyle.lootSourceSeparator[2].."M+"..tooltipStyle.lootSourceSeparator[2].."Boss"
+
+local function ensurePlayerSpecsSorted()
+    if hasSortedPlayerSpecs then return end
+
+    playerSpecNames = {}
+    playerClassName, _ = UnitClassBase("player")
+    for specName in pairs(classSpecIDs[playerClassName].specData) do
+        table.insert(playerSpecNames, specName)
+    end
+    table.sort(playerSpecNames)
+    hasSortedPlayerSpecs = true
+end
+
+local function buildSpecOddsLine(className, specName, instanceID, encounterID)
+    local specCounts = seasonLootDB.eligibleItemCount[className] and seasonLootDB.eligibleItemCount[className][specName]
+    local seasonTotal = specCounts and specCounts.seasonTotalItems
+
+    local dungeonCounts = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
+    local dungeonTotal = dungeonCounts and dungeonCounts.totalItems
+
+    local bossTotalsByEncounter = dungeonCounts and dungeonCounts.bossTotals
+    local bossTotal = bossTotalsByEncounter and bossTotalsByEncounter[encounterID]
+
+    local missingLootData = not (seasonTotal and dungeonTotal and bossTotal)
+    if missingLootData then return end
+
+    local iconID = classSpecIDs[className].specData[specName].iconID
+    local iconText = "|T"..iconID..":0|t"
+    return iconText.." "..specName..tooltipStyle.specLabel.."1/"..seasonTotal..tooltipStyle.dropRateSeparator[2].."1/"..dungeonTotal..tooltipStyle.dropRateSeparator[2].."1/"..bossTotal
+end
+
+local function appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
+    ensurePlayerSpecsSorted()
+
+    local tooltipColor = getTooltipColorForClass(playerClassName)
+    local playerEligibleSpecs = seasonLootDB.eligibleItems[itemID][playerClassName]
+    if not playerEligibleSpecs then
+        tooltip:AddLine("Item is not loot eligible for your class!", tooltipColor.r, tooltipColor.g, tooltipColor.b)
+        return
+    end
+
+    for _, specName in ipairs(playerSpecNames) do
+        if playerEligibleSpecs[specName] then
+            local specTooltipLine = buildSpecOddsLine(playerClassName, specName, instanceID, encounterID)
+            if specTooltipLine then
+                tooltip:AddLine(specTooltipLine, tooltipColor.r, tooltipColor.g, tooltipColor.b)
+            end
+        end
+    end
+end
+
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
-        addToDevTool(CopyTable(data), "GreatVaultOdds - plain data for "..tooltip:GetName()) -- might get a nil error here if tooltip also doesn't exist?
+        addToDevTool(data, "GreatVaultOdds - plain data for "..tooltip:GetName()) -- Might get a nil error here if tooltip also doesn't exist? Wanted to use CopyTable(data) but if data is nil will error.
     else
+        if not hasValidLootDB then return end
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
-            -- Do we need to nilCheck seasonLootDB and then eligible items AND eligible item count, and then we can check for item id, and then class, and then spec if necessary, and then slot if count
-            local tooltipText = "GreatVaultOdds: "
+            local itemEntry = seasonLootDB.eligibleItems[itemID]
+            local sourceInfo = itemEntry.sources
+            if not sourceInfo then return end
+            local instanceID = sourceInfo.instanceID
+            local encounterID = sourceInfo.encounterID
+            if not instanceID  or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals? If not, maybe don't need separate early returns?
             local devModeActive = GreatVaultOddsAddonOptions.devMode
-            tooltip:AddLine(tooltipText)
+            tooltip:AddLine(" ") -- Add a gap between the last tooltip line and our tooltip
+            tooltip:AddLine(ADDON_TOOLTIP_HEADER..": "..LOOT_SOURCE_TOOLTIP_HEADER)
 
             if devModeActive then -- Dirty hack to see all specs in devMode
                 local classTooltipsByID = {}
@@ -261,11 +385,12 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                         table.sort(eligibleSpecs)
                         local finalTooltip = ""
                         for _, sortedSpecName in ipairs(eligibleSpecs) do
-                            local iconID = classData.specData[sortedSpecName].iconID
-                            local iconText = "|T"..iconID..":0|t"
-                            finalTooltip = finalTooltip..iconText.." "..sortedSpecName..": 1/"..seasonLootDB.eligibleItemCount[className][sortedSpecName].allSlots.." "
+                            local specTooltipLine = buildSpecOddsLine(className, sortedSpecName, instanceID, encounterID)
+                            if specTooltipLine then
+                                finalTooltip = finalTooltip..specTooltipLine.." "
+                            end
                         end
-                        classTooltipsByID[classData.classID] = finalTooltip
+                        classTooltipsByID[classData.classID] = finalTooltip -- Could check if ~="", can store an empty tooltip if finalTooltip is still the empty string, though this should never occur unless a class isn't valid. But if it isn't valid it won't be here, and if it is valid then it will have a corresponding spec and tooltip unless db is malformed/corrupted, but I notice that before shipping.
                     end
                 end
                 local eligibleClasses = {}
@@ -274,39 +399,11 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
                 table.sort(eligibleClasses)
                 for _, classID in ipairs(eligibleClasses) do
-                    tooltip:AddLine(classTooltipsByID[classID]) -- will add text wrapping as a config option
+                    local tooltipColor = getTooltipColorForClass(classID)
+                    tooltip:AddLine(classTooltipsByID[classID], tooltipColor.r, tooltipColor.g, tooltipColor.b) -- will add custom text wrapping as a config option
                 end
-            else
-                tooltipText = "" -- temporary
-                if not hasSortedPlayerSpecs then
-                    playerSpecNames = {}
-                    -- define tooltipText after className and append the className (need to use localised version, so UnitClass)
-                    playerClassName, _ = UnitClassBase("player") -- in the future, might wanna call this outside of the handler to reduce function calls, do once player login and then watch event player loot spec changed or spec changed(is that an event?)
-                    for specName in pairs(classSpecIDs[playerClassName].specData) do -- specName, specTable
-                        table.insert(playerSpecNames, specName)
-                    end
-                    table.sort(playerSpecNames) -- Figure out a way to cache this beforehand so don't have to do a loop once per session?
-                    hasSortedPlayerSpecs = true
-                end
-
-                for _, specName in ipairs(playerSpecNames) do -- Probably can first check if the item has a tooltip cached for this *class* first before recomputing the tooltip
-                    if not seasonLootDB.eligibleItems[itemID][playerClassName] then -- why is this in loop?
-                    -- TODO: Move out of loop
-                        tooltipText = tooltipText.." item is not loot eligible for your class!" -- this will appear for all items that are in the database but not eligible for to be looted by this class. Do we want it to say anything? Or better to be blank?
-                        break
-                    else -- item is loot eligible for the class, can combine this with the next line.
-                        if seasonLootDB.eligibleItems[itemID][playerClassName][specName] then -- item is loot eligible for the spec
-                            local iconID = classSpecIDs[playerClassName].specData[specName].iconID
-                            local iconText = "|T"..iconID..":0|t"
-                            tooltipText = tooltipText..iconText.." "..specName..": 1/"..seasonLootDB.eligibleItemCount[playerClassName][specName].allSlots.." " -- want to sort this to go in order of index or table, rn is random -- NIL CHECK NUMVALID ITEMS AAAAAAAAAAAAAAAAAAAAA
-                        else
-                            -- not loot eligible, do nothing for now
-                        end
-                    end
-                end
-                -- consider caching the tooltip for the item/class combo
-                tooltip:AddLine(tooltipText)--, red, green, blue, wrapText)
-                -- Do I have to handle this: The tooltip resizes in its OnShow handler,[1] so calling this function on an already-visible tooltip will cause the new line to appear outside of the tooltip's backdrop.
+            else -- The normal path for the end-user tooltip, sorry it's here at the bottom. I will invert the if block I promise.
+                appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
             end
         end
     end
