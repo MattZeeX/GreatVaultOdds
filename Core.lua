@@ -86,7 +86,7 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", OnEvent)
 
-local function instanceIterator()
+local function activeSeasonIterator()
     local index = 0
     return function()
         local instanceID, instanceName, dungeonAreaMapID, isWorldBoss
@@ -100,8 +100,32 @@ local function instanceIterator()
             -- Despite what https://warcraft.wiki.gg/wiki/API_EJ_GetInstanceInfo says, dungeons **do** return a dungeonAreaMapID.
             isWorldBoss = dungeonAreaMapID == 0 -- Not used when iterating through only dungeons. Will prevent iterator returning a World Boss ID when iterating through raids, it will continue running until a Raid ID is provided or there are no more valid instance IDs.
         until not isWorldBoss
+
         return instanceID, instanceName
     end
+end
+
+local function specificSeasonIterator(milestoneSeasonID)
+    local instanceIDs = GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[milestoneSeasonID]
+    local index = 0
+
+    return function()
+        index = index + 1
+        local instanceID = instanceIDs and instanceIDs[index]
+        if not instanceID then return end
+
+        EJ_SelectInstance(instanceID)
+        local instanceName = EJ_GetInstanceInfo(instanceID)
+
+        return instanceID, instanceName
+    end
+end
+
+-- milestoneSeasonID is only used for non-active seasons, a nil value defaults to the current tier EJ dungeon iteration.
+local function instanceIterator(milestoneSeasonID)
+    if milestoneSeasonID then return specificSeasonIterator(milestoneSeasonID) end
+
+    return activeSeasonIterator()
 end
 
 local function disableEJ()
@@ -127,7 +151,7 @@ local function enableEJ()
 end
 
 local equippableCache = {}
-local function generateDBForAllSpecs(alreadyRan)
+local function generateDBForAllSpecs(milestoneSeasonID, alreadyRan)
     EJ_SelectTier(EJ_GetNumTiers())
     disableEJ()
 
@@ -148,9 +172,10 @@ local function generateDBForAllSpecs(alreadyRan)
             specCounts.dungeonTotals = specCounts.dungeonTotals or {}
             local dungeonTotalsByInstance = specCounts.dungeonTotals
 
-            for instanceID, instanceName in instanceIterator() do
+            for instanceID, instanceName in instanceIterator(milestoneSeasonID) do
                 EJ_SelectInstance(instanceID) -- Probably don't need this since I already SelectInstance inside the instanceIterator,should generate a DB without it and compare to known good DB.
-                EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Probably only need to call once at the start of func, do the same as above and compare to known good DB.
+                EJ_SetDifficulty(DifficultyUtil.ID.DungeonMythic) -- https://github.com/Gethe/wow-ui-source/blob/0b949009d9558869da5c53ac61c23f2d711b1f6f/Interface/AddOns/Blizzard_FrameXMLUtil/DifficultyUtil.lua#L1 -- Probably only need to call once at the start of func, do the same as above and compare to known good DB.
+                -- EJ_SetDifficulty(DifficultyUtil.ID.DungeonChallenge)
 
                 dungeonTotalsByInstance[instanceID] = dungeonTotalsByInstance[instanceID] or {}
                 local dungeonCounts = dungeonTotalsByInstance[instanceID]
@@ -200,7 +225,7 @@ local function generateDBForAllSpecs(alreadyRan)
     end
     enableEJ()
     if not alreadyRan then
-        C_Timer.After(0.5, function() generateDBForAllSpecs(true) end) -- Run again after a delay to capture any loot that became cached after initial query
+        C_Timer.After(0.5, function() generateDBForAllSpecs(milestoneSeasonID, true) end) -- Run again after a delay to capture any loot that became cached after initial query
     end
 end
 
@@ -239,23 +264,30 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         table.insert(args, word)
     end
 
-    local cmd, subCmd, arg1 = args[1], args[2], args[3]
+    local cmd, subCmd = args[1], args[2]
+    local subCmdArgs = {select(3, unpack(args))}
 
     if cmd == "dev" then -- Allows "dev" commands to be chained in one command as opposed to requiring devMode toggled on and then the intended command to be inputted again.
         GreatVaultOddsAddonOptions.devMode = not GreatVaultOddsAddonOptions.devMode -- toggle
         print("Devmode active:", GreatVaultOddsAddonOptions.devMode)
         if not subCmd then return end -- Quit handler if no further command is chained
-        cmd, subCmd = subCmd, arg1 -- Shift args for chained command
+
+        cmd, subCmd = subCmd, subCmdArgs[1] -- Shift args for chained command
+        subCmdArgs = {select(2, unpack(subCmdArgs))}
     end
 
     local validCommand = validCommands[cmd]
     local hasSubCmd = validCommand and validCommand.hasSubCommand
-    local validSubCmd = hasSubCmd and validCommand.hasSubCommand[subCmd]
+    local validSubCmd = hasSubCmd and hasSubCmd[subCmd]
+    -- local expectsArgs = validSubCmd and validSubCmd.args
+    -- local validArgs = expectsArgs and expectsArgs[arg1]
 
     local devModeActive = GreatVaultOddsAddonOptions.devMode
     local devModeRequired = validCommand and validCommand.devModeRequired
     local missingSubCmd = hasSubCmd and not subCmd
     local invalidSubCmd = hasSubCmd and subCmd and not validSubCmd
+    -- local missingArgs = expectsArgs and not arg1
+    -- local invalidArgs = expectsArgs and arg1 and not validArgs OR why not invalidArgs = not validArgs?
 
     if not cmd then
         print("No command provided - displaying /gvodds help")
@@ -280,7 +312,26 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
         elseif devModeActive then -- Dev mode required for these commands, unnecessary line though because of prior verification/guarding
             if cmd == "db" then
                 if subCmd == "gen" then
-                    generateDBForAllSpecs()
+                    -- Optionally generate a DB for a specific season rather than the current tier, based on if milestoneSeasonID is passed as an arg.
+                    local inputMilestoneSeasonID = subCmdArgs[1]
+
+                    if not inputMilestoneSeasonID then generateDBForAllSpecs() return end
+
+                    local requestedMilestoneSeasonID = tonumber(inputMilestoneSeasonID)
+                    if not requestedMilestoneSeasonID then print("Invalid arg\""..inputMilestoneSeasonID.."\"") return end
+
+                    C_MythicPlus.RequestMapInfo() -- Required to be called once per session to load functions
+                    -- https://warcraft.wiki.gg/wiki/API_C_MythicPlus.RequestMapInfo
+                    local _, currentMilestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
+
+                    if requestedMilestoneSeasonID == currentMilestoneSeasonID then generateDBForAllSpecs() return end
+
+                    if not GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[requestedMilestoneSeasonID] then
+                        print("Milestone Season ID:", inputMilestoneSeasonID, "not configured!")
+                        return
+                    end
+
+                    generateDBForAllSpecs(requestedMilestoneSeasonID)
                 elseif subCmd == "reset" then
                     print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
                     GreatVaultOddsDB = {}
