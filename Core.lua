@@ -1,7 +1,10 @@
 local addonName, GreatVaultOddsNS = ...
-local seasonLootDB = GreatVaultOddsNS.DB
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local classNameByID = GreatVaultOddsNS.ClassNameByID
+
+local activeMilestoneSeasonID
+local manualMilestoneSeasonIDOverride = false -- 105
+local seasonLootDB
 
 local classColors = RAID_CLASS_COLORS
 local fallbackColor = CreateColor(1.000, 0.824, 0.000) or {r = 1, g = 0.824, b = 0}
@@ -51,9 +54,32 @@ local function getTooltipColorForClass(className) -- Accepts classID or classFil
     return getClassColorTable(className) or normalFontColor
 end
 
+local lootDBInitializationComplete = false
+local lootDBInitializationFailed = false
 local hasValidLootDB = false
-local function isLootDBValid()
-    return seasonLootDB and seasonLootDB.eligibleItems and seasonLootDB.eligibleItemCount
+local function validateLootDB()
+    hasValidLootDB = seasonLootDB and seasonLootDB.eligibleItems and seasonLootDB.eligibleItemCount
+
+    if not hasValidLootDB and not lootDBInitializationFailed then
+        lootDBInitializationFailed = true
+        print("GreatVaultOdds has no valid loot DB for milestone season ID:", activeMilestoneSeasonID)
+    end
+
+    return hasValidLootDB
+end
+
+local function trySetActiveLootDB()
+    local _, milestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
+    milestoneSeasonID = manualMilestoneSeasonIDOverride or milestoneSeasonID
+    if not milestoneSeasonID or milestoneSeasonID == -1 then
+        return
+    end
+
+    activeMilestoneSeasonID = milestoneSeasonID
+    seasonLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
+    lootDBInitializationComplete = true
+    validateLootDB()
+    return true
 end
 
 local function OnEvent(self, event, loadedAddonName)
@@ -64,26 +90,31 @@ local function OnEvent(self, event, loadedAddonName)
         GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
         addMissingDefaults(GreatVaultOddsAddonOptions, defaultAddonOptions)
         self:UnregisterEvent("ADDON_LOADED")
-
-        hasValidLootDB = isLootDBValid()
-        if not hasValidLootDB then
-            C_Timer.After(5, function()
-                print("GreatVaultOdds loot database in Interface/AddOns/GreatVaultOdds/Data/SeasonLootDB.lua is missing or corrupted")
-            end)
-        end
     elseif event == "PLAYER_LOGIN" then
+        C_MythicPlus.RequestMapInfo() -- I want to count these calls to see how many it takes, curious
+        if trySetActiveLootDB() then
+            self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
+        end
+
         if GreatVaultOddsAddonOptions.devMode or debugLogging then
             C_Timer.After(5, function()
                 print("GreatVaultOdds devMode:", GreatVaultOddsAddonOptions.devMode, "debugLogging:", debugLogging)
             end)
         end
         self:UnregisterEvent("PLAYER_LOGIN")
+    elseif event == "CHALLENGE_MODE_MAPS_UPDATE" then
+        if trySetActiveLootDB() then -- Consider inverting
+            self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
+        else
+            C_MythicPlus.RequestMapInfo() -- Same as above
+        end
     end
 end
 
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_LOGIN")
+frame:RegisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
 frame:SetScript("OnEvent", OnEvent)
 
 local function activeSeasonIterator()
@@ -410,7 +441,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         print("Error, data does not exist - GreatVaultOdds")
         addToDevTool(data, "GreatVaultOdds - plain data for "..tooltip:GetName()) -- Might get a nil error here if tooltip also doesn't exist? Wanted to use CopyTable(data) but if data is nil will error.
     else
-        if not hasValidLootDB then return end
+        if not lootDBInitializationComplete or not hasValidLootDB then return end -- Print which it is (one time only), so user not confused by tooltips not showing.
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
         if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
             local itemEntry = seasonLootDB.eligibleItems[itemID]
