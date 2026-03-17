@@ -22,7 +22,7 @@ The tooltip breaks the numbers down into three levels:
 - **M+**: your total number of eligible items from that specific dungeon for that spec
 - **Boss**: your total number of eligible items from that specific boss for that spec
 
-![alt text](https://media.forgecdn.net/attachments/1584/129/bongocat_kgdiqwhuwf-png.png)
+![image](https://media.forgecdn.net/attachments/description/null/description_e9d32ad1-a61a-4688-beee-3dcd86b0251e.png)
 
 In simple terms, the addon helps you compare **how diluted your loot pool is** for each spec.
 
@@ -41,11 +41,13 @@ Great Vault Odds puts that comparison directly on the item tooltip so you do not
 
 Great Vault Odds is most useful for classes whose specs span multiple roles or use different primary stats and weapon types. Sorry Warlocks!
 
+## Support
+
+If you have any issues whatsoever, please do not hesitate to leave a comment and I will get in touch ASAP. I am working on cleaning up my GitHub repo to streamline issue reporting.
+
 ## Notes
 
-This addon is still a WIP and I intend to keep supporting it. Currently the database is specifically for the Midnight Mythic 0 dungeons, but before the season starts I will push an update to immediately rollover to the Midnight Season 1 dungeons whilst still supporting non-seasonal dungeons.
-
-Planned features include:
+This addon out is still a WIP and I intend to keep supporting it. Planned features include:
 
 - Raid support
 - More tooltip customisations to show more or less information, as well as controlling the tooltip with modifier keys
