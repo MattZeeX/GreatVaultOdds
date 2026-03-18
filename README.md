@@ -47,7 +47,7 @@ If you have any issues whatsoever, please do not hesitate to leave a comment and
 
 ## Notes
 
-This addon out is still a WIP and I intend to keep supporting it. Planned features include:
+This addon is still a WIP and I intend to keep supporting it. Planned features include:
 
 - Raid support
 - More tooltip customisations to show more or less information, as well as controlling the tooltip with modifier keys
