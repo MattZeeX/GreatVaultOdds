@@ -2,8 +2,10 @@ local addonName, GreatVaultOddsNS = ...
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local classNameByID = GreatVaultOddsNS.ClassNameByID
 
-local activeMilestoneSeasonID
+-- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 local manualMilestoneSeasonIDOverride = false -- 105
+
+local activeMilestoneSeasonID
 local seasonLootDB
 
 local classColors = RAID_CLASS_COLORS

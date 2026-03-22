@@ -24,7 +24,8 @@
         "class",
         "CopyTable",
         "RAID_CLASS_COLORS",
-        "NORMAL_FONT_COLOR"
+        "NORMAL_FONT_COLOR",
+        "RunNextFrame"
     ],
     "cSpell.words": [
         "Algeth'ar",

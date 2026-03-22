@@ -2,6 +2,7 @@ local addonName, GreatVaultOddsNS = ...
 
 -- Journal instance IDs keyed by Mythic+ milestone season ID.
 -- https://wago.tools/db2/JournalInstance
+-- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID = {
     [105] = { -- Midnight Season 1
         1300, -- Magisters' Terrace
