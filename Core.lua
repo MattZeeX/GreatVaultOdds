@@ -475,7 +475,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                             end
                         end
                         classTooltipsByID[classData.classID] = finalTooltip -- Could check if ~="", can store an empty tooltip if finalTooltip is still the empty string, though this should never occur unless a class isn't valid. But if it isn't valid it won't be here, and if it is valid then it will have a corresponding spec and tooltip unless db is malformed/corrupted, but I notice that before shipping.
-                        -- I am only indexing by classID so that I can simply use table.sort for the final tooltip to be sorted "Blizzlike"
+                        -- I am only indexing by classID so that I can simply use table.sort for the final tooltip to be sorted "Blizz-like"
                         -- I could just sort by classSpecIDs[className].classID
                     end
                 end
