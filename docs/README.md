@@ -7,6 +7,7 @@ This folder stores durable internal project documentation that should outlive is
 - [reference.md](./reference.md): Project-specific observations, quirks, and non-obvious tested takeaways worth remembering.
 - [api-index.md](./api-index.md): Useful APIs grouped by problem solved, with short practical notes on usage and under-documented behaviour.
 - [workflow.md](./workflow.md): Repo workflow, along with issue, project, branching, verification, documentation, and release conventions.
+- [resources.md](./resources.md): Curated external resources, addon examples, tools, and references worth revisiting during development.
 
 ## What Goes Here
 
