@@ -1,5 +1,9 @@
 local addonName, GreatVaultOddsNS = ...
 GreatVaultOddsNS.Utils = GreatVaultOddsNS.Utils or {}
+GreatVaultOddsNS.Tooltip = GreatVaultOddsNS.Tooltip or {}
+GreatVaultOddsNS.DBGenerator = GreatVaultOddsNS.DBGenerator or {}
+GreatVaultOddsNS.SlashCommands = GreatVaultOddsNS.SlashCommands or {}
+GreatVaultOddsNS.Core = GreatVaultOddsNS.Core or {}
 
 local classNameByID = GreatVaultOddsNS.ClassNameByID
 local Utils = GreatVaultOddsNS.Utils

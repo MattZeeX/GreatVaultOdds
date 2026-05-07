@@ -15,4 +15,5 @@ Data/LootDB_Midnight_S1.lua
 Utils.lua
 DBGenerator.lua
 Tooltip.lua
+SlashCommands.lua
 Core.lua

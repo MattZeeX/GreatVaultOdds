@@ -1,5 +1,4 @@
 local addonName, GreatVaultOddsNS = ...
-GreatVaultOddsNS.Tooltip = GreatVaultOddsNS.Tooltip or {}
 
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local Utils = GreatVaultOddsNS.Utils

@@ -1,5 +1,4 @@
 local addonName, GreatVaultOddsNS = ...
-GreatVaultOddsNS.DBGenerator = GreatVaultOddsNS.DBGenerator or {}
 
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local Utils = GreatVaultOddsNS.Utils
