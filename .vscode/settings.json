@@ -24,20 +24,34 @@
         "class",
         "CopyTable",
         "RAID_CLASS_COLORS",
-        "NORMAL_FONT_COLOR"
+        "NORMAL_FONT_COLOR",
+        "RunNextFrame"
     ],
     "cSpell.words": [
+        "Algeth'ar",
+        "Blizz",
         "Boomie",
+        "Craboom",
+        "DEATHKNIGHT",
         "debugprofilestop",
+        "DEMONHUNTER",
         "devmode",
         "dsune",
         "GREATVAULTODDS",
         "gvodds",
+        "Maisara",
         "Mcitalian",
-        "NUMVALID",
+        "Mistweaver",
+        "prepatch",
         "RECIEVED",
         "Resto",
+        "Saron",
+        "Skyreach",
+        "Snorf",
         "specid",
-        "strsplit"
+        "strsplit",
+        "Windrunner",
+        "Windwalker",
+        "Xenas"
     ]
 }

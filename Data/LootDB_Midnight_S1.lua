@@ -1,11 +1,49 @@
 local addonName, GreatVaultOddsNS = ...
 
-GreatVaultOddsNS.DB = {
+GreatVaultOddsNS.LootDBByMilestoneSeasonID = GreatVaultOddsNS.LootDBByMilestoneSeasonID or {}
+
+-- Midnight Season 1
+GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
     eligibleItemCount = {
         DEATHKNIGHT = {
             Blood = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 61,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -22,40 +60,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -77,8 +81,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Frost = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 65,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 10,
                         bossTotals = {
@@ -95,40 +134,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 3,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -150,8 +155,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Unholy = {
-                seasonTotalItems = 56,
+                seasonTotalItems = 60,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -168,40 +208,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -225,8 +231,42 @@ GreatVaultOddsNS.DB = {
         },
         DEMONHUNTER = {
             Devourer = {
-                seasonTotalItems = 55,
+                seasonTotalItems = 57,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 2,
+                            [2512] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -243,40 +283,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 3,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 4,
                         },
                     },
                     [1315] = {
@@ -298,8 +304,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Havoc = {
-                seasonTotalItems = 61,
+                seasonTotalItems = 59,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 3,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -316,40 +357,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 3,
                             [2662] = 3,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 3,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -371,8 +378,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Vengeance = {
-                seasonTotalItems = 62,
+                seasonTotalItems = 59,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 3,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -389,40 +431,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 3,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 3,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 4,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -446,8 +454,43 @@ GreatVaultOddsNS.DB = {
         },
         DRUID = {
             Balance = {
-                seasonTotalItems = 62,
+                seasonTotalItems = 65,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 12,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 4,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -464,40 +507,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -521,6 +530,41 @@ GreatVaultOddsNS.DB = {
             Feral = {
                 seasonTotalItems = 58,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 10,
                         bossTotals = {
@@ -537,40 +581,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -592,8 +602,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Guardian = {
-                seasonTotalItems = 59,
+                seasonTotalItems = 58,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 2,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -610,40 +655,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 3,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -665,8 +676,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Restoration = {
-                seasonTotalItems = 65,
+                seasonTotalItems = 67,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 3,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 12,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 4,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -683,40 +729,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -740,8 +752,43 @@ GreatVaultOddsNS.DB = {
         },
         EVOKER = {
             Augmentation = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 68,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 4,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -760,45 +807,11 @@ GreatVaultOddsNS.DB = {
                             [2662] = 2,
                         },
                     },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 1,
-                            [2771] = 4,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
-                        },
-                    },
                     [1315] = {
-                        totalItems = 7,
+                        totalItems = 8,
                         bossTotals = {
                             [2810] = 1,
-                            [2811] = 3,
+                            [2811] = 4,
                             [2812] = 3,
                         },
                     },
@@ -813,8 +826,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Devastation = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 67,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 4,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -833,45 +881,11 @@ GreatVaultOddsNS.DB = {
                             [2662] = 2,
                         },
                     },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 1,
-                            [2771] = 4,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
-                        },
-                    },
                     [1315] = {
-                        totalItems = 7,
+                        totalItems = 8,
                         bossTotals = {
                             [2810] = 1,
-                            [2811] = 3,
+                            [2811] = 4,
                             [2812] = 3,
                         },
                     },
@@ -886,8 +900,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Preservation = {
-                seasonTotalItems = 64,
+                seasonTotalItems = 69,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 3,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -904,40 +953,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 1,
-                            [2771] = 4,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 2,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -961,8 +976,43 @@ GreatVaultOddsNS.DB = {
         },
         HUNTER = {
             ["Beast Mastery"] = {
-                seasonTotalItems = 54,
+                seasonTotalItems = 55,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -979,40 +1029,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1034,8 +1050,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Marksmanship = {
-                seasonTotalItems = 54,
+                seasonTotalItems = 55,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -1052,40 +1103,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1109,6 +1126,41 @@ GreatVaultOddsNS.DB = {
             Survival = {
                 seasonTotalItems = 63,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 4,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 10,
                         bossTotals = {
@@ -1125,40 +1177,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 3,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 4,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 1,
-                            [2771] = 4,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 3,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1182,8 +1200,43 @@ GreatVaultOddsNS.DB = {
         },
         MAGE = {
             Arcane = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -1200,40 +1253,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1255,8 +1274,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Fire = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -1273,40 +1327,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1328,8 +1348,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Frost = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -1346,40 +1401,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1403,8 +1424,43 @@ GreatVaultOddsNS.DB = {
         },
         MONK = {
             Brewmaster = {
-                seasonTotalItems = 65,
+                seasonTotalItems = 63,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -1421,40 +1477,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 3,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 3,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 4,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1476,8 +1498,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Mistweaver = {
-                seasonTotalItems = 62,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 3,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 12,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 4,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -1494,40 +1551,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1549,8 +1572,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Windwalker = {
-                seasonTotalItems = 64,
+                seasonTotalItems = 63,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 10,
                         bossTotals = {
@@ -1567,40 +1625,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 3,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 3,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1624,8 +1648,43 @@ GreatVaultOddsNS.DB = {
         },
         PALADIN = {
             Holy = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 61,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 4,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 1,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -1642,40 +1701,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 3,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 1,
-                            [2771] = 3,
-                            [2772] = 3,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1697,8 +1722,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Protection = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 64,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 1,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -1715,40 +1775,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 3,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 2,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 4,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 3,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 1,
                         },
                     },
                     [1315] = {
@@ -1770,8 +1796,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Retribution = {
-                seasonTotalItems = 56,
+                seasonTotalItems = 60,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -1788,40 +1849,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -1845,8 +1872,43 @@ GreatVaultOddsNS.DB = {
         },
         PRIEST = {
             Discipline = {
-                seasonTotalItems = 62,
+                seasonTotalItems = 68,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 3,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 15,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 4,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -1863,40 +1925,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1918,8 +1946,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Holy = {
-                seasonTotalItems = 62,
+                seasonTotalItems = 67,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 3,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 4,
+                            [1982] = 4,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -1936,40 +1999,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -1991,8 +2020,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Shadow = {
-                seasonTotalItems = 59,
+                seasonTotalItems = 65,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 2,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -2009,40 +2073,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2066,8 +2096,43 @@ GreatVaultOddsNS.DB = {
         },
         ROGUE = {
             Assassination = {
-                seasonTotalItems = 57,
+                seasonTotalItems = 56,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2084,40 +2149,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 4,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2139,8 +2170,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Outlaw = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 58,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 2,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2157,40 +2223,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 3,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 3,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 1,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2212,8 +2244,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Subtlety = {
-                seasonTotalItems = 57,
+                seasonTotalItems = 56,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 2,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 1,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2230,40 +2297,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 10,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 4,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2287,8 +2320,43 @@ GreatVaultOddsNS.DB = {
         },
         SHAMAN = {
             Elemental = {
-                seasonTotalItems = 63,
+                seasonTotalItems = 65,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 1,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -2305,40 +2373,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 3,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 1,
-                            [2771] = 3,
-                            [2772] = 3,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 3,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2360,8 +2394,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Enhancement = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 57,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 2,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 1,
+                            [967] = 2,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2378,40 +2447,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 2,
-                            [2778] = 2,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2433,8 +2468,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Restoration = {
-                seasonTotalItems = 66,
+                seasonTotalItems = 67,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 2,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 3,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 8,
                         bossTotals = {
@@ -2451,40 +2521,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 3,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 1,
-                            [2682] = 3,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 1,
-                            [2771] = 3,
-                            [2772] = 3,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2776] = 3,
-                            [2777] = 3,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 7,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2508,8 +2544,43 @@ GreatVaultOddsNS.DB = {
         },
         WARLOCK = {
             Affliction = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -2526,40 +2597,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2581,8 +2618,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Demonology = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -2599,40 +2671,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2654,8 +2692,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Destruction = {
-                seasonTotalItems = 58,
+                seasonTotalItems = 66,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 3,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 1,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 14,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 3,
+                            [1981] = 5,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 3,
+                            [2512] = 2,
+                            [2514] = 2,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -2672,40 +2745,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 3,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 3,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 3,
                         },
                     },
                     [1315] = {
@@ -2729,8 +2768,43 @@ GreatVaultOddsNS.DB = {
         },
         WARRIOR = {
             Arms = {
-                seasonTotalItems = 56,
+                seasonTotalItems = 60,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2747,40 +2821,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2802,8 +2842,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Fury = {
-                seasonTotalItems = 56,
+                seasonTotalItems = 60,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 3,
+                            [609] = 2,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 6,
+                        bossTotals = {
+                            [965] = 2,
+                            [966] = 1,
+                            [967] = 1,
+                            [968] = 2,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1979] = 2,
+                            [1980] = 3,
+                            [1981] = 3,
+                            [1982] = 2,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [2495] = 1,
+                            [2509] = 1,
+                            [2512] = 2,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 9,
                         bossTotals = {
@@ -2820,40 +2895,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 2,
                             [2661] = 2,
                             [2662] = 2,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 1,
-                            [2680] = 2,
-                            [2681] = 3,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2769] = 2,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 2,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 1,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 5,
-                        bossTotals = {
-                            [2791] = 1,
-                            [2792] = 2,
-                            [2793] = 2,
                         },
                     },
                     [1315] = {
@@ -2875,8 +2916,43 @@ GreatVaultOddsNS.DB = {
                 },
             },
             Protection = {
-                seasonTotalItems = 60,
+                seasonTotalItems = 64,
                 dungeonTotals = {
+                    [278] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [608] = 2,
+                            [609] = 3,
+                            [610] = 3,
+                        },
+                    },
+                    [476] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [965] = 1,
+                            [966] = 2,
+                            [967] = 2,
+                            [968] = 3,
+                        },
+                    },
+                    [945] = {
+                        totalItems = 11,
+                        bossTotals = {
+                            [1979] = 3,
+                            [1980] = 2,
+                            [1981] = 3,
+                            [1982] = 3,
+                        },
+                    },
+                    [1201] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [2495] = 2,
+                            [2509] = 2,
+                            [2512] = 1,
+                            [2514] = 3,
+                        },
+                    },
                     [1299] = {
                         totalItems = 7,
                         bossTotals = {
@@ -2893,40 +2969,6 @@ GreatVaultOddsNS.DB = {
                             [2660] = 3,
                             [2661] = 3,
                             [2662] = 1,
-                        },
-                    },
-                    [1304] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2679] = 2,
-                            [2680] = 2,
-                            [2681] = 2,
-                            [2682] = 2,
-                        },
-                    },
-                    [1309] = {
-                        totalItems = 9,
-                        bossTotals = {
-                            [2769] = 1,
-                            [2770] = 2,
-                            [2771] = 2,
-                            [2772] = 4,
-                        },
-                    },
-                    [1311] = {
-                        totalItems = 8,
-                        bossTotals = {
-                            [2776] = 2,
-                            [2777] = 3,
-                            [2778] = 3,
-                        },
-                    },
-                    [1313] = {
-                        totalItems = 6,
-                        bossTotals = {
-                            [2791] = 2,
-                            [2792] = 3,
-                            [2793] = 1,
                         },
                     },
                     [1315] = {
@@ -2950,130 +2992,2172 @@ GreatVaultOddsNS.DB = {
         },
     },
     eligibleItems = {
+        [49802] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [49805] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [49806] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [49807] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Subtlety = true,
+            },
+        },
+        [49808] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [49809] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [49810] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [49811] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [49812] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [49813] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+            },
+        },
+        [49817] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [49819] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [49823] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [49824] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [49825] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [50227] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [50228] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [50233] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [50234] = {
+            sources = {
+                encounterID = 608,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [50259] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [50263] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [50264] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [50272] = {
+            sources = {
+                encounterID = 610,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151299] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151300] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151301] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151302] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151303] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151305] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151307] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+            },
+            DRUID = {
+                Feral = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Windwalker = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [151308] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151309] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151310] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151311] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151312] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+            },
+            DEMONHUNTER = {
+                Vengeance = true,
+            },
+            DRUID = {
+                Guardian = true,
+            },
+            MONK = {
+                Brewmaster = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [151313] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151314] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151317] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151318] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151319] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151320] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [151321] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [151322] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [151323] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [151325] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [151327] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151328] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151329] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151330] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151332] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151333] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [151336] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [151337] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [151340] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [193701] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193703] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193704] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [193705] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193706] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193707] = {
+            sources = {
+                encounterID = 2514,
+                instanceID = 1201,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193708] = {
+            sources = {
+                encounterID = 2509,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193709] = {
+            sources = {
+                encounterID = 2509,
+                instanceID = 1201,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193710] = {
+            sources = {
+                encounterID = 2509,
+                instanceID = 1201,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193711] = {
+            sources = {
+                encounterID = 2509,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [193712] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193713] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193714] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [193715] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [193716] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [193717] = {
+            sources = {
+                encounterID = 2512,
+                instanceID = 1201,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+        },
+        [193718] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [193719] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [193720] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [193721] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [193722] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [193723] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+        },
         [250144] = {
             sources = {
                 encounterID = 2655,
                 instanceID = 1299,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [250214] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [250215] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
             },
             DEMONHUNTER = {
                 Devourer = true,
@@ -3141,95 +5225,25 @@ GreatVaultOddsNS.DB = {
             DRUID = {
                 Balance = true,
             },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Shadow = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [250224] = {
-            sources = {
-                encounterID = 2793,
-                instanceID = 1313,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-            },
-            DRUID = {
-                Balance = true,
-                Restoration = true,
-            },
             EVOKER = {
                 Augmentation = true,
                 Devastation = true,
-                Preservation = true,
             },
             MAGE = {
                 Arcane = true,
                 Fire = true,
                 Frost = true,
             },
-            MONK = {
-                Mistweaver = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
             PRIEST = {
-                Discipline = true,
-                Holy = true,
                 Shadow = true,
             },
             SHAMAN = {
                 Elemental = true,
-                Restoration = true,
             },
             WARLOCK = {
                 Affliction = true,
                 Demonology = true,
                 Destruction = true,
-            },
-        },
-        [250225] = {
-            sources = {
-                encounterID = 2791,
-                instanceID = 1313,
-            },
-            DEMONHUNTER = {
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Feral = true,
-                Guardian = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Enhancement = true,
             },
         },
         [250226] = {
@@ -3306,91 +5320,6 @@ GreatVaultOddsNS.DB = {
                 Fury = true,
             },
         },
-        [250228] = {
-            sources = {
-                encounterID = 2681,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Feral = true,
-                Guardian = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Protection = true,
-                Retribution = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Enhancement = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [250229] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [250238] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
         [250241] = {
             sources = {
                 encounterID = 2815,
@@ -3415,78 +5344,6 @@ GreatVaultOddsNS.DB = {
             sources = {
                 encounterID = 2660,
                 instanceID = 1300,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-            },
-            DEMONHUNTER = {
-                Vengeance = true,
-            },
-            DRUID = {
-                Guardian = true,
-            },
-            MONK = {
-                Brewmaster = true,
-            },
-            PALADIN = {
-                Protection = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [250243] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-            },
-            DEMONHUNTER = {
-                Vengeance = true,
-            },
-            DRUID = {
-                Guardian = true,
-            },
-            MONK = {
-                Brewmaster = true,
-            },
-            PALADIN = {
-                Protection = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [250244] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-            },
-            DEMONHUNTER = {
-                Vengeance = true,
-            },
-            DRUID = {
-                Guardian = true,
-            },
-            MONK = {
-                Brewmaster = true,
-            },
-            PALADIN = {
-                Protection = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [250245] = {
-            sources = {
-                encounterID = 2792,
-                instanceID = 1313,
             },
             DEATHKNIGHT = {
                 Blood = true,
@@ -3532,85 +5389,10 @@ GreatVaultOddsNS.DB = {
                 Restoration = true,
             },
         },
-        [250248] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            DRUID = {
-                Restoration = true,
-            },
-            EVOKER = {
-                Preservation = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-            },
-            SHAMAN = {
-                Restoration = true,
-            },
-        },
         [250253] = {
             sources = {
                 encounterID = 2814,
                 instanceID = 1316,
-            },
-            DRUID = {
-                Restoration = true,
-            },
-            EVOKER = {
-                Preservation = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-            },
-            SHAMAN = {
-                Restoration = true,
-            },
-        },
-        [250254] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            DRUID = {
-                Restoration = true,
-            },
-            EVOKER = {
-                Preservation = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PALADIN = {
-                Holy = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-            },
-            SHAMAN = {
-                Restoration = true,
-            },
-        },
-        [250255] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
             },
             DRUID = {
                 Restoration = true,
@@ -3756,78 +5538,6 @@ GreatVaultOddsNS.DB = {
             sources = {
                 encounterID = 2812,
                 instanceID = 1315,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [250259] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
             },
             DEATHKNIGHT = {
                 Blood = true,
@@ -5028,972 +6738,6 @@ GreatVaultOddsNS.DB = {
                 Outlaw = true,
             },
         },
-        [251123] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            DRUID = {
-                Balance = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251124] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251125] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251126] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251127] = {
-            sources = {
-                encounterID = 2679,
-                instanceID = 1304,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251128] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            HUNTER = {
-                Survival = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Subtlety = true,
-            },
-        },
-        [251129] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251130] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251131] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251132] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251133] = {
-            sources = {
-                encounterID = 2680,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251134] = {
-            sources = {
-                encounterID = 2681,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-            },
-        },
-        [251135] = {
-            sources = {
-                encounterID = 2681,
-                instanceID = 1304,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251136] = {
-            sources = {
-                encounterID = 2681,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251137] = {
-            sources = {
-                encounterID = 2681,
-                instanceID = 1304,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251138] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251139] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251140] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251141] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251142] = {
-            sources = {
-                encounterID = 2682,
-                instanceID = 1304,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251143] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            DEMONHUNTER = {
-                Havoc = true,
-                Vengeance = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Outlaw = true,
-            },
-            SHAMAN = {
-                Enhancement = true,
-            },
-        },
-        [251144] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251145] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251146] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251147] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251148] = {
-            sources = {
-                encounterID = 2776,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251149] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            DRUID = {
-                Feral = true,
-                Guardian = true,
-            },
-            HUNTER = {
-                Survival = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-        },
-        [251150] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Restoration = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [251151] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251152] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251153] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251154] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251155] = {
-            sources = {
-                encounterID = 2777,
-                instanceID = 1311,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251156] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            DRUID = {
-                Balance = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
         [251157] = {
             sources = {
                 encounterID = 2815,
@@ -6013,75 +6757,6 @@ GreatVaultOddsNS.DB = {
                 Arms = true,
                 Fury = true,
                 Protection = true,
-            },
-        },
-        [251158] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251159] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251160] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
             },
         },
         [251161] = {
@@ -6217,27 +6892,6 @@ GreatVaultOddsNS.DB = {
                 Arms = true,
                 Fury = true,
                 Protection = true,
-            },
-        },
-        [251165] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
             },
         },
         [251166] = {
@@ -6396,78 +7050,6 @@ GreatVaultOddsNS.DB = {
                 Destruction = true,
             },
         },
-        [251173] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
         [251174] = {
             sources = {
                 encounterID = 2810,
@@ -6587,542 +7169,6 @@ GreatVaultOddsNS.DB = {
             sources = {
                 encounterID = 2812,
                 instanceID = 1315,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251180] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            HUNTER = {
-                Survival = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Subtlety = true,
-            },
-        },
-        [251181] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-            },
-        },
-        [251182] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251183] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251184] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-        },
-        [251185] = {
-            sources = {
-                encounterID = 2769,
-                instanceID = 1309,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251186] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            DEMONHUNTER = {
-                Havoc = true,
-                Vengeance = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Outlaw = true,
-            },
-            SHAMAN = {
-                Enhancement = true,
-            },
-        },
-        [251187] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-            },
-        },
-        [251188] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251189] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251190] = {
-            sources = {
-                encounterID = 2770,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251191] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            DRUID = {
-                Balance = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Mistweaver = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251192] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            DRUID = {
-                Feral = true,
-                Guardian = true,
-            },
-            HUNTER = {
-                Survival = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-        },
-        [251193] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251194] = {
-            sources = {
-                encounterID = 2771,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251195] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Frost = true,
-            },
-            PALADIN = {
-                Protection = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [251196] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Restoration = true,
-            },
-            WARRIOR = {
-                Protection = true,
-            },
-        },
-        [251197] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251198] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251199] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251200] = {
-            sources = {
-                encounterID = 2772,
-                instanceID = 1309,
             },
             EVOKER = {
                 Augmentation = true,
@@ -7475,27 +7521,6 @@ GreatVaultOddsNS.DB = {
                 Destruction = true,
             },
         },
-        [251214] = {
-            sources = {
-                encounterID = 2778,
-                instanceID = 1311,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
         [251215] = {
             sources = {
                 encounterID = 2815,
@@ -7616,10 +7641,183 @@ GreatVaultOddsNS.DB = {
                 Protection = true,
             },
         },
-        [251218] = {
+        [252411] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 967,
+                instanceID = 476,
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [252418] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+            },
+            DEMONHUNTER = {
+                Vengeance = true,
+            },
+            DRUID = {
+                Guardian = true,
+            },
+            MONK = {
+                Brewmaster = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [252420] = {
+            sources = {
+                encounterID = 968,
+                instanceID = 476,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [252421] = {
+            sources = {
+                encounterID = 609,
+                instanceID = 278,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+            },
+            DEMONHUNTER = {
+                Vengeance = true,
+            },
+            DRUID = {
+                Guardian = true,
+            },
+            MONK = {
+                Brewmaster = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [258046] = {
+            sources = {
+                encounterID = 965,
+                instanceID = 476,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [258047] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258048] = {
+            sources = {
+                encounterID = 967,
+                instanceID = 476,
             },
             DEATHKNIGHT = {
                 Frost = true,
@@ -7631,10 +7829,212 @@ GreatVaultOddsNS.DB = {
                 Protection = true,
             },
         },
-        [251219] = {
+        [258049] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 968,
+                instanceID = 476,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [258050] = {
+            sources = {
+                encounterID = 968,
+                instanceID = 476,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+        },
+        [258218] = {
+            sources = {
+                encounterID = 965,
+                instanceID = 476,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258412] = {
+            sources = {
+                encounterID = 965,
+                instanceID = 476,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+            },
+        },
+        [258436] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Subtlety = true,
+            },
+        },
+        [258438] = {
+            sources = {
+                encounterID = 967,
+                instanceID = 476,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Outlaw = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+        },
+        [258472] = {
+            sources = {
+                encounterID = 967,
+                instanceID = 476,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258484] = {
+            sources = {
+                encounterID = 968,
+                instanceID = 476,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+        },
+        [258514] = {
+            sources = {
+                encounterID = 1979,
+                instanceID = 945,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258516] = {
+            sources = {
+                encounterID = 1980,
+                instanceID = 945,
             },
             MAGE = {
                 Arcane = true,
@@ -7652,10 +8052,205 @@ GreatVaultOddsNS.DB = {
                 Destruction = true,
             },
         },
-        [251220] = {
+        [258523] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258524] = {
+            sources = {
+                encounterID = 1981,
+                instanceID = 945,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Outlaw = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+        },
+        [258525] = {
+            sources = {
+                encounterID = 1982,
+                instanceID = 945,
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [258529] = {
+            sources = {
+                encounterID = 2509,
+                instanceID = 1201,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+        },
+        [258531] = {
+            sources = {
+                encounterID = 2495,
+                instanceID = 1201,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [258574] = {
+            sources = {
+                encounterID = 965,
+                instanceID = 476,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258575] = {
+            sources = {
+                encounterID = 965,
+                instanceID = 476,
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [258576] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
             },
             EVOKER = {
                 Augmentation = true,
@@ -7673,10 +8268,58 @@ GreatVaultOddsNS.DB = {
                 Restoration = true,
             },
         },
-        [251221] = {
+        [258577] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 966,
+                instanceID = 476,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [258578] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [258579] = {
+            sources = {
+                encounterID = 966,
+                instanceID = 476,
             },
             DEATHKNIGHT = {
                 Blood = true,
@@ -7694,10 +8337,10 @@ GreatVaultOddsNS.DB = {
                 Protection = true,
             },
         },
-        [251222] = {
+        [258580] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 967,
+                instanceID = 476,
             },
             MAGE = {
                 Arcane = true,
@@ -7715,10 +8358,10 @@ GreatVaultOddsNS.DB = {
                 Destruction = true,
             },
         },
-        [251223] = {
+        [258581] = {
             sources = {
-                encounterID = 2791,
-                instanceID = 1313,
+                encounterID = 967,
+                instanceID = 476,
             },
             DEMONHUNTER = {
                 Devourer = true,
@@ -7742,115 +8385,10 @@ GreatVaultOddsNS.DB = {
                 Subtlety = true,
             },
         },
-        [251224] = {
+        [258582] = {
             sources = {
-                encounterID = 2792,
-                instanceID = 1313,
-            },
-            DEMONHUNTER = {
-                Havoc = true,
-                Vengeance = true,
-            },
-            HUNTER = {
-                Survival = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Outlaw = true,
-            },
-            SHAMAN = {
-                Enhancement = true,
-            },
-        },
-        [251225] = {
-            sources = {
-                encounterID = 2792,
-                instanceID = 1313,
-            },
-            DRUID = {
-                Balance = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251226] = {
-            sources = {
-                encounterID = 2792,
-                instanceID = 1313,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-        },
-        [251227] = {
-            sources = {
-                encounterID = 2792,
-                instanceID = 1313,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-        },
-        [251228] = {
-            sources = {
-                encounterID = 2792,
-                instanceID = 1313,
+                encounterID = 967,
+                instanceID = 476,
             },
             EVOKER = {
                 Augmentation = true,
@@ -7868,10 +8406,10 @@ GreatVaultOddsNS.DB = {
                 Restoration = true,
             },
         },
-        [251229] = {
+        [258583] = {
             sources = {
-                encounterID = 2792,
-                instanceID = 1313,
+                encounterID = 967,
+                instanceID = 476,
             },
             DEATHKNIGHT = {
                 Blood = true,
@@ -7889,39 +8427,10 @@ GreatVaultOddsNS.DB = {
                 Protection = true,
             },
         },
-        [251230] = {
+        [258584] = {
             sources = {
-                encounterID = 2793,
-                instanceID = 1313,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            PALADIN = {
-                Retribution = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-            },
-        },
-        [251231] = {
-            sources = {
-                encounterID = 2793,
-                instanceID = 1313,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-        },
-        [251232] = {
-            sources = {
-                encounterID = 2793,
-                instanceID = 1313,
+                encounterID = 968,
+                instanceID = 476,
             },
             MAGE = {
                 Arcane = true,
@@ -7939,10 +8448,10 @@ GreatVaultOddsNS.DB = {
                 Destruction = true,
             },
         },
-        [251233] = {
+        [258585] = {
             sources = {
-                encounterID = 2793,
-                instanceID = 1313,
+                encounterID = 968,
+                instanceID = 476,
             },
             EVOKER = {
                 Augmentation = true,
@@ -7960,82 +8469,10 @@ GreatVaultOddsNS.DB = {
                 Restoration = true,
             },
         },
-        [251234] = {
+        [258586] = {
             sources = {
-                encounterID = 2793,
-                instanceID = 1313,
-            },
-            DEATHKNIGHT = {
-                Blood = true,
-                Frost = true,
-                Unholy = true,
-            },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
-            PALADIN = {
-                Holy = true,
-                Protection = true,
-                Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
-            },
-            WARRIOR = {
-                Arms = true,
-                Fury = true,
-                Protection = true,
-            },
-        },
-        [251235] = {
-            sources = {
-                encounterID = 2793,
-                instanceID = 1313,
+                encounterID = 968,
+                instanceID = 476,
             },
             DEMONHUNTER = {
                 Devourer = true,
@@ -8059,71 +8496,20 @@ GreatVaultOddsNS.DB = {
                 Subtlety = true,
             },
         },
-        [252258] = {
+        [258587] = {
             sources = {
-                encounterID = 2792,
-                instanceID = 1313,
+                encounterID = 968,
+                instanceID = 476,
             },
             DEATHKNIGHT = {
                 Blood = true,
                 Frost = true,
                 Unholy = true,
             },
-            DEMONHUNTER = {
-                Devourer = true,
-                Havoc = true,
-                Vengeance = true,
-            },
-            DRUID = {
-                Balance = true,
-                Feral = true,
-                Guardian = true,
-                Restoration = true,
-            },
-            EVOKER = {
-                Augmentation = true,
-                Devastation = true,
-                Preservation = true,
-            },
-            HUNTER = {
-                ["Beast Mastery"] = true,
-                Marksmanship = true,
-                Survival = true,
-            },
-            MAGE = {
-                Arcane = true,
-                Fire = true,
-                Frost = true,
-            },
-            MONK = {
-                Brewmaster = true,
-                Mistweaver = true,
-                Windwalker = true,
-            },
             PALADIN = {
                 Holy = true,
                 Protection = true,
                 Retribution = true,
-            },
-            PRIEST = {
-                Discipline = true,
-                Holy = true,
-                Shadow = true,
-            },
-            ROGUE = {
-                Assassination = true,
-                Outlaw = true,
-                Subtlety = true,
-            },
-            SHAMAN = {
-                Elemental = true,
-                Enhancement = true,
-                Restoration = true,
-            },
-            WARLOCK = {
-                Affliction = true,
-                Demonology = true,
-                Destruction = true,
             },
             WARRIOR = {
                 Arms = true,
