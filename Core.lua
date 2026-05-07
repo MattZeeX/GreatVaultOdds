@@ -1,6 +1,7 @@
 local addonName, GreatVaultOddsNS = ...
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local classNameByID = GreatVaultOddsNS.ClassNameByID
+local Utils = GreatVaultOddsNS.Utils
 
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 local manualMilestoneSeasonIDOverride = false -- 105
@@ -8,25 +9,11 @@ local manualMilestoneSeasonIDOverride = false -- 105
 local activeMilestoneSeasonID
 local seasonLootDB
 
-local classColors = RAID_CLASS_COLORS
-local fallbackColor = CreateColor(1.000, 0.824, 0.000) or {r = 1, g = 0.824, b = 0}
-local normalFontColor = NORMAL_FONT_COLOR or fallbackColor
-
 local debugLogging = false
 
 local defaultAddonOptions = {
     devMode = false,
 }
-
-local function addToDevTool(data, name)
-    if not DevTool then return end -- or (not devMode and not debugLogging), can make a separate loggingEnabled function if wanna handle both
-
-    if data ~= nil then -- Data could potentially be a meaningful false, I assume that there is no such thing as a meaningful nil here?
-        DevTool:AddData(data, name)
-    else
-        DevTool:AddData(tostring(data), name)
-    end
-end
 
 local function addMissingDefaults(userOptions, defaultOptions) -- Validates that all empty user options are populated with default values
     for option, defaultValue in pairs(defaultOptions) do
@@ -42,18 +29,6 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
             userOptions[option] = defaultValue
         end
     end
-end
-
-local function getClassColorTable(className) -- Accepts classID or classFile and returns respective Class Color object
-    if type(className) == "number" then -- className is ID, not classFile
-        className = classNameByID[className]
-    end
-
-    return classColors[className]
-end
-
-local function getTooltipColorForClass(className) -- Accepts classID or classFile and returns respective Class Color object or fallbackColor object/table if missing
-    return getClassColorTable(className) or normalFontColor
 end
 
 local lootDBInitializationComplete = false
@@ -421,7 +396,7 @@ end
 local function appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
     ensurePlayerSpecsSorted()
 
-    local tooltipColor = getTooltipColorForClass(playerClassName)
+    local tooltipColor = Utils.getTooltipColorForClass(playerClassName)
     local playerEligibleSpecs = seasonLootDB.eligibleItems[itemID][playerClassName]
     if not playerEligibleSpecs then
         tooltip:AddLine("Item is not loot eligible for your class!", tooltipColor.r, tooltipColor.g, tooltipColor.b)
@@ -441,7 +416,7 @@ end
 local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
     if not data then
         print("Error, data does not exist - GreatVaultOdds")
-        addToDevTool(data, "GreatVaultOdds - plain data for "..tooltip:GetName()) -- Might get a nil error here if tooltip also doesn't exist? Wanted to use CopyTable(data) but if data is nil will error.
+        Utils.addToDevTool(data, "GreatVaultOdds - plain data for "..tooltip:GetName()) -- Might get a nil error here if tooltip also doesn't exist? Wanted to use CopyTable(data) but if data is nil will error.
     else
         if not lootDBInitializationComplete or not hasValidLootDB then return end -- Print which it is (one time only), so user not confused by tooltips not showing.
         local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
@@ -485,7 +460,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                 end
                 table.sort(eligibleClasses)
                 for _, classID in ipairs(eligibleClasses) do
-                    local tooltipColor = getTooltipColorForClass(classID)
+                    local tooltipColor = Utils.getTooltipColorForClass(classID)
                     tooltip:AddLine(classTooltipsByID[classID], tooltipColor.r, tooltipColor.g, tooltipColor.b) -- will add custom text wrapping as a config option
                 end
             else -- The normal path for the end-user tooltip, sorry it's here at the bottom. I will invert the if block I promise.
