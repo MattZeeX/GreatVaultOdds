@@ -11,5 +11,7 @@ Data/ClassSpecIDs.lua
 Data/DungeonsByMilestoneSeason.lua
 Data/LootDB_Midnight_Preseason.lua
 Data/LootDB_Midnight_S1.lua
+
 Utils.lua
+Tooltip.lua
 Core.lua

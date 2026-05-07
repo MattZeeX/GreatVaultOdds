@@ -1,13 +1,11 @@
 local addonName, GreatVaultOddsNS = ...
+
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
-local classNameByID = GreatVaultOddsNS.ClassNameByID
 local Utils = GreatVaultOddsNS.Utils
+local Tooltip = GreatVaultOddsNS.Tooltip
 
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 local manualMilestoneSeasonIDOverride = false -- 105
-
-local activeMilestoneSeasonID
-local seasonLootDB
 
 local debugLogging = false
 
@@ -31,32 +29,45 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
     end
 end
 
-local lootDBInitializationComplete = false
 local lootDBInitializationFailed = false
-local hasValidLootDB = false
-local function validateLootDB()
-    hasValidLootDB = seasonLootDB and seasonLootDB.eligibleItems and seasonLootDB.eligibleItemCount
+local lootDBValidationFailed = false
+local function validateLootDB(lootDB, activeMilestoneSeasonID)
+    local hasValidLootDB = lootDB and lootDB.eligibleItems and lootDB.eligibleItemCount
 
-    if not hasValidLootDB and not lootDBInitializationFailed then
-        lootDBInitializationFailed = true
+    if not hasValidLootDB and not lootDBValidationFailed then
+        -- prints error on the first failure only
+        -- redundant because function only gets called once
+        lootDBValidationFailed = true
         print("GreatVaultOdds has no valid loot DB for milestone season ID:", activeMilestoneSeasonID)
     end
 
     return hasValidLootDB
 end
 
-local function trySetActiveLootDB()
+local function trySetActiveLootDB(self)
     local _, milestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
     milestoneSeasonID = manualMilestoneSeasonIDOverride or milestoneSeasonID
     if not milestoneSeasonID or milestoneSeasonID == -1 then
+        C_MythicPlus.RequestMapInfo()
         return
     end
 
-    activeMilestoneSeasonID = milestoneSeasonID
-    seasonLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
-    lootDBInitializationComplete = true
-    validateLootDB()
-    return true
+    self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
+    local activeMilestoneSeasonID = milestoneSeasonID
+    local activeLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
+
+    if not activeLootDB and not lootDBInitializationFailed then
+        -- prints error on the first failure only
+        -- redundant because function only gets this far once
+        lootDBInitializationFailed = true
+        print("GreatVaultOdds has no loot DB for milestone season ID:", activeMilestoneSeasonID)
+        return
+    end
+
+    if validateLootDB(activeLootDB, activeMilestoneSeasonID) then -- inverse? But why?
+        Tooltip.SetActiveLootDB(activeLootDB)
+        Tooltip.RegisterTooltipHandler()
+    end
 end
 
 local function OnEvent(self, event, loadedAddonName)
@@ -68,10 +79,7 @@ local function OnEvent(self, event, loadedAddonName)
         addMissingDefaults(GreatVaultOddsAddonOptions, defaultAddonOptions)
         self:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_LOGIN" then
-        C_MythicPlus.RequestMapInfo() -- I want to count these calls to see how many it takes, curious
-        if trySetActiveLootDB() then
-            self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
-        end
+        trySetActiveLootDB(self)
 
         if GreatVaultOddsAddonOptions.devMode or debugLogging then
             C_Timer.After(5, function()
@@ -80,11 +88,7 @@ local function OnEvent(self, event, loadedAddonName)
         end
         self:UnregisterEvent("PLAYER_LOGIN")
     elseif event == "CHALLENGE_MODE_MAPS_UPDATE" then
-        if trySetActiveLootDB() then -- Consider inverting
-            self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
-        else
-            C_MythicPlus.RequestMapInfo() -- Same as above
-        end
+        trySetActiveLootDB(self)
     end
 end
 
@@ -349,127 +353,4 @@ function SlashCmdList.GREATVAULTODDS(msg, editBox)
             end
         end
     end
-end
-
-local playerSpecNames
-local playerClassName
-local hasSortedPlayerSpecs = false
-
-local tooltipStyle = { -- Includes future tooltip format styles
-    dropRateSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
-    lootSourceSeparator = {"||", " || ", "  || ", " / ", "  / ", ", "},
-    specLabel = ": "
-}
-local ADDON_TOOLTIP_HEADER = "GreatVaultOdds"
-local LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..tooltipStyle.lootSourceSeparator[2].."M+"..tooltipStyle.lootSourceSeparator[2].."Boss"
-
-local function ensurePlayerSpecsSorted()
-    if hasSortedPlayerSpecs then return end
-
-    playerSpecNames = {}
-    playerClassName, _ = UnitClassBase("player")
-    for specName in pairs(classSpecIDs[playerClassName].specData) do
-        table.insert(playerSpecNames, specName)
-    end
-    table.sort(playerSpecNames)
-    hasSortedPlayerSpecs = true
-end
-
-local function buildSpecOddsLine(className, specName, instanceID, encounterID)
-    local specCounts = seasonLootDB.eligibleItemCount[className] and seasonLootDB.eligibleItemCount[className][specName]
-    local seasonTotal = specCounts and specCounts.seasonTotalItems
-
-    local dungeonCounts = specCounts and specCounts.dungeonTotals and specCounts.dungeonTotals[instanceID]
-    local dungeonTotal = dungeonCounts and dungeonCounts.totalItems
-
-    local bossTotalsByEncounter = dungeonCounts and dungeonCounts.bossTotals
-    local bossTotal = bossTotalsByEncounter and bossTotalsByEncounter[encounterID]
-
-    local missingLootData = not (seasonTotal and dungeonTotal and bossTotal)
-    if missingLootData then return end
-
-    local iconID = classSpecIDs[className].specData[specName].iconID
-    local iconText = "|T"..iconID..":0|t"
-    return iconText.." "..specName..tooltipStyle.specLabel.."1/"..seasonTotal..tooltipStyle.dropRateSeparator[2].."1/"..dungeonTotal..tooltipStyle.dropRateSeparator[2].."1/"..bossTotal
-end
-
-local function appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
-    ensurePlayerSpecsSorted()
-
-    local tooltipColor = Utils.getTooltipColorForClass(playerClassName)
-    local playerEligibleSpecs = seasonLootDB.eligibleItems[itemID][playerClassName]
-    if not playerEligibleSpecs then
-        tooltip:AddLine("Item is not loot eligible for your class!", tooltipColor.r, tooltipColor.g, tooltipColor.b)
-        return
-    end
-
-    for _, specName in ipairs(playerSpecNames) do
-        if playerEligibleSpecs[specName] then
-            local specTooltipLine = buildSpecOddsLine(playerClassName, specName, instanceID, encounterID)
-            if specTooltipLine then
-                tooltip:AddLine(specTooltipLine, tooltipColor.r, tooltipColor.g, tooltipColor.b)
-            end
-        end
-    end
-end
-
-local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck tooltip and data?
-    if not data then
-        print("Error, data does not exist - GreatVaultOdds")
-        Utils.addToDevTool(data, "GreatVaultOdds - plain data for "..tooltip:GetName()) -- Might get a nil error here if tooltip also doesn't exist? Wanted to use CopyTable(data) but if data is nil will error.
-    else
-        if not lootDBInitializationComplete or not hasValidLootDB then return end -- Print which it is (one time only), so user not confused by tooltips not showing.
-        local itemID = data.id -- https://warcraft.wiki.gg/wiki/Struct_TooltipData
-        if seasonLootDB.eligibleItems[itemID] then -- itemID exists in current season dungeons
-            local itemEntry = seasonLootDB.eligibleItems[itemID]
-            local sourceInfo = itemEntry.sources
-            if not sourceInfo then return end
-            local instanceID = sourceInfo.instanceID
-            local encounterID = sourceInfo.encounterID
-            if not instanceID  or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals? If not, maybe don't need separate early returns?
-            local devModeActive = GreatVaultOddsAddonOptions.devMode
-            tooltip:AddLine(" ") -- Add a gap between the last tooltip line and our tooltip
-            tooltip:AddLine(ADDON_TOOLTIP_HEADER..": "..LOOT_SOURCE_TOOLTIP_HEADER)
-
-            if devModeActive then -- Dirty hack to see all specs in devMode
-                local classTooltipsByID = {}
-                for className, classData in pairs(classSpecIDs) do
-                    if seasonLootDB.eligibleItems[itemID][className] then
-                        local eligibleSpecs = {}
-                        for specName in pairs(classData.specData) do
-                            if seasonLootDB.eligibleItems[itemID][className][specName] then
-                                table.insert(eligibleSpecs, specName)
-                            end
-                        end
-                        table.sort(eligibleSpecs)
-                        local finalTooltip = ""
-                        for _, sortedSpecName in ipairs(eligibleSpecs) do
-                            local specTooltipLine = buildSpecOddsLine(className, sortedSpecName, instanceID, encounterID)
-                            if specTooltipLine then
-                                finalTooltip = finalTooltip..specTooltipLine.." "
-                            end
-                        end
-                        classTooltipsByID[classData.classID] = finalTooltip -- Could check if ~="", can store an empty tooltip if finalTooltip is still the empty string, though this should never occur unless a class isn't valid. But if it isn't valid it won't be here, and if it is valid then it will have a corresponding spec and tooltip unless db is malformed/corrupted, but I notice that before shipping.
-                        -- I am only indexing by classID so that I can simply use table.sort for the final tooltip to be sorted "Blizz-like"
-                        -- I could just sort by classSpecIDs[className].classID
-                    end
-                end
-                local eligibleClasses = {}
-                for classID in pairs(classTooltipsByID) do
-                    table.insert(eligibleClasses, classID)
-                end
-                table.sort(eligibleClasses)
-                for _, classID in ipairs(eligibleClasses) do
-                    local tooltipColor = Utils.getTooltipColorForClass(classID)
-                    tooltip:AddLine(classTooltipsByID[classID], tooltipColor.r, tooltipColor.g, tooltipColor.b) -- will add custom text wrapping as a config option
-                end
-            else -- The normal path for the end-user tooltip, sorry it's here at the bottom. I will invert the if block I promise.
-                appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
-            end
-        end
-    end
-end
-
-if TooltipDataProcessor then
-    TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, tooltipHandler)
 end
