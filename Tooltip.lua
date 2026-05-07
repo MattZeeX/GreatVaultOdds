@@ -4,6 +4,7 @@ GreatVaultOddsNS.Tooltip = GreatVaultOddsNS.Tooltip or {}
 local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local Utils = GreatVaultOddsNS.Utils
 local Tooltip = GreatVaultOddsNS.Tooltip
+local DBGenerator = GreatVaultOddsNS.DBGenerator
 
 local activeLootDB
 
