@@ -4,6 +4,8 @@ local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local Utils = GreatVaultOddsNS.Utils
 local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
+local SlashCommands = GreatVaultOddsNS.SlashCommands
+local Core = GreatVaultOddsNS.Core
 
 local function activeSeasonIterator()
     local index = 0
