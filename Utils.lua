@@ -1,8 +1,7 @@
 local addonName, GreatVaultOddsNS = ...
-
-local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
-local classNameByID = GreatVaultOddsNS.ClassNameByID
 GreatVaultOddsNS.Utils = GreatVaultOddsNS.Utils or {}
+
+local classNameByID = GreatVaultOddsNS.ClassNameByID
 local Utils = GreatVaultOddsNS.Utils
 
 local classColors = RAID_CLASS_COLORS
