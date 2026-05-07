@@ -18,10 +18,12 @@ local tooltipStyle = { -- Includes future tooltip format styles
     specLabel = ": "
 }
 
-local activeSeparator = tooltipStyle.lootSourceSeparator[2]
+local activeLootSourceSeparator = tooltipStyle.lootSourceSeparator[2]
+local activeDropRateSeparator = tooltipStyle.dropRateSeparator[2]
+local activeSpecLabel = tooltipStyle.specLabel
 
 local ADDON_TOOLTIP_HEADER = "GreatVaultOdds"
-local LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..activeSeparator.."M+"..activeSeparator.."Boss"
+local LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..activeLootSourceSeparator.."M+"..activeLootSourceSeparator.."Boss"
 
 local function ensurePlayerSpecsSorted()
     if hasSortedPlayerSpecs then return end
@@ -50,7 +52,7 @@ local function buildSpecOddsLine(className, specName, instanceID, encounterID)
 
     local iconID = classSpecIDs[className].specData[specName].iconID
     local iconText = "|T"..iconID..":0|t"
-    return iconText.." "..specName..tooltipStyle.specLabel.."1/"..seasonTotal..tooltipStyle.dropRateSeparator[2].."1/"..dungeonTotal..tooltipStyle.dropRateSeparator[2].."1/"..bossTotal
+    return iconText.." "..specName..activeSpecLabel.."1/"..seasonTotal..activeDropRateSeparator.."1/"..dungeonTotal..activeDropRateSeparator.."1/"..bossTotal
 end
 
 local function appendPlayerClassTooltipLines(tooltip, itemID, instanceID, encounterID)
