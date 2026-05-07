@@ -1,6 +1,5 @@
 local addonName, GreatVaultOddsNS = ...
 
-local classSpecIDs = GreatVaultOddsNS.ClassSpecIDs
 local Utils = GreatVaultOddsNS.Utils
 local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
@@ -8,6 +7,7 @@ local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
 
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
+-- For testing viewing a future season
 local manualMilestoneSeasonIDOverride = false -- 105
 
 local debugLogging = false
