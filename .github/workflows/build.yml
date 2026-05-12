@@ -1,0 +1,22 @@
+name: Package Addon
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  package:
+    name: Package Addon
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout addon
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Build addon, and publish GitHub release with package
+        uses: BigWigsMods/packager@master
+        env:
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
