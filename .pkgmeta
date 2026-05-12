@@ -1,0 +1,4 @@
+ignore:
+  - Archive
+  - docs
+  - snippets
