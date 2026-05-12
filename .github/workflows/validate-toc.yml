@@ -1,0 +1,24 @@
+name: Validate TOC files
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  validate:
+    name: Validating TOC files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout addon
+        uses: actions/checkout@v6
+
+      - name: Validate TOC files exist
+        shell: pwsh
+        run: pwsh -NoProfile -ExecutionPolicy Bypass -File ./.github/scripts/Validate-TocFiles.ps1
