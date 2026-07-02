@@ -5,6 +5,7 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgression = GreatVaultOddsNS.PlayerRaidProgression
 
 local function showHelp() -- TODO: Make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically with more detail
     print("|cFFE6CC99Great Vault Odds|r will display the chance of each spec receiving an item in the Great Vault on the corresponding item's tooltip.")
@@ -29,6 +30,9 @@ local validCommands = { -- slashCommandMap or commandConfig?
             gen = {},
             reset = {}
         },
+    },
+    progress = {
+        devModeRequired = true,
     },
 }
 
@@ -113,6 +117,22 @@ local function slashCommandHandler(msg, editBox)
                     GreatVaultOddsDB = {}
                     GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
+                end
+            elseif cmd == "progress" then
+                -- Temp
+                local currentSeason = 105
+                for instanceID, instanceInfo in pairs(GreatVaultOddsNS.RaidProgressionStatisticIDs[currentSeason]) do
+                    print("**"..instanceInfo.instanceName.."**")
+                    for bossIndex, bossInfo in ipairs(instanceInfo.bosses) do
+                        print(bossIndex..":", bossInfo.encounterName..":", "LFR:", GetStatistic(bossInfo.statistics[17])..",", "N:", GetStatistic(bossInfo.statistics[14])..",", "H:", GetStatistic(bossInfo.statistics[15])..",", "M:", GetStatistic(bossInfo.statistics[16])..",")
+                        --[[
+                        for difficultyID, statisticID in pairs(bossInfo.statistics) do
+                            local _, achieveName = GetAchievementInfo(statisticID)
+                            print("Expected:", achieveName)
+                            print("Actual:", instanceInfo.instanceName, bossInfo.encounterName, "on", difficultyID, "difficulty:", GetStatistic(statisticID), "kills")
+                            Utils.addToDevTool(GetStatistic(statisticID), "Difficulty "..difficultyID.." kills:")
+                        end --]]
+                    end
                 end
             end
         end
