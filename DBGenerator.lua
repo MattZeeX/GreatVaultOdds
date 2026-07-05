@@ -6,6 +6,10 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local LootSource = GreatVaultOddsNS.LootSource
+local ignoredLootItemIDs = GreatVaultOddsNS.IgnoredLootItemIDs or {}
+local raidEncounterDataByMilestoneSeasonID = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID
+local raidEncounterIndexByJournalEncounterID = GreatVaultOddsNS.RaidEncounterIndexByJournalEncounterID
 
 local function activeSeasonIterator()
     local index = 0
@@ -49,6 +53,56 @@ local function instanceIterator(milestoneSeasonID)
     return activeSeasonIterator()
 end
 
+local function activeRaidIterator()
+    local index = 0
+    return function()
+        local journalInstanceID, instanceName, dungeonAreaMapID, isWorldBoss
+        repeat
+            index = index + 1
+            journalInstanceID = EJ_GetInstanceByIndex(index, true)
+            if not journalInstanceID then return end
+
+            EJ_SelectInstance(journalInstanceID)
+            instanceName, _, _, _, _, _, dungeonAreaMapID = EJ_GetInstanceInfo(journalInstanceID)
+            isWorldBoss = dungeonAreaMapID == 0
+        until not isWorldBoss
+
+        return journalInstanceID, instanceName
+    end
+end
+
+local function specificRaidIterator(milestoneSeasonID)
+    local seasonRaidData = raidEncounterDataByMilestoneSeasonID[milestoneSeasonID]
+    local index = 0
+    local journalInstanceIDs = {}
+
+    for journalInstanceID in pairs(seasonRaidData or {}) do
+        table.insert(journalInstanceIDs, journalInstanceID)
+    end
+
+    return function()
+        index = index + 1
+        local journalInstanceID = journalInstanceIDs[index]
+        if not journalInstanceID then return end
+
+        EJ_SelectInstance(journalInstanceID)
+        return journalInstanceID, seasonRaidData[journalInstanceID].instanceName
+    end
+end
+
+local function raidIterator(milestoneSeasonID)
+    if milestoneSeasonID then return specificRaidIterator(milestoneSeasonID) end
+
+    return activeRaidIterator()
+end
+
+local function getConfiguredRaidBossCount(milestoneSeasonID, journalInstanceID)
+    local seasonRaidData = milestoneSeasonID and raidEncounterDataByMilestoneSeasonID[milestoneSeasonID]
+    local raidData = seasonRaidData and seasonRaidData[journalInstanceID]
+
+    return raidData and raidData.bosses and #raidData.bosses or 0
+end
+
 local function disableEJ()
     if EncounterJournal then
         EncounterJournal:UnregisterEvent("EJ_LOOT_DATA_RECIEVED")
@@ -72,11 +126,7 @@ local function enableEJ()
 end
 
 local equippableCache = {}
--- generateDBForAllSpecs
-function DBGenerator.generateDBForAllSpecs(milestoneSeasonID, alreadyRan)
-    EJ_SelectTier(EJ_GetNumTiers())
-    disableEJ()
-
+local function generateDungeonDBForAllSpecs(milestoneSeasonID)
     local eligibleItemsByID = GreatVaultOddsDB.eligibleItems
     local eligibleItemCountsByClass = GreatVaultOddsDB.eligibleItemCount
 
@@ -112,7 +162,7 @@ function DBGenerator.generateDBForAllSpecs(milestoneSeasonID, alreadyRan)
                     local itemID = itemInfo and itemInfo.itemID
                     local sourceEncounterID = itemInfo and itemInfo.encounterID or "Unknown Source" -- EncounterID for which the item drops. We'll need to add the itemID to dev tool if unknown source because table just tracks count.
                     local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID) -- itemInfo.name ~= nil produces similar results, the name field is nil when the item is not cached.
-                    if lootDataCached then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available. Cached by us as equippable vs data cached by the game.
+                    if lootDataCached and not ignoredLootItemIDs[itemID] then -- rename variable, was more accurate when testing cached loot but now care about if loot data is available. Cached by us as equippable vs data cached by the game.
                         -- TODO: distinguish between "cache" types
                         local known = equippableCache[itemID]
                         if known == nil then -- itemID equip status not yet cached. If it's false, we know the item is not equippable so don't need to cache it, but also won't use it.
@@ -145,8 +195,134 @@ function DBGenerator.generateDBForAllSpecs(milestoneSeasonID, alreadyRan)
             end
         end
     end
+end
+
+local function addCumulativeBossTotals(raidCounts, maxBossIndex)
+    local runningTotal = 0
+
+    for bossIndex = 1, maxBossIndex do
+        runningTotal = runningTotal + (raidCounts.bossTotals[bossIndex] or 0)
+        raidCounts.cumulativeBossTotals[bossIndex] = runningTotal
+    end
+end
+
+local function generateRaidDBForAllSpecs(milestoneSeasonID)
+    local eligibleItemsByID = GreatVaultOddsDB.eligibleItems
+    local eligibleItemCountsByClass = GreatVaultOddsDB.eligibleItemCount
+
+    for className, classData in pairs(classSpecIDs) do
+        eligibleItemCountsByClass[className] = eligibleItemCountsByClass[className] or {}
+        local classCounts = eligibleItemCountsByClass[className]
+
+        for specName, specTable in pairs(classData.specData) do
+            EJ_SetLootFilter(classData.classID, specTable.specID)
+
+            classCounts[specName] = classCounts[specName] or {}
+            local specCounts = classCounts[specName]
+
+            specCounts.raidTotals = specCounts.raidTotals or {}
+            local raidTotalsByInstance = specCounts.raidTotals
+
+            for journalInstanceID, instanceName in raidIterator(milestoneSeasonID) do
+                EJ_SelectInstance(journalInstanceID)
+                EJ_SetDifficulty(DifficultyUtil.ID.PrimaryRaidNormal)
+
+                raidTotalsByInstance[journalInstanceID] = raidTotalsByInstance[journalInstanceID] or {}
+                local raidCounts = raidTotalsByInstance[journalInstanceID]
+                raidCounts.totalItems = raidCounts.totalItems or 0
+                raidCounts.bossTotals = raidCounts.bossTotals or {}
+                raidCounts.cumulativeBossTotals = raidCounts.cumulativeBossTotals or {}
+
+                local maxBossIndex = getConfiguredRaidBossCount(milestoneSeasonID, journalInstanceID)
+
+                C_EncounterJournal.SetSlotFilter(Enum.ItemSlotFilterType.NoFilter)
+                for lootIndex = 1, EJ_GetNumLoot() do
+                    local itemInfo = C_EncounterJournal.GetLootInfoByIndex(lootIndex)
+                    local itemID = itemInfo and itemInfo.itemID
+                    local sourceJournalEncounterID = itemInfo and itemInfo.encounterID
+                    local bossInfo = sourceJournalEncounterID and raidEncounterIndexByJournalEncounterID[sourceJournalEncounterID]
+                    local lootDataCached = itemID and C_Item.IsItemDataCachedByID(itemID)
+                    local shouldProcessItem = lootDataCached and not ignoredLootItemIDs[itemID]
+
+                    if bossInfo and shouldProcessItem then
+                        local knownRaidBoss = bossInfo.journalInstanceID == journalInstanceID
+                        local bossIsInRequestedSeason = not milestoneSeasonID or bossInfo.seasonID == milestoneSeasonID
+
+                        if knownRaidBoss and bossIsInRequestedSeason then
+                            local known = equippableCache[itemID]
+                            if known == nil then
+                                known = C_Item.IsEquippableItem(itemID)
+                                equippableCache[itemID] = known
+                            end
+
+                            if known then
+                                eligibleItemsByID[itemID] = eligibleItemsByID[itemID] or {}
+                                local itemEntry = eligibleItemsByID[itemID]
+
+                                itemEntry[className] = itemEntry[className] or {}
+                                local eligibleSpecs = itemEntry[className]
+
+                                if not eligibleSpecs[specName] then
+                                    eligibleSpecs[specName] = true
+
+                                    itemEntry.sources = itemEntry.sources or {}
+                                    itemEntry.sources.raid = {
+                                        journalInstanceID = journalInstanceID,
+                                        journalEncounterID = sourceJournalEncounterID,
+                                        bossIndex = bossInfo.bossIndex,
+                                    }
+
+                                    specCounts.raidTotalItems = (specCounts.raidTotalItems or 0) + 1
+                                    raidCounts.totalItems = raidCounts.totalItems + 1
+
+                                    raidCounts.bossTotals[bossInfo.bossIndex] = raidCounts.bossTotals[bossInfo.bossIndex] or 0
+                                    raidCounts.bossTotals[bossInfo.bossIndex] = raidCounts.bossTotals[bossInfo.bossIndex] + 1
+
+                                    if bossInfo.bossIndex > maxBossIndex then
+                                        maxBossIndex = bossInfo.bossIndex
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+
+                addCumulativeBossTotals(raidCounts, maxBossIndex)
+            end
+        end
+    end
+end
+
+local function normaliseDBGenerationOptions(options)
+    if type(options) == "table" then return options end
+
+    return {
+        milestoneSeasonID = options,
+    }
+end
+
+-- generateDBForAllSpecs
+function DBGenerator.generateDBForAllSpecs(options, alreadyRan)
+    local generationOptions = normaliseDBGenerationOptions(options)
+    local milestoneSeasonID = generationOptions.milestoneSeasonID
+    local lootSource = generationOptions.lootSource
+
+    EJ_SelectTier(EJ_GetNumTiers())
+    disableEJ()
+
+    if not lootSource or lootSource == LootSource.Dungeon then
+        generateDungeonDBForAllSpecs(milestoneSeasonID)
+    end
+
+    if not lootSource or lootSource == LootSource.Raid then
+        generateRaidDBForAllSpecs(milestoneSeasonID)
+    end
+
     enableEJ()
     if not alreadyRan then
-        C_Timer.After(0.5, function() DBGenerator.generateDBForAllSpecs(milestoneSeasonID, true) end) -- Run again after a delay to capture any loot that became cached after initial query
+        C_Timer.After(0.5, function() DBGenerator.generateDBForAllSpecs(generationOptions, true) end) -- Run again after a delay to capture any loot that became cached after initial query
+    else
+        local generatedLootSource = lootSource or "dungeon and raid"
+        print("Great Vault Odds", generatedLootSource, "loot DB generation complete.")
     end
 end
