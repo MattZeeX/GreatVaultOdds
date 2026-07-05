@@ -84,14 +84,18 @@ local function trySetActiveLootDB(self)
     end
 end
 
-local function OnEvent(self, event, loadedAddonName)
-    if event == "ADDON_LOADED" and loadedAddonName == addonName then
-        GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
-        GreatVaultOddsDB = GreatVaultOddsDB or {}
-        GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
-        GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
-        addMissingDefaults(GreatVaultOddsAddonOptions, Core.defaultAddonOptions)
-        self:UnregisterEvent("ADDON_LOADED")
+local function OnEvent(self, event, ...)
+    if event == "ADDON_LOADED" then
+        local loadedAddonName = ...
+
+        if loadedAddonName == addonName then -- consider inverting the condition
+            GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
+            GreatVaultOddsDB = GreatVaultOddsDB or {}
+            GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
+            GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
+            addMissingDefaults(GreatVaultOddsAddonOptions, Core.defaultAddonOptions)
+            self:UnregisterEvent("ADDON_LOADED")
+        end
     elseif event == "PLAYER_LOGIN" then
         trySetActiveLootDB(self)
 
@@ -103,6 +107,10 @@ local function OnEvent(self, event, loadedAddonName)
         self:UnregisterEvent("PLAYER_LOGIN")
     elseif event == "CHALLENGE_MODE_MAPS_UPDATE" then
         trySetActiveLootDB(self)
+    elseif event == "ENCOUNTER_END" then
+        local encounterID, encounterName, difficultyID, groupSize, success = ...
+        if success ~= 1 then return end
+        PlayerRaidProgress.MarkEncounterKilled(encounterID, difficultyID)
     end
 end
 
@@ -110,6 +118,7 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
+frame:RegisterEvent("ENCOUNTER_END")
 frame:SetScript("OnEvent", OnEvent)
 
 SlashCommands.RegisterSlashCommands()
