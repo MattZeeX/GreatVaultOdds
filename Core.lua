@@ -5,6 +5,7 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 -- For testing viewing a future season
@@ -64,6 +65,8 @@ local function trySetActiveLootDB(self)
     self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
 
     activeMilestoneSeasonID = milestoneSeasonID
+
+    PlayerRaidProgress.RefreshProgression(activeMilestoneSeasonID)
 
     local activeLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
 
