@@ -5,6 +5,8 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
+local LootSource = GreatVaultOddsNS.LootSource
 
 local function showHelp() -- TODO: Make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically with more detail
     print("|cFFE6CC99Great Vault Odds|r will display the chance of each spec receiving an item in the Great Vault on the corresponding item's tooltip.")
@@ -13,7 +15,7 @@ local function showHelp() -- TODO: Make show help have option to display help fo
     print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdev|r", "- Toggles dev mode")
     print("|cFFE6CC99/gvodds|r", "|cFF66BBFFhelp|r", "- Displays this menu")
     if GreatVaultOddsAddonOptions.devMode then
-        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFgen|r", "- Generates a DB in your saved variables")
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFgen|r", "|cFF66BBFF[dungeon|raid] [seasonID]|r", "- Generates a DB in your saved variables")
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFreset|r", "- Deletes the DB in your saved variables")
     end
     print("----------------------------------------")
@@ -30,7 +32,43 @@ local validCommands = { -- slashCommandMap or commandConfig?
             reset = {}
         },
     },
+    progress = {
+        devModeRequired = true,
+    },
+    cache = {
+        devModeRequired = true,
+    },
 }
+
+local validDBGenerationLootSources = {
+    [LootSource.Dungeon] = true,
+    [LootSource.Raid] = true,
+}
+
+local function parseDBGenerationArgs(args)
+    local lootSource
+    local inputMilestoneSeasonID
+    local firstArg = args[1]
+    local secondArg = args[2]
+    local firstArgIsLootSource = validDBGenerationLootSources[firstArg]
+
+    if firstArgIsLootSource then
+        lootSource = firstArg
+        inputMilestoneSeasonID = secondArg
+    else
+        inputMilestoneSeasonID = firstArg
+    end
+
+    local milestoneSeasonID = inputMilestoneSeasonID and tonumber(inputMilestoneSeasonID)
+    if inputMilestoneSeasonID and not milestoneSeasonID then
+        return nil, "Invalid DB generation mode or milestone season ID: "..inputMilestoneSeasonID
+    end
+
+    return {
+        lootSource = lootSource,
+        milestoneSeasonID = milestoneSeasonID,
+    }
+end
 
 local function slashCommandHandler(msg, editBox)
     msg = msg and msg:lower():gsub("^%s*(.-)%s*$", "%1") or "" -- Trims leading and trailing whitespace, unnecessary
@@ -88,32 +126,59 @@ local function slashCommandHandler(msg, editBox)
         elseif devModeActive then -- Dev mode required for these commands, unnecessary line though because of prior verification/guarding
             if cmd == "db" then
                 if subCmd == "gen" then
-                    -- Optionally generate a DB for a specific season rather than the current tier, based on if milestoneSeasonID is passed as an arg.
-                    local inputMilestoneSeasonID = subCmdArgs[1]
+                    local generationOptions, errorMessage = parseDBGenerationArgs(subCmdArgs)
+                    if not generationOptions then print(errorMessage) return end
 
-                    if not inputMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
+                    local requestedMilestoneSeasonID = generationOptions.milestoneSeasonID
+                    local activeMilestoneSeasonID = Core.GetActiveMilestoneSeasonID()
 
-                    local requestedMilestoneSeasonID = tonumber(inputMilestoneSeasonID)
-                    if not requestedMilestoneSeasonID then print("Invalid arg\""..inputMilestoneSeasonID.."\"") return end
+                    if requestedMilestoneSeasonID then -- Optionally generate a DB for a specific season rather than the current tier, based on if milestoneSeasonID is passed as an arg.
+                        local lootSource = generationOptions.lootSource
+                        local shouldGenerateDungeons = not lootSource or lootSource == LootSource.Dungeon
+                        local shouldGenerateRaids = not lootSource or lootSource == LootSource.Raid
+                        local hasConfiguredDungeons = GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[requestedMilestoneSeasonID]
+                        local hasConfiguredRaids = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID[requestedMilestoneSeasonID]
 
-                    C_MythicPlus.RequestMapInfo() -- Required to be called once per session to load functions
-                    -- https://warcraft.wiki.gg/wiki/API_C_MythicPlus.RequestMapInfo
-                    local _, currentMilestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
+                        if shouldGenerateDungeons and not hasConfiguredDungeons then
+                            print("Milestone Season ID:", requestedMilestoneSeasonID, "has no configured dungeons!")
+                            return
+                        end
 
-                    if requestedMilestoneSeasonID == currentMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
+                        if shouldGenerateRaids and not hasConfiguredRaids then
+                            print("Milestone Season ID:", requestedMilestoneSeasonID, "has no configured raids!")
+                            return
+                        end
 
-                    if not GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[requestedMilestoneSeasonID] then
-                        print("Milestone Season ID:", inputMilestoneSeasonID, "not configured!")
-                        return
+                        if activeMilestoneSeasonID and requestedMilestoneSeasonID == activeMilestoneSeasonID then
+                            generationOptions.milestoneSeasonID = nil
+                        end
                     end
 
-                    DBGenerator.generateDBForAllSpecs(requestedMilestoneSeasonID)
+                    if generationOptions.lootSource then
+                        print("Generating", generationOptions.lootSource, "loot DB...")
+                    else
+                        print("Generating dungeon and raid loot DB...")
+                    end
+
+                    DBGenerator.generateDBForAllSpecs(generationOptions)
                 elseif subCmd == "reset" then
                     print("Deleting |cFFE6CC99Great Vault Odds|r SV DB!")
                     GreatVaultOddsDB = {}
                     GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
                 end
+            elseif cmd == "progress" then
+                local inputMilestoneSeasonID = subCmd
+                local requestedMilestoneSeasonID = inputMilestoneSeasonID and tonumber(inputMilestoneSeasonID)
+
+                if inputMilestoneSeasonID and not requestedMilestoneSeasonID then
+                    print("Invalid milestone season ID:", inputMilestoneSeasonID)
+                    return
+                end
+
+                PlayerRaidProgress.OutputBossKillsDebugReport(requestedMilestoneSeasonID)
+            elseif cmd == "cache" then
+                PlayerRaidProgress.OutputProgressCache()
             end
         end
     end

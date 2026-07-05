@@ -4,6 +4,11 @@ GreatVaultOddsNS.Tooltip = GreatVaultOddsNS.Tooltip or {}
 GreatVaultOddsNS.DBGenerator = GreatVaultOddsNS.DBGenerator or {}
 GreatVaultOddsNS.SlashCommands = GreatVaultOddsNS.SlashCommands or {}
 GreatVaultOddsNS.Core = GreatVaultOddsNS.Core or {}
+GreatVaultOddsNS.PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress or {}
+GreatVaultOddsNS.LootSource = GreatVaultOddsNS.LootSource or {
+    Dungeon = "dungeon",
+    Raid = "raid",
+}
 
 local classNameByID = GreatVaultOddsNS.ClassNameByID
 local Utils = GreatVaultOddsNS.Utils
@@ -11,6 +16,7 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 local classColors = RAID_CLASS_COLORS
 local fallbackColor = CreateColor(1.000, 0.824, 0.000) or {r = 1, g = 0.824, b = 0}
