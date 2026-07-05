@@ -7,6 +7,7 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
     eligibleItemCount = {
         DEATHKNIGHT = {
             Blood = {
+                raidTotalItems = 34,
                 seasonTotalItems = 61,
                 dungeonTotals = {
                     [278] = {
@@ -78,9 +79,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
             Frost = {
+                raidTotalItems = 35,
                 seasonTotalItems = 65,
                 dungeonTotals = {
                     [278] = {
@@ -152,9 +209,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 2,
+                            [5] = 3,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Unholy = {
+                raidTotalItems = 33,
                 seasonTotalItems = 60,
                 dungeonTotals = {
                     [278] = {
@@ -226,11 +339,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         DEMONHUNTER = {
             Devourer = {
+                raidTotalItems = 33,
                 seasonTotalItems = 57,
                 dungeonTotals = {
                     [278] = {
@@ -301,9 +470,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 4,
+                            [5] = 3,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 5,
+                            [3] = 8,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 2,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
             Havoc = {
+                raidTotalItems = 35,
                 seasonTotalItems = 59,
                 dungeonTotals = {
                     [278] = {
@@ -375,9 +600,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 14,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Vengeance = {
+                raidTotalItems = 35,
                 seasonTotalItems = 59,
                 dungeonTotals = {
                     [278] = {
@@ -449,11 +730,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 4,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 13,
+                            [5] = 15,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
         },
         DRUID = {
             Balance = {
+                raidTotalItems = 35,
                 seasonTotalItems = 65,
                 dungeonTotals = {
                     [278] = {
@@ -525,9 +862,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 15,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Feral = {
+                raidTotalItems = 33,
                 seasonTotalItems = 58,
                 dungeonTotals = {
                     [278] = {
@@ -599,9 +992,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 13,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 4,
+                        bossTotals = {
+                            [1] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                        },
+                    },
                 },
             },
             Guardian = {
+                raidTotalItems = 33,
                 seasonTotalItems = 58,
                 dungeonTotals = {
                     [278] = {
@@ -673,9 +1122,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Restoration = {
+                raidTotalItems = 36,
                 seasonTotalItems = 67,
                 dungeonTotals = {
                     [278] = {
@@ -747,11 +1252,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         EVOKER = {
             Augmentation = {
+                raidTotalItems = 36,
                 seasonTotalItems = 68,
                 dungeonTotals = {
                     [278] = {
@@ -823,9 +1384,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Devastation = {
+                raidTotalItems = 36,
                 seasonTotalItems = 67,
                 dungeonTotals = {
                     [278] = {
@@ -897,9 +1514,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Preservation = {
+                raidTotalItems = 37,
                 seasonTotalItems = 69,
                 dungeonTotals = {
                     [278] = {
@@ -971,11 +1644,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 4,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 17,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         HUNTER = {
             ["Beast Mastery"] = {
+                raidTotalItems = 33,
                 seasonTotalItems = 55,
                 dungeonTotals = {
                     [278] = {
@@ -1045,11 +1774,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 1,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 2,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 13,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Marksmanship = {
+                raidTotalItems = 33,
                 seasonTotalItems = 55,
                 dungeonTotals = {
                     [278] = {
@@ -1121,9 +1906,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 2,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 13,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Survival = {
+                raidTotalItems = 36,
                 seasonTotalItems = 63,
                 dungeonTotals = {
                     [278] = {
@@ -1195,11 +2036,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                            [3] = 10,
+                            [4] = 12,
+                            [5] = 14,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 6,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 6,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 4,
+                        bossTotals = {
+                            [1] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                        },
+                    },
                 },
             },
         },
         MAGE = {
             Arcane = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -1269,11 +2166,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Fire = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -1343,11 +2296,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Frost = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -1417,6 +2426,61 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
@@ -1424,6 +2488,7 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
         },
         MONK = {
             Brewmaster = {
+                raidTotalItems = 36,
                 seasonTotalItems = 63,
                 dungeonTotals = {
                     [278] = {
@@ -1495,9 +2560,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 4,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 14,
+                            [5] = 16,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Mistweaver = {
+                raidTotalItems = 36,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -1569,9 +2690,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 21,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 4,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 17,
+                            [6] = 21,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 2,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Windwalker = {
+                raidTotalItems = 36,
                 seasonTotalItems = 63,
                 dungeonTotals = {
                     [278] = {
@@ -1643,11 +2820,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 15,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 4,
+                        bossTotals = {
+                            [1] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                        },
+                    },
                 },
             },
         },
         PALADIN = {
             Holy = {
+                raidTotalItems = 35,
                 seasonTotalItems = 61,
                 dungeonTotals = {
                     [278] = {
@@ -1719,9 +2952,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 21,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 4,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 17,
+                            [6] = 21,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
             Protection = {
+                raidTotalItems = 36,
                 seasonTotalItems = 64,
                 dungeonTotals = {
                     [278] = {
@@ -1793,9 +3082,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                            [3] = 11,
+                            [4] = 14,
+                            [5] = 16,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 6,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 6,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
             Retribution = {
+                raidTotalItems = 33,
                 seasonTotalItems = 60,
                 dungeonTotals = {
                     [278] = {
@@ -1867,11 +3212,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         PRIEST = {
             Discipline = {
+                raidTotalItems = 36,
                 seasonTotalItems = 68,
                 dungeonTotals = {
                     [278] = {
@@ -1943,9 +3344,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Holy = {
+                raidTotalItems = 36,
                 seasonTotalItems = 67,
                 dungeonTotals = {
                     [278] = {
@@ -2017,9 +3474,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Shadow = {
+                raidTotalItems = 35,
                 seasonTotalItems = 65,
                 dungeonTotals = {
                     [278] = {
@@ -2091,11 +3604,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         ROGUE = {
             Assassination = {
+                raidTotalItems = 33,
                 seasonTotalItems = 56,
                 dungeonTotals = {
                     [278] = {
@@ -2167,9 +3736,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 13,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Outlaw = {
+                raidTotalItems = 34,
                 seasonTotalItems = 58,
                 dungeonTotals = {
                     [278] = {
@@ -2241,9 +3866,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 14,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 7,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Subtlety = {
+                raidTotalItems = 33,
                 seasonTotalItems = 56,
                 dungeonTotals = {
                     [278] = {
@@ -2315,11 +3996,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 13,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
         },
         SHAMAN = {
             Elemental = {
+                raidTotalItems = 35,
                 seasonTotalItems = 65,
                 dungeonTotals = {
                     [278] = {
@@ -2391,9 +4128,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 10,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
             Enhancement = {
+                raidTotalItems = 33,
                 seasonTotalItems = 57,
                 dungeonTotals = {
                     [278] = {
@@ -2465,9 +4258,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Restoration = {
+                raidTotalItems = 36,
                 seasonTotalItems = 67,
                 dungeonTotals = {
                     [278] = {
@@ -2539,11 +4388,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 2,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 19,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 2,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 7,
+                            [3] = 10,
+                            [4] = 13,
+                            [5] = 16,
+                            [6] = 19,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 10,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 10,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
+                        },
+                    },
                 },
             },
         },
         WARLOCK = {
             Affliction = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -2613,11 +4518,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Demonology = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -2687,11 +4648,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Destruction = {
+                raidTotalItems = 35,
                 seasonTotalItems = 66,
                 dungeonTotals = {
                     [278] = {
@@ -2761,6 +4778,61 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 2,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 18,
+                        bossTotals = {
+                            [1] = 3,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                            [2] = 6,
+                            [3] = 9,
+                            [4] = 12,
+                            [5] = 15,
+                            [6] = 18,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
@@ -2768,6 +4840,7 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
         },
         WARRIOR = {
             Arms = {
+                raidTotalItems = 33,
                 seasonTotalItems = 60,
                 dungeonTotals = {
                     [278] = {
@@ -2837,11 +4910,67 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 2,
                             [2814] = 2,
                             [2815] = 3,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
                         },
                     },
                 },
             },
             Fury = {
+                raidTotalItems = 33,
                 seasonTotalItems = 60,
                 dungeonTotals = {
                     [278] = {
@@ -2913,9 +5042,65 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2815] = 3,
                         },
                     },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 17,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 3,
+                            [3] = 2,
+                            [4] = 2,
+                            [5] = 3,
+                            [6] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 7,
+                            [3] = 9,
+                            [4] = 11,
+                            [5] = 14,
+                            [6] = 17,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 8,
+                        bossTotals = {
+                            [1] = 4,
+                            [2] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 4,
+                            [2] = 8,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 3,
+                        bossTotals = {
+                            [1] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 3,
+                        },
+                    },
                 },
             },
             Protection = {
+                raidTotalItems = 36,
                 seasonTotalItems = 64,
                 dungeonTotals = {
                     [278] = {
@@ -2985,6 +5170,61 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                             [2813] = 3,
                             [2814] = 2,
                             [2815] = 3,
+                        },
+                    },
+                    [1319] = {
+                        totalItems = 0,
+                        bossTotals = {
+                        },
+                    },
+                },
+                raidTotals = {
+                    [1305] = {
+                        totalItems = 5,
+                        bossTotals = {
+                            [1] = 5,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                        },
+                    },
+                    [1307] = {
+                        totalItems = 20,
+                        bossTotals = {
+                            [1] = 5,
+                            [2] = 3,
+                            [3] = 3,
+                            [4] = 3,
+                            [5] = 2,
+                            [6] = 4,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 5,
+                            [2] = 8,
+                            [3] = 11,
+                            [4] = 14,
+                            [5] = 16,
+                            [6] = 20,
+                        },
+                    },
+                    [1308] = {
+                        totalItems = 9,
+                        bossTotals = {
+                            [1] = 6,
+                            [2] = 3,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 6,
+                            [2] = 9,
+                        },
+                    },
+                    [1314] = {
+                        totalItems = 2,
+                        bossTotals = {
+                            [1] = 2,
+                        },
+                        cumulativeBossTotals = {
+                            [1] = 2,
                         },
                     },
                 },
@@ -5154,6 +7394,2782 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                 Windwalker = true,
             },
         },
+        [249275] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249276] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249277] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [249278] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+        },
+        [249279] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+            },
+        },
+        [249280] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+        },
+        [249281] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249283] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249284] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Subtlety = true,
+            },
+        },
+        [249286] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249287] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Outlaw = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+        },
+        [249288] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+            },
+        },
+        [249293] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+        },
+        [249294] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249295] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249296] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [249298] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Outlaw = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+        },
+        [249302] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+        },
+        [249303] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249304] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249305] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249306] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249307] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249308] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249309] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249310] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249311] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249312] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249313] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249314] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249315] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249316] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249317] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249318] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249319] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249320] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249321] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249322] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249323] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249324] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249325] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249326] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249327] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249328] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249329] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249330] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249331] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249332] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249333] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249334] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249335] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249336] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249337] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249339] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+            },
+            DEMONHUNTER = {
+                Vengeance = true,
+            },
+            DRUID = {
+                Guardian = true,
+            },
+            MONK = {
+                Brewmaster = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249340] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249341] = {
+            sources = {
+                raid = {
+                    bossIndex = 3,
+                    journalEncounterID = 2736,
+                    journalInstanceID = 1307,
+                },
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [249342] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249343] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249344] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2733,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249345] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+            },
+            DRUID = {
+                Feral = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+        },
+        [249346] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249368] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249369] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249370] = {
+            sources = {
+                raid = {
+                    bossIndex = 4,
+                    journalEncounterID = 2735,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249371] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249373] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249374] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249376] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249377] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249380] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249381] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249382] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249805] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DEATHKNIGHT = {
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+            },
+            DRUID = {
+                Feral = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Windwalker = true,
+            },
+            PALADIN = {
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+            },
+        },
+        [249806] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249807] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+            },
+            DEMONHUNTER = {
+                Vengeance = true,
+            },
+            DRUID = {
+                Guardian = true,
+            },
+            MONK = {
+                Brewmaster = true,
+            },
+            PALADIN = {
+                Protection = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249808] = {
+            sources = {
+                raid = {
+                    bossIndex = 5,
+                    journalEncounterID = 2737,
+                    journalInstanceID = 1307,
+                },
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [249809] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249810] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+            },
+            DRUID = {
+                Balance = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Shadow = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249811] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DRUID = {
+                Restoration = true,
+            },
+            EVOKER = {
+                Preservation = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PALADIN = {
+                Holy = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+            },
+            SHAMAN = {
+                Restoration = true,
+            },
+        },
+        [249912] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249913] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [249914] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [249915] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249919] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249920] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [249921] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Restoration = true,
+            },
+            WARRIOR = {
+                Protection = true,
+            },
+        },
+        [249922] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2795,
+                    journalInstanceID = 1314,
+                },
+            },
+            DRUID = {
+                Balance = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Mistweaver = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [249925] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2734,
+                    journalInstanceID = 1307,
+                },
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Subtlety = true,
+            },
+        },
         [250144] = {
             sources = {
                 encounterID = 2655,
@@ -5387,6 +10403,81 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
             },
             SHAMAN = {
                 Restoration = true,
+            },
+        },
+        [250247] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
             },
         },
         [250253] = {
@@ -8517,6 +13608,54 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                 Protection = true,
             },
         },
+        [260235] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2739,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Feral = true,
+                Guardian = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Protection = true,
+                Retribution = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Enhancement = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
         [260312] = {
             sources = {
                 encounterID = 2661,
@@ -8589,6 +13728,43 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                 Protection = true,
             },
         },
+        [260408] = {
+            sources = {
+                raid = {
+                    bossIndex = 2,
+                    journalEncounterID = 2740,
+                    journalInstanceID = 1308,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+        },
+        [260423] = {
+            sources = {
+                raid = {
+                    bossIndex = 6,
+                    journalEncounterID = 2738,
+                    journalInstanceID = 1307,
+                },
+            },
+            DEMONHUNTER = {
+                Havoc = true,
+                Vengeance = true,
+            },
+            HUNTER = {
+                Survival = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Outlaw = true,
+            },
+        },
         [263193] = {
             sources = {
                 encounterID = 2810,
@@ -8603,6 +13779,435 @@ GreatVaultOddsNS.LootDBByMilestoneSeasonID[105] = {
                 Holy = true,
                 Protection = true,
                 Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [268282] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [268283] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [268284] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+        },
+        [268285] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [268286] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+        },
+        [268287] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [268288] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+        },
+        [268289] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [268290] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [268291] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
+            },
+            WARRIOR = {
+                Arms = true,
+                Fury = true,
+                Protection = true,
+            },
+        },
+        [268292] = {
+            sources = {
+                raid = {
+                    bossIndex = 1,
+                    journalEncounterID = 2711,
+                    journalInstanceID = 1305,
+                },
+            },
+            DEATHKNIGHT = {
+                Blood = true,
+                Frost = true,
+                Unholy = true,
+            },
+            DEMONHUNTER = {
+                Devourer = true,
+                Havoc = true,
+                Vengeance = true,
+            },
+            DRUID = {
+                Balance = true,
+                Feral = true,
+                Guardian = true,
+                Restoration = true,
+            },
+            EVOKER = {
+                Augmentation = true,
+                Devastation = true,
+                Preservation = true,
+            },
+            HUNTER = {
+                ["Beast Mastery"] = true,
+                Marksmanship = true,
+                Survival = true,
+            },
+            MAGE = {
+                Arcane = true,
+                Fire = true,
+                Frost = true,
+            },
+            MONK = {
+                Brewmaster = true,
+                Mistweaver = true,
+                Windwalker = true,
+            },
+            PALADIN = {
+                Holy = true,
+                Protection = true,
+                Retribution = true,
+            },
+            PRIEST = {
+                Discipline = true,
+                Holy = true,
+                Shadow = true,
+            },
+            ROGUE = {
+                Assassination = true,
+                Outlaw = true,
+                Subtlety = true,
+            },
+            SHAMAN = {
+                Elemental = true,
+                Enhancement = true,
+                Restoration = true,
+            },
+            WARLOCK = {
+                Affliction = true,
+                Demonology = true,
+                Destruction = true,
             },
             WARRIOR = {
                 Arms = true,
