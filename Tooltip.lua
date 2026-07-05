@@ -91,7 +91,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
         if not sourceInfo then return end
         local instanceID = sourceInfo.instanceID
         local encounterID = sourceInfo.encounterID
-        if not instanceID  or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals? If not, maybe don't need separate early returns?
+        if not instanceID or not encounterID then return end -- Maybe we still want to display the tooltip anyway, for the totals? If not, maybe don't need separate early returns?
         local devModeActive = GreatVaultOddsAddonOptions.devMode
         tooltip:AddLine(" ") -- Add a gap between the last tooltip line and our tooltip
         tooltip:AddLine(ADDON_TOOLTIP_HEADER..": "..LOOT_SOURCE_TOOLTIP_HEADER)
