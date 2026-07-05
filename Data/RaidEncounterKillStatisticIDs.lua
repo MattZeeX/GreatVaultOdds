@@ -133,6 +133,93 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
             },
         },
     },
+    [102] = {
+        [1302] = {
+            instanceName = "Manaforge Omega",
+            bosses = {
+                [1] = {
+                    encounterID = 3129,
+                    encounterName = "Plexus Sentinel",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41633,
+                        [raidDifficultyID.Normal] = 41634,
+                        [raidDifficultyID.Heroic] = 41635,
+                        [raidDifficultyID.Mythic] = 41636,
+                    },
+                },
+                [2] = {
+                    encounterID = 3131,
+                    encounterName = "Loom'ithar",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41637,
+                        [raidDifficultyID.Normal] = 41638,
+                        [raidDifficultyID.Heroic] = 41639,
+                        [raidDifficultyID.Mythic] = 41640,
+                    },
+                },
+                [3] = {
+                    encounterID = 3130,
+                    encounterName = "Soulbinder Naazindhri",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41641,
+                        [raidDifficultyID.Normal] = 41642,
+                        [raidDifficultyID.Heroic] = 41643,
+                        [raidDifficultyID.Mythic] = 41644,
+                    },
+                },
+                [4] = {
+                    encounterID = 3132,
+                    encounterName = "Forgeweaver Araz",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41645,
+                        [raidDifficultyID.Normal] = 41646,
+                        [raidDifficultyID.Heroic] = 41647,
+                        [raidDifficultyID.Mythic] = 41648,
+                    },
+                },
+                [5] = {
+                    encounterID = 3122,
+                    encounterName = "The Soul Hunters",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41649,
+                        [raidDifficultyID.Normal] = 41650,
+                        [raidDifficultyID.Heroic] = 41651,
+                        [raidDifficultyID.Mythic] = 41652,
+                    },
+                },
+                [6] = {
+                    encounterID = 3133,
+                    encounterName = "Fractillus",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41653,
+                        [raidDifficultyID.Normal] = 41654,
+                        [raidDifficultyID.Heroic] = 41655,
+                        [raidDifficultyID.Mythic] = 41656,
+                    },
+                },
+                [7] = {
+                    encounterID = 3134,
+                    encounterName = "Nexus-King Salhadaar",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41657,
+                        [raidDifficultyID.Normal] = 41658,
+                        [raidDifficultyID.Heroic] = 41659,
+                        [raidDifficultyID.Mythic] = 41660,
+                    },
+                },
+                [8] = {
+                    encounterID = 3135,
+                    encounterName = "Dimensius, the All-Devouring",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 41661,
+                        [raidDifficultyID.Normal] = 41662,
+                        [raidDifficultyID.Heroic] = 41663,
+                        [raidDifficultyID.Mythic] = 41664,
+                    },
+                },
+            },
+        },
+    },
 }
 
 -- Keyed by "dungeon" encounter IDs from ENCOUNTER_END, not Encounter Journal encounter IDs.
@@ -187,5 +274,45 @@ GreatVaultOddsNS.RaidEncounterIndexByEncounterID = {
         seasonID = 105,
         journalInstanceID = 1305,
         bossIndex = 1,
+    },
+    [3129] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 1,
+    },
+    [3131] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 2,
+    },
+    [3130] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 3,
+    },
+    [3132] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 4,
+    },
+    [3122] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 5,
+    },
+    [3133] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 6,
+    },
+    [3134] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 7,
+    },
+    [3135] = {
+        seasonID = 102,
+        journalInstanceID = 1302,
+        bossIndex = 8,
     },
 }
