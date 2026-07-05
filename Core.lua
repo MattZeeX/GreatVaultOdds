@@ -108,9 +108,9 @@ local function OnEvent(self, event, ...)
     elseif event == "CHALLENGE_MODE_MAPS_UPDATE" then
         trySetActiveLootDB(self)
     elseif event == "ENCOUNTER_END" then
-        local encounterID, encounterName, difficultyID, groupSize, success = ...
+        local combatEncounterID, encounterName, difficultyID, groupSize, success = ...
         if success ~= 1 then return end
-        PlayerRaidProgress.MarkEncounterKilled(encounterID, difficultyID)
+        PlayerRaidProgress.MarkEncounterKilled(combatEncounterID, difficultyID)
     end
 end
 

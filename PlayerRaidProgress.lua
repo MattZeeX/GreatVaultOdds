@@ -8,7 +8,7 @@ local Core = GreatVaultOddsNS.Core
 local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 local raidEncounterKillStatisticIDsByMilestoneSeasonID = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID
-local raidEncounterIndexByEncounterID = GreatVaultOddsNS.RaidEncounterIndexByEncounterID
+local raidEncounterIndexByCombatEncounterID = GreatVaultOddsNS.RaidEncounterIndexByCombatEncounterID
 local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
 
 local raidProgressCache = {}
@@ -76,10 +76,10 @@ function PlayerRaidProgress.GetHighestKilledBossIndex(milestoneSeasonID, journal
     return highestKilledBossIndex
 end
 
-function PlayerRaidProgress.MarkEncounterKilled(encounterID, difficultyID)
-    if not encounterID or not difficultyID then return end
+function PlayerRaidProgress.MarkEncounterKilled(combatEncounterID, difficultyID)
+    if not combatEncounterID or not difficultyID then return end
 
-    local bossInfo = raidEncounterIndexByEncounterID[encounterID]
+    local bossInfo = raidEncounterIndexByCombatEncounterID[combatEncounterID]
     if not bossInfo then return end
 
     local bossSeasonID = bossInfo.seasonID
@@ -134,7 +134,8 @@ local function buildBossKillsDebugReport(milestoneSeasonID)
                 local killCount, statisticID, rawValue = getKillCountFromBossData(bossData, difficultyID)
 
                 difficultyReport.bosses[bossIndex] = {
-                    encounterID = bossData.encounterID,
+                    combatEncounterID = bossData.combatEncounterID,
+                    journalEncounterID = bossData.journalEncounterID,
                     encounterName = bossData.encounterName,
                     statisticID = statisticID,
                     rawValue = rawValue,
