@@ -98,13 +98,11 @@ local function slashCommandHandler(msg, editBox)
                     if not inputMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
 
                     local requestedMilestoneSeasonID = tonumber(inputMilestoneSeasonID)
-                    if not requestedMilestoneSeasonID then print("Invalid arg\""..inputMilestoneSeasonID.."\"") return end
+                    if not requestedMilestoneSeasonID then print("Invalid arg \""..inputMilestoneSeasonID.."\"") return end
 
-                    C_MythicPlus.RequestMapInfo() -- Required to be called once per session to load functions
-                    -- https://warcraft.wiki.gg/wiki/API_C_MythicPlus.RequestMapInfo
-                    local _, currentMilestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
+                    local activeMilestoneSeasonID = Core.GetActiveMilestoneSeasonID()
 
-                    if requestedMilestoneSeasonID == currentMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
+                    if activeMilestoneSeasonID and requestedMilestoneSeasonID == activeMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
 
                     if not GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[requestedMilestoneSeasonID] then
                         print("Milestone Season ID:", inputMilestoneSeasonID, "not configured!")
