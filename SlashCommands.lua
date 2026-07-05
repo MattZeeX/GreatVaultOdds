@@ -5,6 +5,7 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 local function showHelp() -- TODO: Make show help have option to display help for specific function too, so can /gvodds help db and get info for db specifically with more detail
     print("|cFFE6CC99Great Vault Odds|r will display the chance of each spec receiving an item in the Great Vault on the corresponding item's tooltip.")
@@ -29,6 +30,9 @@ local validCommands = { -- slashCommandMap or commandConfig?
             gen = {},
             reset = {}
         },
+    },
+    progress = {
+        devModeRequired = true,
     },
 }
 
@@ -94,13 +98,11 @@ local function slashCommandHandler(msg, editBox)
                     if not inputMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
 
                     local requestedMilestoneSeasonID = tonumber(inputMilestoneSeasonID)
-                    if not requestedMilestoneSeasonID then print("Invalid arg\""..inputMilestoneSeasonID.."\"") return end
+                    if not requestedMilestoneSeasonID then print("Invalid arg \""..inputMilestoneSeasonID.."\"") return end
 
-                    C_MythicPlus.RequestMapInfo() -- Required to be called once per session to load functions
-                    -- https://warcraft.wiki.gg/wiki/API_C_MythicPlus.RequestMapInfo
-                    local _, currentMilestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
+                    local activeMilestoneSeasonID = Core.GetActiveMilestoneSeasonID()
 
-                    if requestedMilestoneSeasonID == currentMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
+                    if activeMilestoneSeasonID and requestedMilestoneSeasonID == activeMilestoneSeasonID then DBGenerator.generateDBForAllSpecs() return end
 
                     if not GreatVaultOddsNS.InstanceIDsByMilestoneSeasonID[requestedMilestoneSeasonID] then
                         print("Milestone Season ID:", inputMilestoneSeasonID, "not configured!")
@@ -114,6 +116,16 @@ local function slashCommandHandler(msg, editBox)
                     GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
                 end
+            elseif cmd == "progress" then
+                local inputMilestoneSeasonID = subCmd
+                local requestedMilestoneSeasonID = inputMilestoneSeasonID and tonumber(inputMilestoneSeasonID)
+
+                if inputMilestoneSeasonID and not requestedMilestoneSeasonID then
+                    print("Invalid milestone season ID:", inputMilestoneSeasonID)
+                    return
+                end
+
+                PlayerRaidProgress.OutputBossKillsDebugReport(requestedMilestoneSeasonID)
             end
         end
     end
