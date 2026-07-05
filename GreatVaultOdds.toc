@@ -11,10 +11,11 @@ Data\ClassSpecIDs.lua
 Data\DungeonsByMilestoneSeason.lua
 Data\LootDB_Midnight_Preseason.lua
 Data\LootDB_Midnight_S1.lua
-Data\InstanceProgressionStatisticIDs.lua
+Data\RaidEncounterKillStatisticIDs.lua
 
 Utils.lua
 DBGenerator.lua
+PlayerRaidProgress.lua
 Tooltip.lua
 SlashCommands.lua
 Core.lua

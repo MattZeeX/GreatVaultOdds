@@ -9,6 +9,11 @@ local Core = GreatVaultOddsNS.Core
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 -- For testing viewing a future season
 local manualMilestoneSeasonIDOverride = false -- 105
+local activeMilestoneSeasonID
+
+function Core.GetActiveMilestoneSeasonID()
+    return activeMilestoneSeasonID
+end
 
 local debugLogging = false
 
@@ -34,14 +39,14 @@ end
 
 local lootDBInitializationFailed = false
 local lootDBValidationFailed = false
-local function validateLootDB(lootDB, activeMilestoneSeasonID)
+local function validateLootDB(lootDB, milestoneSeasonID)
     local hasValidLootDB = lootDB and lootDB.eligibleItems and lootDB.eligibleItemCount
 
     if not hasValidLootDB and not lootDBValidationFailed then
         -- prints error on the first failure only
         -- redundant because function only gets called once
         lootDBValidationFailed = true
-        print("GreatVaultOdds has no valid loot DB for milestone season ID:", activeMilestoneSeasonID)
+        print("GreatVaultOdds has no valid loot DB for milestone season ID:", milestoneSeasonID)
     end
 
     return hasValidLootDB
@@ -50,13 +55,16 @@ end
 local function trySetActiveLootDB(self)
     local _, milestoneSeasonID = C_MythicPlus.GetCurrentSeasonValues()
     milestoneSeasonID = manualMilestoneSeasonIDOverride or milestoneSeasonID
+
     if not milestoneSeasonID or milestoneSeasonID == -1 then
         C_MythicPlus.RequestMapInfo()
         return
     end
 
     self:UnregisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
-    local activeMilestoneSeasonID = milestoneSeasonID
+
+    activeMilestoneSeasonID = milestoneSeasonID
+
     local activeLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
 
     if not activeLootDB and not lootDBInitializationFailed then
