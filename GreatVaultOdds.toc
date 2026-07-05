@@ -1,7 +1,7 @@
 ## Interface: 120005, 120007
 ## Title: Great Vault Odds
 ## Notes: Lets you compare different items dungeons to see if a particular loot specialisation is more likely to receive it in the Great Vault, from the end-of-dungeon M+ chest, or the dungeon boss.
-## Version: 1.1.0-alpha.1
+## Version: 1.1.0-alpha.2
 ## Category: Loot
 ## IconTexture: Interface\Icons\inv_cape_special_treasure_c_01.blp
 ## SavedVariables: GreatVaultOddsAddonOptions, GreatVaultOddsDB
