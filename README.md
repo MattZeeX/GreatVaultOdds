@@ -1,59 +1,62 @@
 # Great Vault Odds
 
-**Great Vault Odds** is a World of Warcraft addon that makes it trivial to see which loot specialisation gives you the best chance of getting a **specific item** from the current season's dungeon loot pool. It works for the Great Vault, the Mythic+ end-of-dungeon chest, and individual bosses in Normal, Heroic, and Mythic dungeons.
+**Great Vault Odds** helps you compare loot specialisations and see which one gives you the best odds at receiving a specific item from the **Great Vault**, **Mythic+**, dungeon bosses, and raid bosses.
 
-When you hover over an item from this season's dungeons, the tooltip displays **which of your specs** can receive that item and **how large** each spec's eligible loot pool is.
+When you hover over supported current-season loot, the tooltip shows which of your specs can receive the item, how large each spec's eligible loot pool is, and whether raid items are currently eligible for your Great Vault based on your raid progression.
 
-This makes it much easier to answer questions like:
+Great Vault Odds helps to answer questions like:
 
-- "Should I open my Vault as a different loot spec for a better chance at this item?"
-- "Can I avoid more undesirable items by using a different loot spec?"
-- "Which of my specs can receive this item?"
+- Should I open my Great Vault as a different loot spec?
+- Which spec gives me the best chance at this item?
+- Can this item drop for my other specs?
+- Am I making my loot pool worse by choosing this spec?
+- Is this raid item eligible for my Vault yet?
 
-If you care about increasing your chances for better loot, then Great Vault Odds is for you!
+In short: *smaller* eligible loot pool = **better odds** at the item you want.
 
-## How the information is displayed
+Great Vault Odds is especially useful if your class has specs with different roles, weapon types, armour priorities, or trinket pools. Sorry, Warlocks and Mages. You know what you did!
 
-For class-eligible current-season dungeon items, Great Vault Odds adds extra lines to the tooltip showing you how likely it is for each spec to receive that item.
+## Tooltip Breakdown
 
-The tooltip breaks the numbers down into three levels:
+For **Mythic+ and dungeon items**, Great Vault Odds shows:
 
-- **Vault**: your total number of eligible current-season Mythic+ Great Vault items for that spec
-- **M+**: your total number of eligible items from that specific dungeon for that spec
-- **Boss**: your total number of eligible items from that specific boss for that spec
+- **Vault**: total eligible Mythic+ Great Vault items for that spec
+- **M+**: total eligible items from that dungeon for that spec
+- **Boss**: total eligible items from that dungeon boss for that spec
 
-![image](https://media.forgecdn.net/attachments/description/null/description_e9d32ad1-a61a-4688-beee-3dcd86b0251e.png)
+For **raid items**, it shows:
 
-In simple terms, the addon helps you compare **how diluted your loot pool is** for each spec.
+- **Boss**: total eligible items from that raid boss for that spec
+- **Vault**: Great Vault odds for LFR, Normal, Heroic, and Mythic based on your progression in each difficulty
 
-If one spec can receive fewer total items than another, that usually means it has **better odds** of seeing a specific item in the Vault or from that dungeon/boss.
+If a raid item is not currently eligible for your Great Vault on a difficulty, that difficulty is shown as **N/A**.
+
+<!-- markdownlint-disable MD033 -->
+<img src="https://media.forgecdn.net/attachments/description/null/description_e9d32ad1-a61a-4688-beee-3dcd86b0251e.png" alt="Dungeon tooltip example" width="410">
+<img src="https://media.forgecdn.net/attachments/description/1487830/description_cd08e869-ae2f-4151-affc-8bd4aa87bfff.png" alt="Raid tooltip example" width="410">
+<!-- markdownlint-enable MD033 -->
 
 ## Example
 
-Imagine you want one specific item.
+Imagine you want one specific item from the Great Vault.
 
-- Spec A can receive **58** eligible Mythic+ Vault items
-- Spec B can receive **72** eligible Mythic+ Vault items
+- Spec A can receive **58** eligible Vault items
+- Spec B can receive **72** eligible Vault items
 
-If both specs can receive your target item, **Spec A has the better odds**, because its loot pool is smaller. You may also want to take into consideration if the other spec can receive any **undesirable items**, i.e. role-specific trinkets.
+If both specs can receive your target item, **Spec A has better odds** because its loot pool is smaller.
 
-Great Vault Odds puts that comparison directly on the item tooltip so you do not have to manually check loot tables for each spec and tally up the items.
+That does not always mean Spec A is automatically the best choice. You may also want to consider whether another spec can receive undesirable items, such as role-specific trinkets, unwanted weapons, or items for slots you already have covered.
 
-Great Vault Odds is most useful for classes whose specs span multiple roles or use different primary stats and weapon types. Sorry Warlocks!
+Great Vault Odds gives you the numbers directly on the tooltip so you do not have to count loot tables yourself.
+
+## Current Support
+
+Great Vault Odds currently supports current-season dungeon and raid loot for all your specs, from both the Great Vault and the specific boss encounter. It also supports the M+ end-of-dungeon chest. For raid Great Vault items, Great Vault Odds updates your character's odds for each difficulty dynamically based on your progression.
+
+The addon is still actively being developed. Planned or possible future features include bonus roll support, more tooltip customisation, modifier-key controls, tooltip visual polish, group member loot eligibility, item slot targeting, loot spec reminders, automatic loot spec swap reminders, and localisation.
 
 ## Support
 
-If you have any issues whatsoever, please do not hesitate to leave a comment and I will get in touch ASAP. I am working on cleaning up my GitHub repo to streamline issue reporting.
+If you notice incorrect loot data or run into an issue, please leave a comment or open an issue on GitHub. Reports are most helpful when they include the item name, your class/spec, the content type, and a tooltip screenshot.
 
-## Notes
-
-This addon is still a WIP and I intend to keep supporting it. Planned features include:
-
-- Raid support
-- More tooltip customisations to show more or less information, as well as controlling the tooltip with modifier keys
-- Tooltip beautification
-- Allowing you to see loot eligibility for other members of your group, to help roll on loot for friends
-- Item slot information, to target specific slots as opposed to specific items
-- Great Vault loot spec reminders
-- Preconfigured automatic loot spec swapping per boss/dungeon to target the loot you want
-- Localisation
+I appreciate all reports, suggestions, and feedback.
