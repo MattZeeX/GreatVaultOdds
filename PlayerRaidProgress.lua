@@ -160,3 +160,7 @@ function PlayerRaidProgress.OutputBossKillsDebugReport(milestoneSeasonID)
 
     Utils.addToDevTool(debugReport, "GreatVaultOdds Boss Kills")
 end
+
+function PlayerRaidProgress.OutputProgressCache()
+    Utils.addToDevTool(CopyTable(raidProgressCache), "GreatVaultOdds Progression Cache")
+end
