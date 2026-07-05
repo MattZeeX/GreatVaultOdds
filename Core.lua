@@ -5,6 +5,7 @@ local Tooltip = GreatVaultOddsNS.Tooltip
 local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
+local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 -- https://wago.tools/db2/MythicPlusSeason?sort%5BMilestoneSeason%5D=desc
 -- For testing viewing a future season
@@ -65,6 +66,8 @@ local function trySetActiveLootDB(self)
 
     activeMilestoneSeasonID = milestoneSeasonID
 
+    PlayerRaidProgress.RefreshProgression(activeMilestoneSeasonID)
+
     local activeLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
 
     if not activeLootDB and not lootDBInitializationFailed then
@@ -81,14 +84,18 @@ local function trySetActiveLootDB(self)
     end
 end
 
-local function OnEvent(self, event, loadedAddonName)
-    if event == "ADDON_LOADED" and loadedAddonName == addonName then
-        GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
-        GreatVaultOddsDB = GreatVaultOddsDB or {}
-        GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
-        GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
-        addMissingDefaults(GreatVaultOddsAddonOptions, Core.defaultAddonOptions)
-        self:UnregisterEvent("ADDON_LOADED")
+local function OnEvent(self, event, ...)
+    if event == "ADDON_LOADED" then
+        local loadedAddonName = ...
+
+        if loadedAddonName == addonName then -- consider inverting the condition
+            GreatVaultOddsAddonOptions = GreatVaultOddsAddonOptions or {}
+            GreatVaultOddsDB = GreatVaultOddsDB or {}
+            GreatVaultOddsDB.eligibleItems = GreatVaultOddsDB.eligibleItems or {}
+            GreatVaultOddsDB.eligibleItemCount = GreatVaultOddsDB.eligibleItemCount or {}
+            addMissingDefaults(GreatVaultOddsAddonOptions, Core.defaultAddonOptions)
+            self:UnregisterEvent("ADDON_LOADED")
+        end
     elseif event == "PLAYER_LOGIN" then
         trySetActiveLootDB(self)
 
@@ -100,6 +107,10 @@ local function OnEvent(self, event, loadedAddonName)
         self:UnregisterEvent("PLAYER_LOGIN")
     elseif event == "CHALLENGE_MODE_MAPS_UPDATE" then
         trySetActiveLootDB(self)
+    elseif event == "ENCOUNTER_END" then
+        local combatEncounterID, encounterName, difficultyID, groupSize, success = ...
+        if success ~= 1 then return end
+        PlayerRaidProgress.MarkEncounterKilled(combatEncounterID, difficultyID)
     end
 end
 
@@ -107,6 +118,7 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("CHALLENGE_MODE_MAPS_UPDATE")
+frame:RegisterEvent("ENCOUNTER_END")
 frame:SetScript("OnEvent", OnEvent)
 
 SlashCommands.RegisterSlashCommands()

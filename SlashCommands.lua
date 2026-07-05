@@ -34,6 +34,9 @@ local validCommands = { -- slashCommandMap or commandConfig?
     progress = {
         devModeRequired = true,
     },
+    cache = {
+        devModeRequired = true,
+    },
 }
 
 local function slashCommandHandler(msg, editBox)
@@ -126,6 +129,8 @@ local function slashCommandHandler(msg, editBox)
                 end
 
                 PlayerRaidProgress.OutputBossKillsDebugReport(requestedMilestoneSeasonID)
+            elseif cmd == "cache" then
+                PlayerRaidProgress.OutputProgressCache()
             end
         end
     end

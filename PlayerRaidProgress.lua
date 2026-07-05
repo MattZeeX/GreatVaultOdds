@@ -8,8 +8,10 @@ local Core = GreatVaultOddsNS.Core
 local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 local raidEncounterKillStatisticIDsByMilestoneSeasonID = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID
-local raidEncounterIndexByEncounterID = GreatVaultOddsNS.RaidEncounterIndexByEncounterID
+local raidEncounterIndexByCombatEncounterID = GreatVaultOddsNS.RaidEncounterIndexByCombatEncounterID
 local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
+
+local raidProgressCache = {}
 
 local function getKillCountFromBossData(bossData, difficultyID)
     local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
@@ -44,6 +46,57 @@ local function getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficul
     end
 
     return 0
+end
+
+function PlayerRaidProgress.RefreshProgression(milestoneSeasonID)
+    if not milestoneSeasonID then return end
+
+    local seasonRaidData = raidEncounterKillStatisticIDsByMilestoneSeasonID[milestoneSeasonID]
+    if not seasonRaidData then return end
+
+    raidProgressCache[milestoneSeasonID] = raidProgressCache[milestoneSeasonID] or {}
+    local seasonProgress = raidProgressCache[milestoneSeasonID]
+
+    for instanceID in pairs(seasonRaidData) do
+        seasonProgress[instanceID] = seasonProgress[instanceID] or {}
+        local instanceProgress = seasonProgress[instanceID]
+        for difficultyName, difficultyID in pairs(raidDifficultyID) do
+            instanceProgress[difficultyID] = getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+        end
+    end
+end
+
+function PlayerRaidProgress.GetHighestKilledBossIndex(milestoneSeasonID, journalInstanceID, difficultyID)
+    if not (milestoneSeasonID and journalInstanceID and difficultyID) then return end
+
+    local seasonProgress = raidProgressCache[milestoneSeasonID]
+    local instanceProgress = seasonProgress and seasonProgress[journalInstanceID]
+    local highestKilledBossIndex = instanceProgress and instanceProgress[difficultyID]
+
+    return highestKilledBossIndex
+end
+
+function PlayerRaidProgress.MarkEncounterKilled(combatEncounterID, difficultyID)
+    if not combatEncounterID or not difficultyID then return end
+
+    local bossInfo = raidEncounterIndexByCombatEncounterID[combatEncounterID]
+    if not bossInfo then return end
+
+    local bossSeasonID = bossInfo.seasonID
+    local bossInstanceID = bossInfo.journalInstanceID
+    local newBossIndex = bossInfo.bossIndex
+    if not (bossSeasonID and bossInstanceID and newBossIndex) then return end
+
+    if bossSeasonID ~= Core.GetActiveMilestoneSeasonID() then return end
+
+    raidProgressCache[bossSeasonID] = raidProgressCache[bossSeasonID] or {}
+    local seasonProgress = raidProgressCache[bossSeasonID]
+
+    seasonProgress[bossInstanceID] = seasonProgress[bossInstanceID] or {}
+    local instanceProgress = seasonProgress[bossInstanceID]
+
+    local oldBossIndex = instanceProgress[difficultyID] or 0
+    if newBossIndex > oldBossIndex then instanceProgress[difficultyID] = newBossIndex end
 end
 
 local function buildBossKillsDebugReport(milestoneSeasonID)
@@ -81,7 +134,8 @@ local function buildBossKillsDebugReport(milestoneSeasonID)
                 local killCount, statisticID, rawValue = getKillCountFromBossData(bossData, difficultyID)
 
                 difficultyReport.bosses[bossIndex] = {
-                    encounterID = bossData.encounterID,
+                    combatEncounterID = bossData.combatEncounterID,
+                    journalEncounterID = bossData.journalEncounterID,
                     encounterName = bossData.encounterName,
                     statisticID = statisticID,
                     rawValue = rawValue,
@@ -106,4 +160,8 @@ function PlayerRaidProgress.OutputBossKillsDebugReport(milestoneSeasonID)
     if not debugReport then return end
 
     Utils.addToDevTool(debugReport, "GreatVaultOdds Boss Kills")
+end
+
+function PlayerRaidProgress.OutputProgressCache()
+    Utils.addToDevTool(CopyTable(raidProgressCache), "GreatVaultOdds Progression Cache")
 end
