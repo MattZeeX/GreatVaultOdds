@@ -38,7 +38,7 @@ local function addMissingDefaults(userOptions, defaultOptions) -- Validates that
     end
 end
 
-local lootDBInitializationFailed = false
+local lootDBInitialisationFailed = false
 local lootDBValidationFailed = false
 local function validateLootDB(lootDB, milestoneSeasonID)
     local hasValidLootDB = lootDB and lootDB.eligibleItems and lootDB.eligibleItemCount
@@ -70,10 +70,10 @@ local function trySetActiveLootDB(self)
 
     local activeLootDB = GreatVaultOddsNS.LootDBByMilestoneSeasonID and GreatVaultOddsNS.LootDBByMilestoneSeasonID[activeMilestoneSeasonID]
 
-    if not activeLootDB and not lootDBInitializationFailed then
+    if not activeLootDB and not lootDBInitialisationFailed then
         -- prints error on the first failure only
         -- redundant because function only gets this far once
-        lootDBInitializationFailed = true
+        lootDBInitialisationFailed = true
         print("GreatVaultOdds has no loot DB for milestone season ID:", activeMilestoneSeasonID)
         return
     end
