@@ -5,6 +5,10 @@ GreatVaultOddsNS.DBGenerator = GreatVaultOddsNS.DBGenerator or {}
 GreatVaultOddsNS.SlashCommands = GreatVaultOddsNS.SlashCommands or {}
 GreatVaultOddsNS.Core = GreatVaultOddsNS.Core or {}
 GreatVaultOddsNS.PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress or {}
+GreatVaultOddsNS.LootSource = GreatVaultOddsNS.LootSource or {
+    Dungeon = "dungeon",
+    Raid = "raid",
+}
 
 local classNameByID = GreatVaultOddsNS.ClassNameByID
 local Utils = GreatVaultOddsNS.Utils
