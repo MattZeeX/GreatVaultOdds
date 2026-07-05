@@ -11,6 +11,8 @@ local raidEncounterKillStatisticIDsByMilestoneSeasonID = GreatVaultOddsNS.RaidEn
 local raidEncounterIndexByEncounterID = GreatVaultOddsNS.RaidEncounterIndexByEncounterID
 local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
 
+local raidProgressCache = {}
+
 local function getKillCountFromBossData(bossData, difficultyID)
     local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
     if not statisticID then return end
@@ -44,6 +46,57 @@ local function getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficul
     end
 
     return 0
+end
+
+function PlayerRaidProgress.RefreshProgression(milestoneSeasonID)
+    if not milestoneSeasonID then return end
+
+    local seasonRaidData = raidEncounterKillStatisticIDsByMilestoneSeasonID[milestoneSeasonID]
+    if not seasonRaidData then return end
+
+    raidProgressCache[milestoneSeasonID] = raidProgressCache[milestoneSeasonID] or {}
+    local seasonProgress = raidProgressCache[milestoneSeasonID]
+
+    for instanceID in pairs(seasonRaidData) do
+        seasonProgress[instanceID] = seasonProgress[instanceID] or {}
+        local instanceProgress = seasonProgress[instanceID]
+        for difficultyName, difficultyID in pairs(raidDifficultyID) do
+            instanceProgress[difficultyID] = getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+        end
+    end
+end
+
+function PlayerRaidProgress.GetHighestKilledBossIndex(milestoneSeasonID, journalInstanceID, difficultyID)
+    if not (milestoneSeasonID and journalInstanceID and difficultyID) then return end
+
+    local seasonProgress = raidProgressCache[milestoneSeasonID]
+    local instanceProgress = seasonProgress and seasonProgress[journalInstanceID]
+    local highestKilledBossIndex = instanceProgress and instanceProgress[difficultyID]
+
+    return highestKilledBossIndex
+end
+
+function PlayerRaidProgress.MarkEncounterKilled(encounterID, difficultyID)
+    if not encounterID or not difficultyID then return end
+
+    local bossInfo = raidEncounterIndexByEncounterID[encounterID]
+    if not bossInfo then return end
+
+    local bossSeasonID = bossInfo.seasonID
+    local bossInstanceID = bossInfo.journalInstanceID
+    local newBossIndex = bossInfo.bossIndex
+    if not (bossSeasonID and bossInstanceID and newBossIndex) then return end
+
+    if bossSeasonID ~= Core.GetActiveMilestoneSeasonID() then return end
+
+    raidProgressCache[bossSeasonID] = raidProgressCache[bossSeasonID] or {}
+    local seasonProgress = raidProgressCache[bossSeasonID]
+
+    seasonProgress[bossInstanceID] = seasonProgress[bossInstanceID] or {}
+    local instanceProgress = seasonProgress[bossInstanceID]
+
+    local oldBossIndex = instanceProgress[difficultyID] or 0
+    if newBossIndex > oldBossIndex then instanceProgress[difficultyID] = newBossIndex end
 end
 
 local function buildBossKillsDebugReport(milestoneSeasonID)
