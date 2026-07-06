@@ -139,6 +139,11 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                         [raidDifficultyID.Heroic] = 63235,
                         [raidDifficultyID.Mythic] = 63236,
                     },
+                    killStatisticAdjustments = {
+                        [raidDifficultyID.Heroic] = {
+                            subtractDifficultyID = raidDifficultyID.Mythic,
+                        },
+                    },
                 },
             },
         },

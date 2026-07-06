@@ -13,8 +13,7 @@ local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
 
 local raidProgressCache = {}
 
-local function getKillCountFromBossData(bossData, difficultyID)
-    local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
+local function getKillCountFromStatisticID(statisticID)
     if not statisticID then return end
 
     local rawValue = GetStatistic(statisticID)
@@ -23,6 +22,24 @@ local function getKillCountFromBossData(bossData, difficultyID)
         killCount = 0
     else
         killCount = tonumber(rawValue)
+    end
+
+    return killCount, rawValue
+end
+
+local function getKillCountFromBossData(bossData, difficultyID)
+    local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
+    if not statisticID then return end
+
+    local killCount, rawValue = getKillCountFromStatisticID(statisticID)
+
+    local adjustment = bossData.killStatisticAdjustments and bossData.killStatisticAdjustments[difficultyID]
+    if killCount and adjustment and adjustment.subtractDifficultyID then
+        local subtractStatisticID = bossData.killStatisticIDs[adjustment.subtractDifficultyID]
+        local subtractKillCount = getKillCountFromStatisticID(subtractStatisticID)
+        if subtractKillCount then
+            killCount = math.max(killCount - subtractKillCount, 0)
+        end
     end
 
     return killCount, statisticID, rawValue
