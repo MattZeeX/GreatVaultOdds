@@ -13,10 +13,7 @@ local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
 
 local raidProgressCache = {}
 
-local function getKillCountFromBossData(bossData, difficultyID)
-    local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
-    if not statisticID then return end
-
+local function getRawKillCount(statisticID)
     local rawValue = GetStatistic(statisticID)
     local killCount
     if rawValue == "--" then
@@ -25,7 +22,38 @@ local function getKillCountFromBossData(bossData, difficultyID)
         killCount = tonumber(rawValue)
     end
 
-    return killCount, statisticID, rawValue
+    return killCount, rawValue
+end
+
+local function applyKillStatisticCorrections(bossData, difficultyID, killCount)
+    local correction = bossData.killStatisticCorrections and bossData.killStatisticCorrections[difficultyID]
+    if not correction then return killCount end
+
+    local adjustedKillCount = killCount
+    for _, subtractDifficultyID in ipairs(correction.subtractDifficultyIDs or {}) do
+        local subtractStatisticID = bossData.killStatisticIDs[subtractDifficultyID]
+        if not subtractStatisticID then return end
+
+        local subtractKillCount = getRawKillCount(subtractStatisticID)
+        if not subtractKillCount then return end
+
+        adjustedKillCount = adjustedKillCount - subtractKillCount
+    end
+
+    return math.max(adjustedKillCount, 0)
+end
+
+local function getKillCountFromBossData(bossData, difficultyID)
+    local statisticID = bossData.killStatisticIDs[difficultyID] -- Add error message return for devtool
+    if not statisticID then return end
+
+    local killCount, rawValue = getRawKillCount(statisticID)
+    if not killCount then return nil, statisticID, rawValue end
+
+    local correctedKillCount = applyKillStatisticCorrections(bossData, difficultyID, killCount)
+    if not correctedKillCount then return nil, statisticID, rawValue end
+
+    return correctedKillCount, statisticID, rawValue
 end
 
 local function getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
