@@ -219,6 +219,7 @@ local function tooltipHandler(tooltip, data) -- surely I don't have to nilcheck 
                             for _, specTooltipLine in ipairs(specTooltipLines) do
                                 finalTooltip = finalTooltip..specTooltipLine.." "
                             end
+                            finalTooltip = finalTooltip.."|| Instance Items: "..activeLootDB.eligibleItemCount[className][sortedSpecName].raidTotals[raidSource.journalInstanceID].totalItems.." "
                         else
                             local specTooltipLine = buildDungeonSpecOddsLine(className, sortedSpecName, sourceInfo)
                             if specTooltipLine then
