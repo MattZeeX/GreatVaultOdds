@@ -18,6 +18,8 @@ local function showHelp() -- TODO: Make show help have option to display help fo
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFgen|r", "|cFF66BBFF[dungeon|raid] [seasonID]|r", "- Generates a DB in your saved variables")
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFreset|r", "- Deletes the DB in your saved variables")
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFoverride|r", "- Sets the active DB to the one in your saved variables. /reload to reset back to the default DB. Big WIP") -- Does not update if you reset DB and re-generate. Also re-registers the tooltip handler.
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFprogress|r", "- Displays debug output in DevTool for the active season or a specified milestone season ID. Shows all raids & instance IDs, encounters & encounter IDs, and highest index of each instance - along with stats about bosses on each difficulty including kill count, associated statistic ID, and statistic raw value")
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFcache|r", "- Displays in DevTool the addon's current season progression cache")
     end
     print("----------------------------------------")
 end
