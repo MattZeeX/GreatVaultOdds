@@ -17,6 +17,7 @@ local function showHelp() -- TODO: Make show help have option to display help fo
     if GreatVaultOddsAddonOptions.devMode then
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFgen|r", "|cFF66BBFF[dungeon|raid] [seasonID]|r", "- Generates a DB in your saved variables")
         print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFreset|r", "- Deletes the DB in your saved variables")
+        print("|cFFE6CC99/gvodds|r", "|cFF66BBFFdb|r", "|cFF66BBFFoverride|r", "- Sets the active DB to the one in your saved variables. /reload to reset back to the default DB. Big WIP") -- Does not update if you reset DB and re-generate. Also re-registers the tooltip handler.
     end
     print("----------------------------------------")
 end
@@ -29,7 +30,8 @@ local validCommands = { -- slashCommandMap or commandConfig?
         devModeRequired = true,
         hasSubCommand = {
             gen = {},
-            reset = {}
+            reset = {},
+            override = {},
         },
     },
     progress = {
@@ -166,6 +168,14 @@ local function slashCommandHandler(msg, editBox)
                     GreatVaultOddsDB = {}
                     GreatVaultOddsDB.eligibleItems = {} -- have to re-init the sub-tables
                     GreatVaultOddsDB.eligibleItemCount = {}
+                elseif subCmd == "override" then
+                    if GreatVaultOddsDB and GreatVaultOddsDB.eligibleItems and GreatVaultOddsDB.eligibleItemCount then
+                        Tooltip.SetActiveLootDB(GreatVaultOddsDB)
+                        Tooltip.RegisterTooltipHandler()
+                        print("Using generated saved-variable loot DB")
+                    else
+                        print("Generated saved-variable loot DB is invalid")
+                    end
                 end
             elseif cmd == "progress" then
                 local inputMilestoneSeasonID = subCmd
