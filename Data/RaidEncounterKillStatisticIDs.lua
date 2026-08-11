@@ -11,6 +11,117 @@ local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
 
 -- Uses journal instance IDs in tandem with combat encounter IDs from ENCOUNTER_END.
 GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
+    [106] = {
+        [1317] = {
+            instanceName = "The Tidebound Grotto",
+            bosses = {
+                [1] = {
+                    combatEncounterID = 3379,
+                    journalEncounterID = 2849,
+                    encounterName = "Nymrissa Wavecaller",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = nil, -- have to update for "world"
+                        [raidDifficultyID.Normal] = 63614,
+                        [raidDifficultyID.Heroic] = 63615,
+                        [raidDifficultyID.Mythic] = 63616,
+                    },
+                },
+            },
+        },
+        [1320] = {
+            instanceName = "The Venomous Abyss",
+            bosses = {
+                [1] = {
+                    combatEncounterID = 3470,
+                    journalEncounterID = 2888,
+                    encounterName = "Nek'zali the Soulcoiler",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63533,
+                        [raidDifficultyID.Normal] = 63534,
+                        [raidDifficultyID.Heroic] = 63535,
+                        [raidDifficultyID.Mythic] = 63536,
+                    },
+                },
+                [2] = {
+                    combatEncounterID = 3445,
+                    journalEncounterID = 2874,
+                    encounterName = "Entombed Sentinels",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63537,
+                        [raidDifficultyID.Normal] = 63538,
+                        [raidDifficultyID.Heroic] = 63539,
+                        [raidDifficultyID.Mythic] = 63540,
+                    },
+                },
+                [3] = {
+                    combatEncounterID = 3497,
+                    journalEncounterID = 2894,
+                    encounterName = "The Lost Explorers",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63541,
+                        [raidDifficultyID.Normal] = 63552,
+                        [raidDifficultyID.Heroic] = 63553,
+                        [raidDifficultyID.Mythic] = 63554,
+                    },
+                },
+                [4] = {
+                    combatEncounterID = 3455,
+                    journalEncounterID = 2882,
+                    encounterName = "Vashnik the Malignant",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63547,
+                        [raidDifficultyID.Normal] = 63555,
+                        [raidDifficultyID.Heroic] = 63556,
+                        [raidDifficultyID.Mythic] = 63557,
+                    },
+                },
+                [5] = {
+                    combatEncounterID = 3420,
+                    journalEncounterID = 2871,
+                    encounterName = "Sszorak",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63548,
+                        [raidDifficultyID.Normal] = 63558,
+                        [raidDifficultyID.Heroic] = 63559,
+                        [raidDifficultyID.Mythic] = 63560,
+                    },
+                },
+                [6] = {
+                    combatEncounterID = 3421,
+                    journalEncounterID = 2887,
+                    encounterName = "The Twin Fangs",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63549,
+                        [raidDifficultyID.Normal] = 63561,
+                        [raidDifficultyID.Heroic] = 63562,
+                        [raidDifficultyID.Mythic] = 63563,
+                    },
+                },
+                [7] = {
+                    combatEncounterID = 3429,
+                    journalEncounterID = 2883,
+                    encounterName = "The Coiled Altar",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63550,
+                        [raidDifficultyID.Normal] = 63564,
+                        [raidDifficultyID.Heroic] = 63565,
+                        [raidDifficultyID.Mythic] = 63566,
+                    },
+                },
+                [8] = {
+                    combatEncounterID = 3492,
+                    journalEncounterID = 2895,
+                    encounterName = "Ula'tek",
+                    killStatisticIDs = {
+                        [raidDifficultyID.LFR] = 63551,
+                        [raidDifficultyID.Normal] = 63567,
+                        [raidDifficultyID.Heroic] = 63568,
+                        [raidDifficultyID.Mythic] = 63569,
+                    },
+                },
+            },
+        },
+    },
     [105] = {
         [1314] = {
             instanceName = "The Dreamrift",
@@ -243,6 +354,51 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
 -- Keyed by combat encounter IDs from ENCOUNTER_END, not Encounter Journal encounter IDs.
 -- seasonID is the Mythic+ milestone season ID used to select seasonal loot/progression data.
 GreatVaultOddsNS.RaidEncounterIndexByCombatEncounterID = {
+    [3379] = {
+        seasonID = 106,
+        journalInstanceID = 1317,
+        bossIndex = 1,
+    },
+    [3470] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 1,
+    },
+    [3445] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 2,
+    },
+    [3497] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 3,
+    },
+    [3455] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 4,
+    },
+    [3420] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 5,
+    },
+    [3421] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 6,
+    },
+    [3429] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 7,
+    },
+    [3492] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 8,
+    },
     [3306] = {
         seasonID = 105,
         journalInstanceID = 1314,
@@ -337,6 +493,51 @@ GreatVaultOddsNS.RaidEncounterIndexByCombatEncounterID = {
 
 -- Keyed by Encounter Journal encounter IDs from C_EncounterJournal.GetLootInfoByIndex().
 GreatVaultOddsNS.RaidEncounterIndexByJournalEncounterID = {
+    [2849] = {
+        seasonID = 106,
+        journalInstanceID = 1317,
+        bossIndex = 1,
+    },
+    [2888] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 1,
+    },
+    [2874] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 2,
+    },
+    [2894] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 3,
+    },
+    [2882] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 4,
+    },
+    [2871] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 5,
+    },
+    [2887] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 6,
+    },
+    [2883] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 7,
+    },
+    [2895] = {
+        seasonID = 106,
+        journalInstanceID = 1320,
+        bossIndex = 8,
+    },
     [2795] = {
         seasonID = 105,
         journalInstanceID = 1314,
