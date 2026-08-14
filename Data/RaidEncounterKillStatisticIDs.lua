@@ -1,45 +1,58 @@
 local addonName, GreatVaultOddsNS = ...
 
-GreatVaultOddsNS.RaidDifficultyID = {
+GreatVaultOddsNS.RaidDifficultyIDs = {
+    World = DifficultyUtil.ID.RaidWorld or 250, -- temporary value to prevent nil indexes in versions < 12.1
     LFR = DifficultyUtil.ID.PrimaryRaidLFR,
     Normal = DifficultyUtil.ID.PrimaryRaidNormal,
     Heroic = DifficultyUtil.ID.PrimaryRaidHeroic,
     Mythic = DifficultyUtil.ID.PrimaryRaidMythic,
 }
 
-local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
+local raidDifficultyIDs = GreatVaultOddsNS.RaidDifficultyIDs
 
 -- Uses journal instance IDs in tandem with combat encounter IDs from ENCOUNTER_END.
 GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
     [106] = {
         [1317] = {
             instanceName = "The Tidebound Grotto",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.World] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3379,
                     journalEncounterID = 2849,
                     encounterName = "Nymrissa Wavecaller",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = nil, -- have to update for "world"
-                        [raidDifficultyID.Normal] = 63614,
-                        [raidDifficultyID.Heroic] = 63615,
-                        [raidDifficultyID.Mythic] = 63616,
+                        [raidDifficultyIDs.World] = 63613,
+                        [raidDifficultyIDs.Normal] = 63614,
+                        [raidDifficultyIDs.Heroic] = 63615,
+                        [raidDifficultyIDs.Mythic] = 63616,
                     },
                 },
             },
         },
         [1320] = {
             instanceName = "The Venomous Abyss",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3470,
                     journalEncounterID = 2888,
                     encounterName = "Nek'zali the Soulcoiler",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63533,
-                        [raidDifficultyID.Normal] = 63534,
-                        [raidDifficultyID.Heroic] = 63535,
-                        [raidDifficultyID.Mythic] = 63536,
+                        [raidDifficultyIDs.LFR] = 63533,
+                        [raidDifficultyIDs.Normal] = 63534,
+                        [raidDifficultyIDs.Heroic] = 63535,
+                        [raidDifficultyIDs.Mythic] = 63536,
                     },
                 },
                 [2] = {
@@ -47,10 +60,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2874,
                     encounterName = "Entombed Sentinels",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63537,
-                        [raidDifficultyID.Normal] = 63538,
-                        [raidDifficultyID.Heroic] = 63539,
-                        [raidDifficultyID.Mythic] = 63540,
+                        [raidDifficultyIDs.LFR] = 63537,
+                        [raidDifficultyIDs.Normal] = 63538,
+                        [raidDifficultyIDs.Heroic] = 63539,
+                        [raidDifficultyIDs.Mythic] = 63540,
                     },
                 },
                 [3] = {
@@ -58,10 +71,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2894,
                     encounterName = "The Lost Explorers",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63541,
-                        [raidDifficultyID.Normal] = 63552,
-                        [raidDifficultyID.Heroic] = 63553,
-                        [raidDifficultyID.Mythic] = 63554,
+                        [raidDifficultyIDs.LFR] = 63541,
+                        [raidDifficultyIDs.Normal] = 63552,
+                        [raidDifficultyIDs.Heroic] = 63553,
+                        [raidDifficultyIDs.Mythic] = 63554,
                     },
                 },
                 [4] = {
@@ -69,10 +82,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2882,
                     encounterName = "Vashnik the Malignant",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63547,
-                        [raidDifficultyID.Normal] = 63555,
-                        [raidDifficultyID.Heroic] = 63556,
-                        [raidDifficultyID.Mythic] = 63557,
+                        [raidDifficultyIDs.LFR] = 63547,
+                        [raidDifficultyIDs.Normal] = 63555,
+                        [raidDifficultyIDs.Heroic] = 63556,
+                        [raidDifficultyIDs.Mythic] = 63557,
                     },
                 },
                 [5] = {
@@ -80,10 +93,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2871,
                     encounterName = "Sszorak",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63548,
-                        [raidDifficultyID.Normal] = 63558,
-                        [raidDifficultyID.Heroic] = 63559,
-                        [raidDifficultyID.Mythic] = 63560,
+                        [raidDifficultyIDs.LFR] = 63548,
+                        [raidDifficultyIDs.Normal] = 63558,
+                        [raidDifficultyIDs.Heroic] = 63559,
+                        [raidDifficultyIDs.Mythic] = 63560,
                     },
                 },
                 [6] = {
@@ -91,10 +104,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2887,
                     encounterName = "The Twin Fangs",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63549,
-                        [raidDifficultyID.Normal] = 63561,
-                        [raidDifficultyID.Heroic] = 63562,
-                        [raidDifficultyID.Mythic] = 63563,
+                        [raidDifficultyIDs.LFR] = 63549,
+                        [raidDifficultyIDs.Normal] = 63561,
+                        [raidDifficultyIDs.Heroic] = 63562,
+                        [raidDifficultyIDs.Mythic] = 63563,
                     },
                 },
                 [7] = {
@@ -102,10 +115,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2883,
                     encounterName = "The Coiled Altar",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63550,
-                        [raidDifficultyID.Normal] = 63564,
-                        [raidDifficultyID.Heroic] = 63565,
-                        [raidDifficultyID.Mythic] = 63566,
+                        [raidDifficultyIDs.LFR] = 63550,
+                        [raidDifficultyIDs.Normal] = 63564,
+                        [raidDifficultyIDs.Heroic] = 63565,
+                        [raidDifficultyIDs.Mythic] = 63566,
                     },
                 },
                 [8] = {
@@ -113,10 +126,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2895,
                     encounterName = "Ula'tek",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63551,
-                        [raidDifficultyID.Normal] = 63567,
-                        [raidDifficultyID.Heroic] = 63568,
-                        [raidDifficultyID.Mythic] = 63569,
+                        [raidDifficultyIDs.LFR] = 63551,
+                        [raidDifficultyIDs.Normal] = 63567,
+                        [raidDifficultyIDs.Heroic] = 63568,
+                        [raidDifficultyIDs.Mythic] = 63569,
                     },
                 },
             },
@@ -125,32 +138,44 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
     [105] = {
         [1314] = {
             instanceName = "The Dreamrift",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3306,
                     journalEncounterID = 2795,
                     encounterName = "Chimaerus, the Undreamt God",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61474,
-                        [raidDifficultyID.Normal] = 61475,
-                        [raidDifficultyID.Heroic] = 61476,
-                        [raidDifficultyID.Mythic] = 61477,
+                        [raidDifficultyIDs.LFR] = 61474,
+                        [raidDifficultyIDs.Normal] = 61475,
+                        [raidDifficultyIDs.Heroic] = 61476,
+                        [raidDifficultyIDs.Mythic] = 61477,
                     },
                 },
             },
         },
         [1307] = {
             instanceName = "The Voidspire",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3176,
                     journalEncounterID = 2733,
                     encounterName = "Imperator Averzian",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61276,
-                        [raidDifficultyID.Normal] = 61277,
-                        [raidDifficultyID.Heroic] = 61278,
-                        [raidDifficultyID.Mythic] = 61279,
+                        [raidDifficultyIDs.LFR] = 61276,
+                        [raidDifficultyIDs.Normal] = 61277,
+                        [raidDifficultyIDs.Heroic] = 61278,
+                        [raidDifficultyIDs.Mythic] = 61279,
                     },
                 },
                 [2] = {
@@ -158,10 +183,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2734,
                     encounterName = "Vorasius",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61280,
-                        [raidDifficultyID.Normal] = 61281,
-                        [raidDifficultyID.Heroic] = 61282,
-                        [raidDifficultyID.Mythic] = 61283,
+                        [raidDifficultyIDs.LFR] = 61280,
+                        [raidDifficultyIDs.Normal] = 61281,
+                        [raidDifficultyIDs.Heroic] = 61282,
+                        [raidDifficultyIDs.Mythic] = 61283,
                     },
                 },
                 [3] = {
@@ -169,10 +194,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2736,
                     encounterName = "Fallen-King Salhadaar",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61284,
-                        [raidDifficultyID.Normal] = 61285,
-                        [raidDifficultyID.Heroic] = 61286,
-                        [raidDifficultyID.Mythic] = 61287,
+                        [raidDifficultyIDs.LFR] = 61284,
+                        [raidDifficultyIDs.Normal] = 61285,
+                        [raidDifficultyIDs.Heroic] = 61286,
+                        [raidDifficultyIDs.Mythic] = 61287,
                     },
                 },
                 [4] = {
@@ -180,10 +205,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2735,
                     encounterName = "Vaelgor & Ezzorak",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61288,
-                        [raidDifficultyID.Normal] = 61289,
-                        [raidDifficultyID.Heroic] = 61290,
-                        [raidDifficultyID.Mythic] = 61291,
+                        [raidDifficultyIDs.LFR] = 61288,
+                        [raidDifficultyIDs.Normal] = 61289,
+                        [raidDifficultyIDs.Heroic] = 61290,
+                        [raidDifficultyIDs.Mythic] = 61291,
                     },
                 },
                 [5] = {
@@ -191,10 +216,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2737,
                     encounterName = "Lightblinded Vanguard",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61292,
-                        [raidDifficultyID.Normal] = 61293,
-                        [raidDifficultyID.Heroic] = 61294,
-                        [raidDifficultyID.Mythic] = 61295,
+                        [raidDifficultyIDs.LFR] = 61292,
+                        [raidDifficultyIDs.Normal] = 61293,
+                        [raidDifficultyIDs.Heroic] = 61294,
+                        [raidDifficultyIDs.Mythic] = 61295,
                     },
                 },
                 [6] = {
@@ -202,26 +227,32 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2738,
                     encounterName = "Crown of the Cosmos",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61296,
-                        [raidDifficultyID.Normal] = 61297,
-                        [raidDifficultyID.Heroic] = 61298,
-                        [raidDifficultyID.Mythic] = 61299,
+                        [raidDifficultyIDs.LFR] = 61296,
+                        [raidDifficultyIDs.Normal] = 61297,
+                        [raidDifficultyIDs.Heroic] = 61298,
+                        [raidDifficultyIDs.Mythic] = 61299,
                     },
                 },
             },
         },
         [1308] = {
             instanceName = "March on Quel'Danas",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3182,
                     journalEncounterID = 2739,
                     encounterName = "Belo'ren, Child of Al'ar",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61300,
-                        [raidDifficultyID.Normal] = 61301,
-                        [raidDifficultyID.Heroic] = 61302,
-                        [raidDifficultyID.Mythic] = 61303,
+                        [raidDifficultyIDs.LFR] = 61300,
+                        [raidDifficultyIDs.Normal] = 61301,
+                        [raidDifficultyIDs.Heroic] = 61302,
+                        [raidDifficultyIDs.Mythic] = 61303,
                     },
                 },
                 [2] = {
@@ -229,26 +260,32 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2740,
                     encounterName = "Midnight Falls",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 61304,
-                        [raidDifficultyID.Normal] = 61305,
-                        [raidDifficultyID.Heroic] = 61306,
-                        [raidDifficultyID.Mythic] = 61307,
+                        [raidDifficultyIDs.LFR] = 61304,
+                        [raidDifficultyIDs.Normal] = 61305,
+                        [raidDifficultyIDs.Heroic] = 61306,
+                        [raidDifficultyIDs.Mythic] = 61307,
                     },
                 },
             },
         },
         [1305] = {
             instanceName = "Sporefall",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3159,
                     journalEncounterID = 2711,
                     encounterName = "Rotmire",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 63233,
-                        [raidDifficultyID.Normal] = 63234,
-                        [raidDifficultyID.Heroic] = 63235,
-                        [raidDifficultyID.Mythic] = 63236,
+                        [raidDifficultyIDs.LFR] = 63233,
+                        [raidDifficultyIDs.Normal] = 63234,
+                        [raidDifficultyIDs.Heroic] = 63235,
+                        [raidDifficultyIDs.Mythic] = 63236,
                     },
                 },
             },
@@ -257,16 +294,22 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
     [102] = {
         [1302] = {
             instanceName = "Manaforge Omega",
+            difficultyDisplayIndexByID = {
+                [raidDifficultyIDs.LFR] = 1,
+                [raidDifficultyIDs.Normal] = 2,
+                [raidDifficultyIDs.Heroic] = 3,
+                [raidDifficultyIDs.Mythic] = 4,
+            },
             bosses = {
                 [1] = {
                     combatEncounterID = 3129,
                     journalEncounterID = 2684,
                     encounterName = "Plexus Sentinel",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41633,
-                        [raidDifficultyID.Normal] = 41634,
-                        [raidDifficultyID.Heroic] = 41635,
-                        [raidDifficultyID.Mythic] = 41636,
+                        [raidDifficultyIDs.LFR] = 41633,
+                        [raidDifficultyIDs.Normal] = 41634,
+                        [raidDifficultyIDs.Heroic] = 41635,
+                        [raidDifficultyIDs.Mythic] = 41636,
                     },
                 },
                 [2] = {
@@ -274,10 +317,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2686,
                     encounterName = "Loom'ithar",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41637,
-                        [raidDifficultyID.Normal] = 41638,
-                        [raidDifficultyID.Heroic] = 41639,
-                        [raidDifficultyID.Mythic] = 41640,
+                        [raidDifficultyIDs.LFR] = 41637,
+                        [raidDifficultyIDs.Normal] = 41638,
+                        [raidDifficultyIDs.Heroic] = 41639,
+                        [raidDifficultyIDs.Mythic] = 41640,
                     },
                 },
                 [3] = {
@@ -285,10 +328,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2685,
                     encounterName = "Soulbinder Naazindhri",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41641,
-                        [raidDifficultyID.Normal] = 41642,
-                        [raidDifficultyID.Heroic] = 41643,
-                        [raidDifficultyID.Mythic] = 41644,
+                        [raidDifficultyIDs.LFR] = 41641,
+                        [raidDifficultyIDs.Normal] = 41642,
+                        [raidDifficultyIDs.Heroic] = 41643,
+                        [raidDifficultyIDs.Mythic] = 41644,
                     },
                 },
                 [4] = {
@@ -296,10 +339,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2687,
                     encounterName = "Forgeweaver Araz",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41645,
-                        [raidDifficultyID.Normal] = 41646,
-                        [raidDifficultyID.Heroic] = 41647,
-                        [raidDifficultyID.Mythic] = 41648,
+                        [raidDifficultyIDs.LFR] = 41645,
+                        [raidDifficultyIDs.Normal] = 41646,
+                        [raidDifficultyIDs.Heroic] = 41647,
+                        [raidDifficultyIDs.Mythic] = 41648,
                     },
                 },
                 [5] = {
@@ -307,10 +350,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2688,
                     encounterName = "The Soul Hunters",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41649,
-                        [raidDifficultyID.Normal] = 41650,
-                        [raidDifficultyID.Heroic] = 41651,
-                        [raidDifficultyID.Mythic] = 41652,
+                        [raidDifficultyIDs.LFR] = 41649,
+                        [raidDifficultyIDs.Normal] = 41650,
+                        [raidDifficultyIDs.Heroic] = 41651,
+                        [raidDifficultyIDs.Mythic] = 41652,
                     },
                 },
                 [6] = {
@@ -318,10 +361,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2747,
                     encounterName = "Fractillus",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41653,
-                        [raidDifficultyID.Normal] = 41654,
-                        [raidDifficultyID.Heroic] = 41655,
-                        [raidDifficultyID.Mythic] = 41656,
+                        [raidDifficultyIDs.LFR] = 41653,
+                        [raidDifficultyIDs.Normal] = 41654,
+                        [raidDifficultyIDs.Heroic] = 41655,
+                        [raidDifficultyIDs.Mythic] = 41656,
                     },
                 },
                 [7] = {
@@ -329,10 +372,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2690,
                     encounterName = "Nexus-King Salhadaar",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41657,
-                        [raidDifficultyID.Normal] = 41658,
-                        [raidDifficultyID.Heroic] = 41659,
-                        [raidDifficultyID.Mythic] = 41660,
+                        [raidDifficultyIDs.LFR] = 41657,
+                        [raidDifficultyIDs.Normal] = 41658,
+                        [raidDifficultyIDs.Heroic] = 41659,
+                        [raidDifficultyIDs.Mythic] = 41660,
                     },
                 },
                 [8] = {
@@ -340,10 +383,10 @@ GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID = {
                     journalEncounterID = 2691,
                     encounterName = "Dimensius, the All-Devouring",
                     killStatisticIDs = {
-                        [raidDifficultyID.LFR] = 41661,
-                        [raidDifficultyID.Normal] = 41662,
-                        [raidDifficultyID.Heroic] = 41663,
-                        [raidDifficultyID.Mythic] = 41664,
+                        [raidDifficultyIDs.LFR] = 41661,
+                        [raidDifficultyIDs.Normal] = 41662,
+                        [raidDifficultyIDs.Heroic] = 41663,
+                        [raidDifficultyIDs.Mythic] = 41664,
                     },
                 },
             },
