@@ -9,7 +9,7 @@ local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
 
 local raidEncounterKillStatisticIDsByMilestoneSeasonID = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID
 local raidEncounterIndexByCombatEncounterID = GreatVaultOddsNS.RaidEncounterIndexByCombatEncounterID
-local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
+local raidDifficultyIDs = GreatVaultOddsNS.RaidDifficultyIDs
 
 local raidProgressCache = {}
 
@@ -28,10 +28,13 @@ local function getKillCountFromBossData(bossData, difficultyID)
     return killCount, statisticID, rawValue
 end
 
-local function getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+local function calculateHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
     local seasonRaidData = raidEncounterKillStatisticIDsByMilestoneSeasonID[milestoneSeasonID] -- Add error message return for devtool
     local raidData = seasonRaidData and seasonRaidData[instanceID] -- Add error message return for devtool
     if not raidData then return end
+
+    local isSupportedDifficulty = raidData.difficultyDisplayIndexByID and raidData.difficultyDisplayIndexByID[difficultyID] ~= nil
+    if not isSupportedDifficulty then return end
 
     for bossIndex = #raidData.bosses, 1, -1 do
         local killCount, statisticID = getKillCountFromBossData(raidData.bosses[bossIndex], difficultyID) -- if the data table has a nil value at an index, this call will error when statistic tries to index a nil value I assume
@@ -57,11 +60,11 @@ function PlayerRaidProgress.RefreshProgression(milestoneSeasonID)
     raidProgressCache[milestoneSeasonID] = raidProgressCache[milestoneSeasonID] or {}
     local seasonProgress = raidProgressCache[milestoneSeasonID]
 
-    for instanceID in pairs(seasonRaidData) do
-        seasonProgress[instanceID] = seasonProgress[instanceID] or {}
-        local instanceProgress = seasonProgress[instanceID]
-        for difficultyName, difficultyID in pairs(raidDifficultyID) do
-            instanceProgress[difficultyID] = getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+    for instanceID, raidData in pairs(seasonRaidData) do
+        local instanceProgress = {} -- Flip this for clarity? Or keep for performance? Consistent or flexible methodology?
+        seasonProgress[instanceID] = instanceProgress
+        for difficultyID, displayIndex in pairs(raidData.difficultyDisplayIndexByID) do
+            instanceProgress[difficultyID] = calculateHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
         end
     end
 end
@@ -88,6 +91,14 @@ function PlayerRaidProgress.MarkEncounterKilled(combatEncounterID, difficultyID)
     if not (bossSeasonID and bossInstanceID and newBossIndex) then return end
 
     if bossSeasonID ~= Core.GetActiveMilestoneSeasonID() then return end
+
+    local seasonRaidData = raidEncounterKillStatisticIDsByMilestoneSeasonID[bossSeasonID]
+
+    local raidData = seasonRaidData and seasonRaidData[bossInstanceID]
+
+    local isSupportedDifficulty = raidData and raidData.difficultyDisplayIndexByID and raidData.difficultyDisplayIndexByID[difficultyID] ~= nil
+
+    if not isSupportedDifficulty then return end
 
     raidProgressCache[bossSeasonID] = raidProgressCache[bossSeasonID] or {}
     local seasonProgress = raidProgressCache[bossSeasonID]
@@ -120,8 +131,9 @@ local function buildBossKillsDebugReport(milestoneSeasonID)
 
         debugReport.raids[raidData.instanceName] = raidReport
 
-        for difficultyName, difficultyID in pairs(raidDifficultyID) do
-            local highestKilledBossIndex = getHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+        for difficultyName, difficultyID in pairs(raidDifficultyIDs) do
+            local highestKilledBossIndex = calculateHighestKilledBossIndex(milestoneSeasonID, instanceID, difficultyID)
+            local isSupportedDifficulty = raidData.difficultyDisplayIndexByID[difficultyID] ~= nil
 
             local difficultyReport = {
                 highestKilledBossIndex = highestKilledBossIndex,
@@ -132,6 +144,7 @@ local function buildBossKillsDebugReport(milestoneSeasonID)
 
             for bossIndex, bossData in ipairs(raidData.bosses) do
                 local killCount, statisticID, rawValue = getKillCountFromBossData(bossData, difficultyID)
+                local hasStatistic = statisticID ~= nil
 
                 difficultyReport.bosses[bossIndex] = {
                     combatEncounterID = bossData.combatEncounterID,
@@ -141,8 +154,10 @@ local function buildBossKillsDebugReport(milestoneSeasonID)
                     rawValue = rawValue,
                     killCount = killCount,
                     killed = killCount ~= nil and killCount > 0,
-                    missingStatistic = statisticID == nil,
-                    invalidStatisticValue = statisticID ~= nil and killCount == nil,
+                    isSupportedDifficulty = isSupportedDifficulty,
+                    missingStatistic = isSupportedDifficulty and not hasStatistic,
+                    unexpectedStatistic = not isSupportedDifficulty and hasStatistic,
+                    invalidStatisticValue = isSupportedDifficulty and hasStatistic and killCount == nil,
                 }
             end
         end
