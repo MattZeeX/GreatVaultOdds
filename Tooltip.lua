@@ -7,7 +7,8 @@ local DBGenerator = GreatVaultOddsNS.DBGenerator
 local SlashCommands = GreatVaultOddsNS.SlashCommands
 local Core = GreatVaultOddsNS.Core
 local PlayerRaidProgress = GreatVaultOddsNS.PlayerRaidProgress
-local raidDifficultyID = GreatVaultOddsNS.RaidDifficultyID
+local raidDifficultyIDs = GreatVaultOddsNS.RaidDifficultyIDs
+local raidEncounterKillStatisticIDsByMilestoneSeasonID = GreatVaultOddsNS.RaidEncounterKillStatisticIDsByMilestoneSeasonID
 
 local activeLootDB
 
@@ -30,11 +31,12 @@ local UNAVAILABLE_ODDS_COLOR = "|cffb0b0b0"
 local COLOR_END = "|r"
 local DUNGEON_LOOT_SOURCE_TOOLTIP_HEADER = "Vault"..activeLootSourceSeparator.."M+"..activeLootSourceSeparator.."Boss"
 
-local RAID_DIFFICULTY_DISPLAY_ORDER = {
-    {label = "LFR", difficultyID = raidDifficultyID.LFR},
-    {label = "N", difficultyID = raidDifficultyID.Normal},
-    {label = "H", difficultyID = raidDifficultyID.Heroic},
-    {label = "M", difficultyID = raidDifficultyID.Mythic},
+local RAID_DIFFICULTY_LABELS = {
+    [raidDifficultyIDs.World] = "W",
+    [raidDifficultyIDs.LFR] = "LFR",
+    [raidDifficultyIDs.Normal] = "N",
+    [raidDifficultyIDs.Heroic] = "H",
+    [raidDifficultyIDs.Mythic] = "M",
 }
 
 local function ensurePlayerSpecsSorted()
@@ -112,17 +114,25 @@ local function buildRaidVaultOddsLine(className, specName, raidSource)
     if not cumulativeBossTotals then return end
 
     local milestoneSeasonID = Core.GetActiveMilestoneSeasonID()
-    local difficultyOdds = {}
+    local orderedDifficultyOddsText = {}
 
-    for _, difficultyInfo in ipairs(RAID_DIFFICULTY_DISPLAY_ORDER) do
-        local highestKilledBossIndex = PlayerRaidProgress.GetHighestKilledBossIndex(milestoneSeasonID, journalInstanceID, difficultyInfo.difficultyID)
+    local supportedDifficulties = raidEncounterKillStatisticIDsByMilestoneSeasonID[milestoneSeasonID][journalInstanceID].difficultyDisplayIndexByID -- nil check the keys
+
+    for difficultyID, displayIndex in pairs(supportedDifficulties) do
+        local highestKilledBossIndex = PlayerRaidProgress.GetHighestKilledBossIndex(milestoneSeasonID, journalInstanceID, difficultyID)
         local vaultTotal = highestKilledBossIndex and highestKilledBossIndex >= bossIndex and cumulativeBossTotals[highestKilledBossIndex]
-        local vaultOddsText = vaultTotal and "1/"..vaultTotal or getUnavailableOddsText()
 
-        table.insert(difficultyOdds, difficultyInfo.label..": "..vaultOddsText)
+        local vaultOdds = vaultTotal and "1/"..vaultTotal or getUnavailableOddsText()
+        local difficultyLabel = RAID_DIFFICULTY_LABELS[difficultyID]
+
+        local difficultyOdds = difficultyLabel..": "..vaultOdds
+
+        orderedDifficultyOddsText[displayIndex] = difficultyOdds
     end
 
-    return "  "..getNormalTooltipColoredLabel("Vault")..table.concat(difficultyOdds, activeLootSourceSeparator)
+    local raidVaultOddsText = "  "..getNormalTooltipColoredLabel("Vault")..table.concat(orderedDifficultyOddsText, activeLootSourceSeparator)
+
+    return raidVaultOddsText
 end
 
 local function buildRaidSpecOddsLines(className, specName, raidSource)
